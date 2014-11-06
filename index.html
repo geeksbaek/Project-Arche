@@ -6,22 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
-	<script src="bower_components/platform/platform.js"></script>
+	<script src="./bower_components/platform/platform.js"></script>
 
-	<link rel="import" href="bower_components/core-scaffold/core-scaffold.html">
-	<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-	<link rel="import" href="bower_components/core-item/core-item.html">
-	<link rel="import" href="bower_components/core-menu/core-menu.html">
-	<link rel="import" href="bower_components/core-menu/core-submenu.html">
+	<link rel="import" href="./bower_components/core-scaffold/core-scaffold.html">
+	<link rel="import" href="./bower_components/core-header-panel/core-header-panel.html">
+	<link rel="import" href="./bower_components/core-item/core-item.html">
+	<link rel="import" href="./bower_components/core-menu/core-menu.html">
+	<link rel="import" href="./bower_components/core-menu/core-submenu.html">
 
-	<link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
-	<link rel="import" href="bower_components/flatiron-director/flatiron-director.html">
-	<link rel="import" href="bower_components/core-ajax/core-ajax.html">
-	<link rel="import" href="bower_components/core-a11y-keys/core-a11y-keys.html">
-	<link rel="import" href="bower_components/paper-ripple/paper-ripple.html">	
+	<link rel="import" href="./bower_components/core-animated-pages/core-animated-pages.html">
+	<link rel="import" href="./bower_components/flatiron-director/flatiron-director.html">
+	<link rel="import" href="./bower_components/core-ajax/core-ajax.html">
+	<link rel="import" href="./bower_components/core-a11y-keys/core-a11y-keys.html">
+	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">	
 	
-	<link rel="stylesheet" href="bootstrap.css">
-	<link rel="stylesheet" href="app.css">
+	<link rel="stylesheet" href="./bootstrap.css">
+	<link rel="stylesheet" href="./app.css">
 </head>
 	
 <body unresolved fullbleed>
@@ -45,7 +45,7 @@
 				<template repeat="{{pages}}">
 					<core-item icon="{{icon}}" label="{{name}}" hash="{{hash}}">
 						<paper-ripple class="recenteringTouch" fit>
-							<a href="{{url}}"></a>
+							<a href="./{{url}}"></a>
 						</paper-ripple>
 					</core-item>
 				</template>
