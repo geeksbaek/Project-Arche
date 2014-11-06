@@ -33,7 +33,7 @@
   <core-a11y-keys id="keys" target="{{parentElement}}" keys="up down left right space space+shift" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>                 
 
   <!-- Dynamic content controller -->
-  <core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
+  <core-ajax id="ajax" url="./{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
 	
 	<core-scaffold id="scaffold">
 		<core-header-panel navigation flex mode="seamed">
