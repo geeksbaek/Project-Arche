@@ -1,0 +1,71 @@
+* {
+	font-family: sans-serifmontserrat, "맑은 고딕";
+	font-weight: normal;
+  -webkit-touch-callout: all;
+	-webkit-user-select: all;
+	-khtml-user-select: all;
+	-moz-user-select: all;
+	-ms-user-select: all;
+	user-select: all;
+}
+
+table, th, td {	
+	text-align: center;
+	white-space: nowrap;
+}
+
+table {
+	font-size: .9em;
+}
+
+th {
+	font-weight: bold;
+	cursor: default;
+}
+
+th.plex {
+	width: 200px;
+}
+
+core-animated-pages {
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+core-animated-pages > * {
+  border-radius: 5px;
+  background-color: white;
+}
+
+body /deep/ core-toolbar {
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+core-menu {
+  color: #01579b;
+  margin: 10px 0 0 0;
+}
+
+core-item, core-submenu {
+  transition: all 300ms ease-in-out;
+	padding: 4px 16px;
+}
+
+core-item.core-selected {
+  background: #e1f5fe;
+	font-weight: normal;
+}
+
+@media all and (max-width: 480px) {
+  core-animated-pages {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#content {
+	overflow-y: auto;
+}
