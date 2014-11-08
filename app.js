@@ -4,7 +4,7 @@
 var DEFAULT_ROUTE = 'Main';
 
 var template = document.querySelector('#t');
-var ajax, pages, toolbar, scaffold;
+var ajax, pages, titles, toolbar, scaffold;
 var cache = {};
 
 template.pages = [
@@ -21,6 +21,7 @@ template.addEventListener('template-bound', function(e) {
   scaffold = document.querySelector('#scaffold');
   ajax = document.querySelector('#ajax');
   pages = document.querySelector('#pages');
+	titles = document.querySelector('#titles');
   toolbar = document.querySelector('#toolbar');
   var keys = document.querySelector('#keys');
 
@@ -80,13 +81,14 @@ template.ajaxLoad = function(e, detail, sender) {
   e.preventDefault(); // prevent link navigation.
 };
 
-template.onResponse = function(e, detail, sender) {
-  var article = detail.response.querySelector('article');	
-  var html = article.innerHTML;
-
-  cache[ajax.url] = html; // Primitive caching by URL.
-
-  this.injectBoundHTML(html, pages.selectedItem.firstElementChild);
+template.onResponse = function(e, detail, sender) {	
+	cache[ajax.url] = detail.response;
+	
+  var article = detail.response.querySelector('article').innerHTML;
+  var title = detail.response.querySelector('title').innerHTML;
+	
+  this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
+  this.injectBoundHTML(title, titles.selectedItem.firstElementChild);
 };
 
 })();

@@ -66,6 +66,10 @@ core-item.core-selected {
   }
 }
 
-#content {
+.content {
 	overflow-y: auto;
+}
+
+.title {
+	margin: 0;
 }

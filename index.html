@@ -15,6 +15,7 @@
 	<link rel="import" href="./bower_components/core-menu/core-submenu.html">
 
 	<link rel="import" href="./bower_components/core-animated-pages/core-animated-pages.html">
+	<link rel="import" href="./bower_components/core-pages/core-pages.html">
 	<link rel="import" href="./bower_components/flatiron-director/flatiron-director.html">
 	<link rel="import" href="./bower_components/core-ajax/core-ajax.html">
 	<link rel="import" href="./bower_components/core-a11y-keys/core-a11y-keys.html">
@@ -36,9 +37,9 @@
   <core-ajax id="ajax" url="./{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
 	
 	<core-scaffold id="scaffold">
-		<core-header-panel navigation flex mode="seamed">
+		<nav>
 			<core-toolbar horizontal center-justified layout>
-				프로젝트 아키
+				<div>프로젝트 아키</div>
 			</core-toolbar>
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">
@@ -50,16 +51,16 @@
 					</core-item>
 				</template>
 			</core-menu>
-		</core-header-panel>
+		</nav>
 		
-		<core-toolbar id="toolbar" tool>
-      	<span></span>
+		<core-toolbar tool flex>
+      <div flex>{{selectedPage.name}}</div>
     </core-toolbar>
 		
 		<div layout fit>
       <core-animated-pages id="pages" selected="{{route}}" valueattr="hash">
         <template repeat="{{page, i in pages}}">
-					<section id="content" hash="{{page.hash}}" layout>
+					<section class="content" hash="{{page.hash}}" layout>
 						<div style="max-width:100%;">Loading...</div>
 					</section>          
         </template>
