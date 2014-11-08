@@ -1,5 +1,4 @@
 <article>
-	<link rel="import" href="elements/google-sheets-master/google-sheets.html">
 	<template is="auto-binding">
 		<google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" gid="5" rows="{{rows}}" published></google-sheets>
 		<table class='table table-responsive table-hover table-condensed'>
@@ -8,8 +7,7 @@
 					<th>Rank</th>
 					<th class='plex'>Name</th>
 					<th>Server</th>
-					<th>Current</th>
-					<th>Record</th>
+					<th>Gear Score</th>
 					<th>TimeStamp</th>
 				</tr>
 			</thead>
@@ -19,8 +17,11 @@
 					<td>{{row.gsx$rank.$t}}</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a></td>
 					<td>{{row.gsx$server.$t}}</td>
-					<td>{{row.gsx$current.$t}}</td>
-					<td>{{row.gsx$record.$t}}</td>
+					<td>
+						<core-tooltip label='Record: {{row.gsx$record.$t}}'>
+							{{row.gsx$current.$t}}
+						</core-tooltip>
+					</td>
 					<td>{{row.gsx$timestamp.$t}}</td>
 				</tr>
 				</tamplate>

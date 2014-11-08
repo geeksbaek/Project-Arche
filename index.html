@@ -20,7 +20,9 @@
 	<link rel="import" href="./bower_components/core-a11y-keys/core-a11y-keys.html">
 	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
 	
-	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">	
+	<link rel="import" href="elements/google-sheets-master/google-sheets.html">
+	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
+	<link rel="import" href="./bower_components/core-tooltip/core-tooltip.html">
 	
 	<link rel="stylesheet" href="./bootstrap.css">
 	<link rel="stylesheet" href="./app.css">
@@ -38,8 +40,8 @@
   <core-ajax id="ajax" url="./{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
 	
 	<core-scaffold id="scaffold">
-		<nav>
-			<core-toolbar horizontal center-justified layout>
+		<nav drawer>
+			<core-toolbar tool horizontal center-justified layout>
 				<div>프로젝트 아키</div>
 			</core-toolbar>
 			
