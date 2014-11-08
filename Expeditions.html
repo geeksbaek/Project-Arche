@@ -7,7 +7,6 @@
 					<th>Server</th>
 					<th>Nation</th>
 					<th class='plex'>Expedition</th>
-					<th>Master</th>
 					<th>55lv</th>
 					<th>Battle Score</th>
 				</tr>
@@ -17,8 +16,11 @@
 				<tr>
 					<td>{{row.gsx$server.$t}}</td>
 					<td>{{row.gsx$nation.$t}}</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$expedition.$t}}</a></td>
-					<td>{{row.gsx$master.$t}}</td>
+					<td>
+						<core-tooltip label='Master: {{row.gsx$master.$t}}'>
+							<a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$expedition.$t}}</a>
+						</core-tooltip>
+					</td>
 					<td>
 						<core-tooltip label='Total People: {{row.gsx$personnel.$t}}'>
 							{{row.gsx$lv55.$t}}
