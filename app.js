@@ -21,49 +21,18 @@ template.addEventListener('template-bound', function(e) {
   scaffold = document.querySelector('#scaffold');
   ajax = document.querySelector('#ajax');
   pages = document.querySelector('#pages');
-  var keys = document.querySelector('#keys');
-
-  // Allow selecting pages by num keypad. Dynamically add
-  // [1, template.pages.length] to key mappings.
-  var keysToAdd = Array.apply(null, template.pages).map(function(x, i) {
-    return i + 1;
-  }).reduce(function(x, y) {
-    return x + ' ' + y;
-  });
-  keys.keys += ' ' + keysToAdd;
 
   this.route = this.route || DEFAULT_ROUTE; // Select initial route.
 });
-
-template.keyHandler = function(e, detail, sender) {
-  // Select page by num key. 
-  var num = parseInt(detail.key);
-  if (!isNaN(num) && num <= this.pages.length) {
-    pages.selectIndex(num - 1);
-    return;
-  }
-
-  switch (detail.key) {
-    case 'left':
-    case 'up':
-      pages.selectPrevious();
-      break;
-    case 'right':
-    case 'down':
-      pages.selectNext();
-      break;
-    case 'space':
-      detail.shift ? pages.selectPrevious() : pages.selectNext();
-      break;
-  }
-};
 
 template.menuItemSelected = function(e, detail, sender) {
   if (detail.isSelected) {
 		
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
-			ajax.go();
+			if (!cache[ajax.url]) {
+				ajax.go();				
+			}
 			
 			if (detail.item.tagName != 'CORE-SUBMENU') {
       	scaffold.closeDrawer();
@@ -78,7 +47,13 @@ template.ajaxLoad = function(e, detail, sender) {
 };
 
 template.onResponse = function(e, detail, sender) {	
-	//cache[ajax.url] = detail.response;
+	cache[ajax.url] = detail.response;
+	
+	setTimeout(function(cache, url) {
+		return function() {
+			cache[url] = null;			
+		}
+	}(cache, ajax.url), 600000);
 	
   var article = detail.response.querySelector('article').innerHTML;	
   this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
