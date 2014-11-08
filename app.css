@@ -50,6 +50,7 @@ core-animated-pages > * {
 body /deep/ core-toolbar {
   background-color: #31B404;
   color: #fff;
+	font-size: 1.3rem;
 }
 
 core-menu {
