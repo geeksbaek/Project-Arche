@@ -8,7 +8,7 @@ var ajax, pages, scaffold;
 var cache = {};
 
 template.pages = [
-  {name: 'Main', hash: 'Main', url: 'Notice.html', icon: 'home'},
+  {name: 'Notice', hash: 'Notice', url: 'Notice.html', icon: 'home'},
   {name: 'Equip Simulate', hash: 'EquipSimulate', url: 'Equip_Simulate.html', icon: 'perm-identity'},
   {name: 'Nations', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
   {name: 'Expeditions', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
