@@ -1,20 +1,20 @@
 (function() {
 "use strict";
 
-var DEFAULT_ROUTE = 'Main';
+var DEFAULT_ROUTE = 'Notice';
 
 var template = document.querySelector('#t');
 var ajax, pages, scaffold;
 var cache = {};
 
 template.pages = [
-  {name: 'Main', hash: 'Main', url: '/main.html', icon: 'home'},
-  {name: 'Equip Simulate', hash: 'EquipSimulate', url: '/Equip_Simulate.html', icon: 'perm-identity'},
-  {name: 'Nations', hash: 'Nations', url: '/Nations.html', icon: 'account-balance'},
-  {name: 'Expeditions', hash: 'Expeditions', url: '/Expeditions.html', icon: 'account-child'},
-  {name: 'Trade Price', hash: 'TradePrice', url: '/Trade_Price.html', icon: 'drive-fusiontable'},
-  {name: 'Gladiators Ranking', hash: 'ArenaRanking', url: '/Arena_Ranking.html', icon: 'stars'},
-  {name: 'Gear Score Ranking', hash: 'GearRanking', url: '/Gear_Ranking.html', icon: 'swap-driving-apps-wheel'}
+  {name: 'Main', hash: 'Main', url: 'Notice.html', icon: 'home'},
+  {name: 'Equip Simulate', hash: 'EquipSimulate', url: 'Equip_Simulate.html', icon: 'perm-identity'},
+  {name: 'Nations', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
+  {name: 'Expeditions', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
+  {name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
+  {name: 'Gladiators Ranking', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
+  {name: 'Gear Score Ranking', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'}
 ];
 
 template.addEventListener('template-bound', function(e) {
