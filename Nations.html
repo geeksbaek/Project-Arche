@@ -1,6 +1,6 @@
 <article>
 	<template is="auto-binding">
-		<google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" gid="1" rows="{{rows}}" published></google-sheets>
+		<google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" gid="8" rows="{{rows}}" published></google-sheets>
 		<table class='table table-responsive table-hover table-condensed'>
 			<template repeat="{{row in rows}}">
 			<tr>
@@ -20,5 +20,18 @@
 			</tr>
 			</template>
 		</table>
-	</template>
+		<script>
+			var sheet = document.querySelector('google-sheets');
+
+			sheet.addEventListener('google-sheet-data', function(e) {
+				for (var i = 0; i < this.rows.length; i++) {
+					console.log(this.rows[i]);
+				}
+			});
+
+			sheet.addEventListener('core-error', function(e) {
+			 // e.detail.response
+			});
+		</script>
+	</template>	
 </article>
