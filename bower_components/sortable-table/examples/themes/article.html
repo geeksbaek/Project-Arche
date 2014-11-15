@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<script src="../../../platform/platform.js" debug log="bind,ready,events"></script>
+	<script src="../../../webcomponentsjs/webcomponents.min.js" debug log="bind,ready,events"></script>
 	<link rel="import" href="../../sortable-table.html">
 	<link rel="import" href="../fruit-icon.html">
 	<link rel="stylesheet" href="../../css/article.css" shim-shadowdom>
@@ -38,12 +38,12 @@
 	<div id="paginationDiv" style="background-color:#FFF;padding:10px;border:1px solid #666;border-radius:4px;"></div>
 
 	<template id="pagination">
-		<div template class="panel panel-default">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"></h3>
 			</div>
 			<div class="panel-body">
-				<div class="panel panel-default">
+				<div class="panel panel-default" style="padding-bottom: 25px;">
 					<sortable-table
 						class="article"
 						rowSelection

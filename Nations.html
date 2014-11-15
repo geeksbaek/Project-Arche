@@ -11,10 +11,10 @@
 					<th>Dominions</th>
 				</tr>
 			</thead>
-			<template repeat="{{row in rows}}">
 			<tbody>
+				<template repeat="{{row in rows}}">
 				<tr>
-					<td>{{row.gsx$_cn6ca.$t}}</td>
+					<td rowspan="1">{{row.gsx$_cn6ca.$t}}</td>
 					<td>{{row.gsx$_cokwr.$t}}</td>
 					<td>{{row.gsx$sumoflv55.$t}}</td>
 					<td>
@@ -24,8 +24,8 @@
 					</td>
 					<td>{{row.gsx$sumofdominions.$t}}</td>
 				</tr>
+				</template>
 			</tbody>
-			</template>
 		</table>
 	</template>	
 </article>
