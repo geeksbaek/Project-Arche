@@ -60,3 +60,27 @@ template.onResponse = function(e, detail, sender) {
 };
 
 })();
+
+PolymerExpressions.prototype.slice = function (v, n) {
+  return v.slice(0, n) + (v.length > n ? "..." : "");
+};
+
+PolymerExpressions.prototype.toInt = function (v) {
+  return parseInt(v);
+};
+
+PolymerExpressions.prototype.comma = function (num) {
+  var len, point, str;  
+  
+	num = num + "";  
+	point = num.length % 3  
+	len = num.length;  
+
+	str = num.substring(0, point);  
+	while (point < len) {  
+			if (str != "") str += ",";  
+			str += num.substring(point, point + 3);  
+			point += 3;  
+	}  
+	return str;
+};

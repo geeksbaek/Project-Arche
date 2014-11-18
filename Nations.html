@@ -4,11 +4,11 @@
 		<table class='table table-responsive table-hover table-condensed'>
 			<thead>
 				<tr>
-					<th>Server</th>
-					<th>Nation</th>
-					<th>55lv</th>
-					<th>Battle</th>
-					<th>Dominions</th>
+					<th>서버</th>
+					<th>국가</th>
+					<th>55레벨</th>
+					<th>전투점수</th>
+					<th>영지</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -16,13 +16,13 @@
 				<tr>
 					<td rowspan="1">{{row.gsx$_cn6ca.$t}}</td>
 					<td>{{row.gsx$_cokwr.$t}}</td>
-					<td>{{row.gsx$sumoflv55.$t}}</td>
+					<td>{{row.gsx$sumoflv55.$t | comma}}명</td>
 					<td>
-						<core-tooltip label='Per capita: {{row.gsx$averageofbpc.$t}}'>
-							{{row.gsx$sumofbattle.$t}}
+						<core-tooltip label='1인당: {{(row.gsx$sumofbattle.$t / row.gsx$sumoflv55.$t) | toInt}}점'>
+							{{row.gsx$sumofbattle.$t | comma}}점
 						</core-tooltip>
 					</td>
-					<td>{{row.gsx$sumofdominions.$t}}</td>
+					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
 				</template>
 			</tbody>

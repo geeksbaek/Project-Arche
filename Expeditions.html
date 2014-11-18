@@ -4,11 +4,11 @@
 		<table class='table table-responsive table-hover table-condensed'>
 			<thead>
 				<tr>
-					<th>Server</th>
-					<th>Nation</th>
-					<th class='plex'>Expedition</th>
-					<th>55lv</th>
-					<th>Battle Score</th>
+					<th>서버</th>
+					<th>국가</th>
+					<th class='plex'>원정대</th>
+					<th>55레벨</th>
+					<th>전투점수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -17,18 +17,18 @@
 					<td>{{row.gsx$server.$t}}</td>
 					<td>{{row.gsx$nation.$t}}</td>
 					<td>
-						<core-tooltip label='Master: {{row.gsx$master.$t}}'>
-							<a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$expedition.$t}}</a>
+						<core-tooltip label='원정대장: {{row.gsx$master.$t}}'>
+							<a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$expedition.$t | slice(8)}}</a>
 						</core-tooltip>
 					</td>
 					<td>
-						<core-tooltip label='Total People: {{row.gsx$total.$t}}'>
-							{{row.gsx$lv55.$t}}
+						<core-tooltip label='총원: {{row.gsx$total.$t}}'>
+							{{row.gsx$lv55.$t}}명
 						</core-tooltip>
 					</td>
 					<td>
-						<core-tooltip label='Per capita: {{row.gsx$bpc.$t}}' position='left'>
-							{{row.gsx$battle.$t}}
+						<core-tooltip label='1인당: {{row.gsx$bpc.$t}}' position='left'>
+							{{row.gsx$battle.$t | comma}}점
 						</core-tooltip>
 					</td>
 				</tr>

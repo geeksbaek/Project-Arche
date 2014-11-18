@@ -14,11 +14,11 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<td>{{row.gsx$rank.$t}}</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a></td>
+					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t | slice(8)}}</a></td>
 					<td>{{row.gsx$server.$t}}</td>
 					<td>
-						<core-tooltip label='Win: {{row.gsx$win.$t}} / Lose: {{row.gsx$lose.$t}} / Rate: {{row.gsx$rate.$t}}' position='left'>
-							{{row.gsx$score.$t}}
+						<core-tooltip label='승: {{row.gsx$win.$t}} / 패: {{row.gsx$lose.$t}} / 승률: {{row.gsx$rate.$t}}' position='left'>
+							{{row.gsx$score.$t | comma}}
 						</core-tooltip>
 					</td>
 				</tr>
