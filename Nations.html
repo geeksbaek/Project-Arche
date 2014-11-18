@@ -16,9 +16,13 @@
 				<tr>
 					<td rowspan="1">{{row.gsx$_cn6ca.$t}}</td>
 					<td>{{row.gsx$_cokwr.$t}}</td>
-					<td>{{row.gsx$sumoflv55.$t | comma}}명</td>
 					<td>
-						<core-tooltip label='1인당: {{(row.gsx$sumofbattle.$t / row.gsx$sumoflv55.$t) | toInt}}점'>
+						<core-tooltip label='총원: {{row.gsx$sumoftotal.$t}}명'>
+							{{row.gsx$sumoflv55.$t | comma}}명
+						</core-tooltip>
+					</td>
+					<td>
+						<core-tooltip label='1인당: {{(row.gsx$sumofbattle.$t / row.gsx$sumoftotal.$t) | toInt}}점'>
 							{{row.gsx$sumofbattle.$t | comma}}점
 						</core-tooltip>
 					</td>
