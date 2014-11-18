@@ -4,16 +4,16 @@
 		<table class='table table-responsive table-hover table-condensed'>
 			<thead>
 				<tr>
-					<th>Rank</th>
-					<th class='plex'>Name</th>
-					<th>Server</th>
-					<th>Gear Score</th>
+					<th>랭킹</th>
+					<th class='plex'>이름</th>
+					<th>서버</th>
+					<th>장비점수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
 				<tr>
-					<td>{{row.gsx$rank.$t}}</td>
+					<td>{{row.gsx$rank.$t}}위</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t | slice(8)}}</a></td>
 					<td>{{row.gsx$server.$t}}</td>
 					<td>
