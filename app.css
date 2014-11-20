@@ -85,7 +85,6 @@ core-item.core-selected {
   }
 	
 	.content {
-		padding: 0;		
-		overflow-x: hidden;
+		padding: 0;
 	}
 }
