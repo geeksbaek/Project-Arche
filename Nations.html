@@ -14,7 +14,9 @@
 			<tbody>
 				<template repeat="{{row in rows}}">
 				<tr>
-					<td rowspan="1">{{row.gsx$_cn6ca.$t}}</td>
+					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t, name: 'gsx$_cn6ca'} | getRow }}">
+						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t, name: 'gsx$_cn6ca'} | getRow }}">{{row.gsx$_cn6ca.$t}}</td>
+					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
 					<td>
 						<core-tooltip label='총원: {{row.gsx$sumoftotal.$t}}명'>

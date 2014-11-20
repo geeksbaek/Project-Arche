@@ -69,6 +69,26 @@ PolymerExpressions.prototype.toInt = function (v) {
   return parseInt(v);
 };
 
+PolymerExpressions.prototype.getRow = function (v) {
+	if(v.t) {
+		var count = 0;
+		var start = false;
+		for(var i = 0; i < v.arr.length; i++) {
+			if(v.arr[i][v.name] && v.arr[i][v.name].$t == v.t) {
+				start = true;
+			}
+			if(start && v.arr[i][v.name] && v.arr[i][v.name].$t != v.t) {
+				break;
+			}
+			if(start) {
+				count++;	
+			}			
+		}
+		console.log(count)
+		return count;
+	}
+};
+
 PolymerExpressions.prototype.comma = function (num) {
   var len, point, str;  
   
