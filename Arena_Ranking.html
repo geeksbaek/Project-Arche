@@ -5,7 +5,7 @@
 			<thead>
 				<tr>
 					<th>랭킹</th>
-					<th class='plex'>이름 @서버</th>
+					<th class='plex'>이름<span class='small'> @서버</span></th>
 					<th>검투장 점수</th>
 					<th class='sub'>승 / 패</th>
 					<th class='sub'>승률</th>
@@ -16,7 +16,7 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a> @{{row.gsx$server.$t}}</td>
+					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$server.$t}}</span></td>
 					<td>{{row.gsx$score.$t | comma}}</td>
 					<td class='sub'>{{row.gsx$win.$t}} / {{row.gsx$lose.$t}}</td>
 					<td class='sub'>{{row.gsx$rate.$t}}</td>

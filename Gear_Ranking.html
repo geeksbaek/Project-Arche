@@ -5,7 +5,7 @@
 			<thead>
 				<tr>
 					<th>랭킹</th>
-					<th class='plex'>이름 @서버</th>
+					<th class='plex'>이름<span class='small'> @서버</span></th>
 					<th>현재 장비점수 / 최고점수</th>
 					<th class='sub'>날짜</th>
 				</tr>
@@ -14,7 +14,7 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a> @{{row.gsx$server.$t}}</td>
+					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$server.$t}}</span></td>
 					<td>{{row.gsx$current.$t | comma}} / {{row.gsx$record.$t | comma}}</td>
 					<td class='sub'>{{row.gsx$timestamp.$t | parseDate}}</td>
 				</tr>
