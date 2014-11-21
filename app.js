@@ -126,7 +126,7 @@ PolymerExpressions.prototype.percentage = function (v) {
 				break;	
 			}
 		} else if(startType == 'B') {
-			if(outI == false) {
+			if(!outI) {
 				if(i < v.arr.length && !v.arr[i].gsx$_cn6ca) {
 					sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
 				} else {
@@ -134,7 +134,7 @@ PolymerExpressions.prototype.percentage = function (v) {
 				}
 			}
 			
-			if(outJ == false) {
+			if(!outJ) {
 				if(!v.arr[j].gsx$_cn6ca) {
 					sum += parseInt(v.arr[j].gsx$sumoflv55.$t);	
 				} else {
