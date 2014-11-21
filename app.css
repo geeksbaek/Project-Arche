@@ -54,6 +54,10 @@ body /deep/ core-toolbar {
 	font-size: 1.3rem;
 }
 
+nav {	
+	overflow-y: auto;
+}
+
 core-menu {
   color: #298A08;
   margin: 10px 0 0 0;

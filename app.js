@@ -202,7 +202,6 @@ PolymerExpressions.prototype.parseDate = function (v) {
 	}
 	
 	var d = new Date(v);
-	console.log(timeSince(d));
 	
 	return timeSince(d) + " 전";
 }
