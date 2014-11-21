@@ -70,22 +70,43 @@ PolymerExpressions.prototype.toInt = function (v) {
 };
 
 PolymerExpressions.prototype.getRow = function (v) {
-	if(v.t) {
-		var count = 0;
-		var start = false;
-		for(var i = 0; i < v.arr.length; i++) {
-			if(v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t == v.t) {
-				start = true;
-			}
-			if(start && v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t != v.t) {
-				break;
-			}
-			if(start) {
-				count++;	
-			}			
+	var count = 0;
+	var start = false;
+	for(var i = 0; i < v.arr.length; i++) {
+		if(v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t == v.t) {
+			start = true;
 		}
-		return count;
+		if(start && v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t != v.t) {
+			break;
+		}
+		if(start) {
+			count++;	
+		}			
 	}
+	return count;
+};
+
+PolymerExpressions.prototype.serverPercentage = function (v) {
+	var sum = 0;
+	var start = false;
+	for(var i = 0; i < v.arr.length; i++) {
+		if(v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t == v.t) {
+			start = true;
+		}
+		if(start && v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t != v.t) {
+			break;
+		}
+		if(start) {
+			sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
+		}			
+	}
+	
+	var total = 0;
+	for(var i = 0; i < v.arr.length; i++) {
+		total += parseInt(v.arr[i].gsx$sumoflv55.$t);
+	}
+	
+	return ((sum / total) * 100).toFixed(2);
 };
 
 PolymerExpressions.prototype.comma = function (num) {
@@ -104,7 +125,7 @@ PolymerExpressions.prototype.comma = function (num) {
 	return str;
 };
 
-PolymerExpressions.prototype.percentage = function (v) {
+PolymerExpressions.prototype.nationPercentage = function (v) {
 	var target;
 	for(var i = 0; i < v.arr.length; i++) {
 		if(v.arr[i] == v.t) {

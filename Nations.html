@@ -4,9 +4,9 @@
 		<table class='table'>
 			<thead>
 				<tr>
-					<th>서버</th>
+					<th>서버 (서버 비율)</th>
 					<th>국가</th>
-					<th>55레벨 (서버 비율)</th>
+					<th>55레벨 (국가 비율)</th>
 					<th>보유 영지 수</th>
 				</tr>
 			</thead>
@@ -14,10 +14,10 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
-						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">{{row.gsx$_cn6ca.$t}}</td>
+						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">{{row.gsx$_cn6ca.$t}}<br>({{ {arr: rows, t:row.gsx$_cn6ca.$t} | serverPercentage }}%)</td>
 					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
-					<td>{{row.gsx$sumoflv55.$t | comma}}명 ({{ {arr: rows, t:row} | percentage }}%)</td>
+					<td>{{row.gsx$sumoflv55.$t | comma}}명 ({{ {arr: rows, t:row} | nationPercentage }}%)</td>
 					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
 				</template>
