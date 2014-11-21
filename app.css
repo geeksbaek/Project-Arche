@@ -70,8 +70,7 @@ core-item.core-selected {
 }
 
 .content {
-	overflow-y: auto;
-	padding: 10px;
+	overflow: auto;
 }
 
 .content > div > table {	
@@ -83,8 +82,4 @@ core-item.core-selected {
     width: 100%;
     height: 100%;
   }
-	
-	.content {
-		padding: 0;
-	}
 }

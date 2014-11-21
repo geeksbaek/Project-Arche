@@ -6,28 +6,18 @@
 				<tr>
 					<th>서버</th>
 					<th>국가</th>
-					<th>55레벨</th>
-					<th>전투점수</th>
+					<th>55레벨 (서버 비율)</th>
 					<th>보유 영지 수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
 				<tr>
-					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t, name: 'gsx$_cn6ca'} | getRow }}">
-						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t, name: 'gsx$_cn6ca'} | getRow }}">{{row.gsx$_cn6ca.$t}}</td>
+					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
+						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">{{row.gsx$_cn6ca.$t}}</td>
 					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
-					<td>
-						<core-tooltip label='총원: {{row.gsx$sumoftotal.$t}}명'>
-							{{row.gsx$sumoflv55.$t | comma}}명
-						</core-tooltip>
-					</td>
-					<td>
-						<core-tooltip label='1인당: {{(row.gsx$sumofbattle.$t / row.gsx$sumoftotal.$t) | toInt}}점'>
-							{{row.gsx$sumofbattle.$t | comma}}점
-						</core-tooltip>
-					</td>
+					<td>{{row.gsx$sumoflv55.$t | comma}}명 ({{ {arr: rows, t:row} | percentage }}%)</td>
 					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
 				</template>

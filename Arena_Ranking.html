@@ -5,8 +5,7 @@
 			<thead>
 				<tr>
 					<th>랭킹</th>
-					<th class='plex'>이름</th>
-					<th>서버</th>
+					<th class='plex'>이름 @서버</th>
 					<th>검투장 점수</th>
 				</tr>
 			</thead>
@@ -14,13 +13,8 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t | slice(8)}}</a></td>
-					<td>{{row.gsx$server.$t}}</td>
-					<td>
-						<core-tooltip label='승: {{row.gsx$win.$t}} / 패: {{row.gsx$lose.$t}} / 승률: {{row.gsx$rate.$t}}' position='left'>
-							{{row.gsx$score.$t | comma}}
-						</core-tooltip>
-					</td>
+					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a> @{{row.gsx$server.$t}}</td>
+					<td>{{row.gsx$score.$t | comma}}</td>
 				</tr>
 				</template>
 			</tbody>

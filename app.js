@@ -74,17 +74,16 @@ PolymerExpressions.prototype.getRow = function (v) {
 		var count = 0;
 		var start = false;
 		for(var i = 0; i < v.arr.length; i++) {
-			if(v.arr[i][v.name] && v.arr[i][v.name].$t == v.t) {
+			if(v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t == v.t) {
 				start = true;
 			}
-			if(start && v.arr[i][v.name] && v.arr[i][v.name].$t != v.t) {
+			if(start && v.arr[i].gsx$_cn6ca && v.arr[i].gsx$_cn6ca.$t != v.t) {
 				break;
 			}
 			if(start) {
 				count++;	
 			}			
 		}
-		console.log(count)
 		return count;
 	}
 };
@@ -103,4 +102,52 @@ PolymerExpressions.prototype.comma = function (num) {
 			point += 3;  
 	}  
 	return str;
+};
+
+PolymerExpressions.prototype.percentage = function (v) {
+	var target;
+	for(var i = 0; i < v.arr.length; i++) {
+		if(v.arr[i] == v.t) {
+			target = i;
+			break;
+		}
+	}
+		
+	var startType;
+	var sum = 0;
+	for(var i = target, j = target, outI = false, outJ = false; ; i++, j--) {
+		if(i == j) {
+			sum += parseInt(v.arr[i].gsx$sumoflv55.$t);
+			startType = v.arr[i].gsx$_cn6ca ? 'A' : 'B';
+		} else if(startType == 'A') {
+			if(i < v.arr.length && !v.arr[i].gsx$_cn6ca) {
+				sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
+			} else {
+				break;	
+			}
+		} else if(startType == 'B') {
+			if(outI == false) {
+				if(i < v.arr.length && !v.arr[i].gsx$_cn6ca) {
+					sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
+				} else {
+					outI = true;	
+				}
+			}
+			
+			if(outJ == false) {
+				if(!v.arr[j].gsx$_cn6ca) {
+					sum += parseInt(v.arr[j].gsx$sumoflv55.$t);	
+				} else {
+					sum += parseInt(v.arr[j].gsx$sumoflv55.$t);	
+					outJ = true;
+				}
+			}
+			
+			if(outI && outJ) {
+				break;	
+			}
+		}
+	}
+	
+	return ((parseInt(v.arr[target].gsx$sumoflv55.$t) / sum) * 100).toFixed(2);
 };

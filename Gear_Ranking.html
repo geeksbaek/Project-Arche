@@ -5,8 +5,7 @@
 			<thead>
 				<tr>
 					<th>랭킹</th>
-					<th class='plex'>이름</th>
-					<th>서버</th>
+					<th class='plex'>이름 @서버</th>
 					<th>장비점수</th>
 				</tr>
 			</thead>
@@ -14,11 +13,10 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t | slice(8)}}</a></td>
-					<td>{{row.gsx$server.$t}}</td>
+					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a> @{{row.gsx$server.$t}}</td>
 					<td>
 						<core-tooltip label='Record: {{row.gsx$record.$t}}' position='left'>
-							{{row.gsx$current.$t | comma}}
+							{{row.gsx$current.$t | comma}} / {{row.gsx$record.$t | comma}}
 						</core-tooltip>
 					</td>
 				</tr>
