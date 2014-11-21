@@ -142,18 +142,18 @@ PolymerExpressions.prototype.nationPercentage = function (v) {
 	var sum = 0;
 	for(var i = target, j = target, outI = false, outJ = false; ; i++, j--) {
 		if(i == j) {
-			sum += parseInt(v.arr[i].gsx$sumoflv55.$t);
+			sum += parseInt(v.arr[i][v.m].$t);
 			startType = v.arr[i].gsx$_cn6ca ? 'A' : 'B';
 		} else if(startType == 'A') {
 			if(i < v.arr.length && !v.arr[i].gsx$_cn6ca) {
-				sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
+				sum += parseInt(v.arr[i][v.m].$t);	
 			} else {
 				break;	
 			}
 		} else if(startType == 'B') {
 			if(!outI) {
 				if(i < v.arr.length && !v.arr[i].gsx$_cn6ca) {
-					sum += parseInt(v.arr[i].gsx$sumoflv55.$t);	
+					sum += parseInt(v.arr[i][v.m].$t);	
 				} else {
 					outI = true;	
 				}
@@ -161,9 +161,9 @@ PolymerExpressions.prototype.nationPercentage = function (v) {
 			
 			if(!outJ) {
 				if(!v.arr[j].gsx$_cn6ca) {
-					sum += parseInt(v.arr[j].gsx$sumoflv55.$t);	
+					sum += parseInt(v.arr[j][v.m].$t);	
 				} else {
-					sum += parseInt(v.arr[j].gsx$sumoflv55.$t);	
+					sum += parseInt(v.arr[j][v.m].$t);	
 					outJ = true;
 				}
 			}
@@ -174,7 +174,7 @@ PolymerExpressions.prototype.nationPercentage = function (v) {
 		}
 	}
 	
-	return ((parseInt(v.arr[target].gsx$sumoflv55.$t) / sum) * 100).toFixed(2);
+	return ((parseInt(v.arr[target][v.m].$t) / sum) * 100).toFixed(2);
 };
 
 PolymerExpressions.prototype.parseDate = function (v) {

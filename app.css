@@ -23,7 +23,7 @@ table {
 	font-size: 0.9rem;
 }
 
-th {
+th, th > * {
 	font-weight: bold;
 	cursor: default;
 }
