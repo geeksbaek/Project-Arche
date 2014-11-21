@@ -7,6 +7,7 @@
 					<th>서버</th>
 					<th>국가</th>
 					<th>55레벨</th>
+					<th class='sub'>전투점수</th>
 					<th>보유 영지 수</th>
 				</tr>
 			</thead>
@@ -18,6 +19,7 @@
 					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
 					<td>{{row.gsx$sumoflv55.$t | comma}}명<br>({{ {arr: rows, t:row} | nationPercentage }}%)</td>
+					<td class='sub'>{{row.gsx$sumofbattle.$t | comma}}점<br>(1인당 {{(row.gsx$sumofbattle.$t / row.gsx$sumoftotal.$t) | toInt | comma}}점)</td>
 					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
 				</template>

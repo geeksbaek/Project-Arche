@@ -7,6 +7,8 @@
 					<th>랭킹</th>
 					<th class='plex'>이름 @서버</th>
 					<th>검투장 점수</th>
+					<th class='sub'>승 / 패</th>
+					<th class='sub'>승률</th>
 					<th class='sub'>날짜</th>
 				</tr>
 			</thead>
@@ -16,6 +18,8 @@
 					<td>{{row.gsx$rank.$t}}위</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a> @{{row.gsx$server.$t}}</td>
 					<td>{{row.gsx$score.$t | comma}}</td>
+					<td class='sub'>{{row.gsx$win.$t}} / {{row.gsx$lose.$t}}</td>
+					<td class='sub'>{{row.gsx$rate.$t}}</td>
 					<td class='sub'>{{row.gsx$timestamp.$t | parseDate}}</td>
 				</tr>
 				</template>

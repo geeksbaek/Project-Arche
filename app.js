@@ -69,6 +69,10 @@ PolymerExpressions.prototype.toInt = function (v) {
   return parseInt(v);
 };
 
+PolymerExpressions.prototype.toFixed = function (v, n) {
+  return v.toFixed(n);
+};
+
 PolymerExpressions.prototype.getRow = function (v) {
 	var count = 0;
 	var start = false;
