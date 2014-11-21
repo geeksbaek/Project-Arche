@@ -172,3 +172,37 @@ PolymerExpressions.prototype.nationPercentage = function (v) {
 	
 	return ((parseInt(v.arr[target].gsx$sumoflv55.$t) / sum) * 100).toFixed(2);
 };
+
+PolymerExpressions.prototype.parseDate = function (v) {
+	var timeSince = function (date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+			return interval + "년";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+			return interval + "개월";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+			return interval + "일";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+			return interval + "시간";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+			return interval + "분";
+    }
+    return Math.floor(seconds) + " 초";
+	}
+	
+	var d = new Date(v);
+	console.log(timeSince(d));
+	
+	return timeSince(d) + " 전";
+}

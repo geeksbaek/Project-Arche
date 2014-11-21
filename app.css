@@ -77,9 +77,13 @@ core-item.core-selected {
 	max-width: 800px;
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 560px) {
   core-animated-pages {
     width: 100%;
     height: 100%;
   }
+	
+	.sub {
+		display: none;
+	}
 }
