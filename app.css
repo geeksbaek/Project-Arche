@@ -9,6 +9,10 @@
 	user-select: all;
 }
 
+.small {
+	font-size: 0.7rem;
+}
+
 table, th, td {	
 	text-align: center;
 	vertical-align: middle;
@@ -16,7 +20,7 @@ table, th, td {
 }
 
 table {
-	font-size: .9em;
+	font-size: 0.9rem;
 }
 
 th {

@@ -15,11 +15,23 @@
 				<template repeat="{{row in rows}}">
 				<tr>
 					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
-						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">{{row.gsx$_cn6ca.$t}}<br>({{ {arr: rows, t:row.gsx$_cn6ca.$t} | serverPercentage }}%)</td>
+						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
+							{{row.gsx$_cn6ca.$t}}
+							<br>
+							<span class='small'>({{ {arr: rows, t:row.gsx$_cn6ca.$t} | serverPercentage }}%)</span>
+						</td>
 					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
-					<td>{{row.gsx$sumoflv55.$t | comma}}명<br>({{ {arr: rows, t:row} | nationPercentage }}%)</td>
-					<td class='sub'>{{row.gsx$sumofbattle.$t | comma}}점<br>(1인당 {{(row.gsx$sumofbattle.$t / row.gsx$sumoftotal.$t) | toInt | comma}}점)</td>
+					<td>
+						{{row.gsx$sumoflv55.$t | comma}}명
+						<br>
+						<span class='small'>({{ {arr: rows, t:row} | nationPercentage }}%)</span>
+					</td>
+					<td class='sub'>
+						{{row.gsx$sumofbattle.$t | comma}}점
+						<br>
+						<span class='small'>(1인당 {{(row.gsx$sumofbattle.$t / row.gsx$sumoftotal.$t) | toInt | comma}}점)</span>
+					</td>
 					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
 				</template>
