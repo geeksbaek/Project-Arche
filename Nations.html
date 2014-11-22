@@ -17,9 +17,7 @@
 				<tr>
 					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
 						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
-							{{row.gsx$_cn6ca.$t}}
-							<br>
-							<span class='small'>({{ {arr: rows, t:row.gsx$_cn6ca.$t} | serverPercentage }}%)</span>
+							{{row.gsx$_cn6ca.$t}}<br><span class='small'>({{ {arr: rows, t:row.gsx$_cn6ca.$t} | serverPercentage }}%)</span>
 						</td>
 					</template>
 					<td>{{row.gsx$_cokwr.$t}}</td>
@@ -32,7 +30,7 @@
 					<td class='sub'>
 						{{((row.gsx$sumoflv55.$t / row.gsx$sumoftotal.$t) * 100) | toFixed(2)}}%
 					</td>
-					<td>{{row.gsx$sumofdominions.$t}}개</td>
+					<td>{{row.gsx$sumofdominions.$t}}</td>
 				</tr>
 				</template>
 			</tbody>
