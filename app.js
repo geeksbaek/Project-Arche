@@ -8,14 +8,14 @@ var ajax, pages, scaffold;
 var cache = {};
 
 template.pages = [
-  {name: 'Notice', hash: 'Notice', url: 'Notice.html', icon: 'home'},
-  //{name: 'Equip Simulate', hash: 'EquipSimulate', url: 'Equip_Simulate.html', icon: 'perm-identity'},
-  {name: 'Nations', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
-  {name: 'Expeditions', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
+  //{name: '소개', hash: 'Notice', url: 'Notice.html', icon: 'home'},
+  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: 'Equip_Simulate.html', icon: 'perm-identity'},
+  {name: '국가', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
+  {name: '원정대', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
   //{name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
-  {name: 'Gladiators Ranking', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
-  {name: 'Gear Score Ranking', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'},
-  {name: 'RESET Ranking', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
+  {name: '검투장 순위', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
+  {name: '신화창조', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'},
+  {name: '리셋창조', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
 ];
 
 template.addEventListener('template-bound', function(e) {
