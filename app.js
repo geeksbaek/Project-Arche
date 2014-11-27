@@ -12,9 +12,10 @@ template.pages = [
   //{name: 'Equip Simulate', hash: 'EquipSimulate', url: 'Equip_Simulate.html', icon: 'perm-identity'},
   {name: 'Nations', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
   {name: 'Expeditions', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
-  {name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
+  //{name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
   {name: 'Gladiators Ranking', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
-  {name: 'Gear Score Ranking', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'}
+  {name: 'Gear Score Ranking', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'},
+  {name: 'RESET Ranking', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
 ];
 
 template.addEventListener('template-bound', function(e) {
@@ -220,7 +221,12 @@ PolymerExpressions.prototype.parseDate = function (v) {
     return Math.floor(seconds) + " 초";
 	}
 	
-	var d = new Date(v);
+	var isInt = function isInt(x) {
+		var y = parseInt(x, 10);
+		return !isNaN(y) && x == y && x.toString() == y.toString();
+	}
+	
+	var d = new Date(isInt(v) ? parseInt(v) : v);
 	
 	return timeSince(d) + " 전";
 }
