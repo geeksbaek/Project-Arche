@@ -1,7 +1,7 @@
 (function() {
 "use strict";
 
-var DEFAULT_ROUTE = 'Notice';
+var DEFAULT_ROUTE = 'Nations';
 
 var template = document.querySelector('#t');
 var ajax, pages, scaffold;
@@ -13,7 +13,7 @@ template.pages = [
   {name: '국가', hash: 'Nations', url: 'Nations.html', icon: 'account-balance'},
   {name: '원정대', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
   //{name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
-  {name: '검투장 순위', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
+  {name: '검투장 지배자', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
   {name: '신화창조', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'},
   {name: '리셋창조', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
 ];
