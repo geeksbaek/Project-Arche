@@ -1,6 +1,8 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 * {
-	font-family: sans-serifmontserrat, "나눔고딕";
-	font-weight: normal;
+	font-family: 'Nanum Gothic', serif;
+	font-weight: 400;
   -webkit-touch-callout: all;
 	-webkit-user-select: all;
 	-khtml-user-select: all;
@@ -10,7 +12,7 @@
 }
 
 .small {
-	font-size: 0.7rem;
+	font-size: .7rem;
 }
 
 table, th, td {	
@@ -20,7 +22,7 @@ table, th, td {
 }
 
 table {
-	font-size: 0.9rem;
+	font-size: .8rem;
 }
 
 th, th > * {
@@ -55,7 +57,7 @@ core-animated-pages > * {
 body /deep/ core-toolbar {
   background-color: #31B404;
   color: #fff;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 }
 
 nav {	
