@@ -8,6 +8,7 @@
 					<th class='plex'>이름<span class='small'> @원정대</span></th>
 					<th class='sub'>직업</th>
 					<th>장비점수</th>
+					<th class='sub'>인증</th>
 					<th class='sub'>날짜</th>
 				</tr>
 			</thead>
@@ -18,6 +19,7 @@
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$expedition.$t}}</span></td>
 					<td class='sub'>{{row.gsx$class.$t}}</td>
 					<td>{{row.gsx$score.$t | comma}}</td>
+					<td class='sub' style='color: {{row.gsx$validity.$t | setColor}}'>{{row.gsx$validity.$t}}</td>
 					<td class='sub'>{{row.gsx$timestamp.$t | parseDate}}</td>
 				</tr>
 				</tamplate>

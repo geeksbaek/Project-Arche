@@ -89,6 +89,17 @@ PolymerExpressions.prototype.toFixed = function (v, n) {
   return v.toFixed(n);
 };
 
+PolymerExpressions.prototype.setColor = function (v) {
+  switch(v) {
+		case "통과":
+			return "green";
+		case "주의":
+			return "goldenrod";
+		case "경고":
+			return "red";
+	}
+};
+
 PolymerExpressions.prototype.getRow = function (v) {
 	var count = 0;
 	var start = false;
