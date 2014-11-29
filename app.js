@@ -60,6 +60,77 @@ template.onResponse = function(e, detail, sender) {
   this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
 };
 
+template.checkboxChange = function() {
+	// find checked checkbox.
+	var checkbox = document.querySelectorAll('.reset-checkbox');
+	var falseTarget = [];
+	var trueTarget = [];
+	
+	for(i in checkbox) {
+		if(checkbox[i].checked == false && checkbox[i].dataset.value) {
+			falseTarget.push("tr."+ checkbox[i].dataset.value.replace(" ", "."));
+		} else if(checkbox[i].checked == true && checkbox[i].dataset.value) {
+			trueTarget.push("tr."+ checkbox[i].dataset.value.replace(" ", "."));
+		}
+	}
+	
+	var all = document.querySelector('#reset-checkbox-all').checked;
+	
+	if(all) {
+		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+			v.style.display = "";
+		});
+		
+		for(i in falseTarget) {
+			[].forEach.call(document.querySelectorAll(falseTarget[i]), function(v) {
+				v.style.display = "none";	
+			});
+		}
+	} else {
+		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+			v.style.display = "none";
+		});
+		
+		for(i in trueTarget) {
+			[].forEach.call(document.querySelectorAll(trueTarget[i]), function(v) {
+				v.style.display = "";	
+			});
+		}
+	}
+	
+	
+	
+};
+
+template.toggleAll = function() {
+	var checkbox = document.querySelectorAll('.reset-checkbox');
+	var trueOrFalse = false;
+	var count = 0;
+	for(i in checkbox) {
+		if(!checkbox[i].checked) {
+			trueOrFalse = true;
+			break;
+		}
+		count++;
+	}
+	
+	trueOrFalse = count == checkbox.length ? false : true;
+	
+	if(trueOrFalse == true) {
+		for(i in checkbox) {
+			if(checkbox[i].checked == false) {
+				checkbox[i].checked = true;
+			}
+		}
+	} else {
+		for(i in checkbox) {
+			if(checkbox[i].checked == true) {
+				checkbox[i].checked = false;
+			}
+		}
+	}
+}
+
 })();
 
 function toggleFullScreen() {
@@ -98,6 +169,41 @@ PolymerExpressions.prototype.setColor = function (v) {
 		case "경고":
 			return "red";
 	}
+};
+
+PolymerExpressions.prototype.setContextualClasses = function (v) {
+  switch(v) {
+		case "통과":
+			return "pass";
+		case "주의":
+			return "warning";
+		case "경고":
+			return "danger";
+	}
+};
+
+PolymerExpressions.prototype.propertyTranslate = function (v) {
+  var properties = v.split(" ");
+	var translated = [];
+	
+	var propertyMap = {
+		'격투': 'battlerage',
+		'철벽': 'defence',
+		'죽음': 'occultism',
+		'마법': 'sorcery',
+		'낭만': 'songcraft',
+		'환술': 'witchcraft',
+		'의지': 'auramancy',
+		'야성': 'archery',
+		'사명': 'shadowplay',
+		'사랑': 'vitalism',
+	};
+	
+	for(i in properties) {
+		translated.push(propertyMap[properties[i]]);
+	}
+	
+	return translated.join(" ");
 };
 
 PolymerExpressions.prototype.getRow = function (v) {

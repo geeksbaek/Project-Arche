@@ -19,9 +19,13 @@
 	<link rel="import" href="./bower_components/core-ajax/core-ajax.html">
 	<link rel="import" href="./bower_components/core-a11y-keys/core-a11y-keys.html">
 	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
+	<link rel="import" href="./bower_components/core-tooltip/core-tooltip.html">
+	<link rel="import" href="./bower_components/core-label/core-label.html">
 	
 	<link rel="import" href="elements/google-sheets-master/google-sheets.html">
+	
 	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
+	<link rel="import" href="./bower_components/paper-button/paper-button.html">
 	
 	<link rel="stylesheet" href="./bootstrap.css">
 	<link rel="stylesheet" href="./app.css">
@@ -73,7 +77,8 @@
       <core-animated-pages id="pages" selected="{{route}}" valueattr="hash">
         <template repeat="{{page, i in pages}}">
 					<section class="content" hash="{{page.hash}}" layout>
-						<div style="max-width:100%;">Loading...</div>
+						<div style="max-width:100%;">
+						</div>
 					</section>          
         </template>
       </core-animated-pages>

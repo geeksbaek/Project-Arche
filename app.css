@@ -15,6 +15,22 @@
 	font-size: .7rem;
 }
 
+paper-checkbox {
+	padding: 20px 15px 20px 20px;
+}
+
+.panel core-label {
+	margin-right: 20px;
+}
+
+#clear-button {
+	padding: 0 0 0 40px;
+}
+
+paper-checkbox::shadow #ink[checked]  {
+  color: blue;
+}
+
 table, th, td {	
 	text-align: center;
 	vertical-align: middle;
@@ -93,7 +109,7 @@ core-item.core-selected {
     height: 100%;
   }
 	
-	.sub {
+	.sub * {
 		display: none;
 	}
 }
