@@ -38,10 +38,6 @@ paper-checkbox {
 	padding: 0 0 0 40px;
 }
 
-paper-checkbox::shadow #ink[checked]  {
-  color: blue;
-}
-
 table, th, td {	
 	text-align: center;
 	vertical-align: middle;
