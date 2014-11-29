@@ -13,7 +13,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<template repeat="{{row in rows}}">
+				<template repeat="{{row in rows}}">				
+				<template if="{{row.gsx$_cokwr.$t}}">
 				<tr>
 					<template if="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
 						<td rowspan="{{ {arr: rows, t:row.gsx$_cn6ca.$t} | getRow }}">
@@ -32,6 +33,7 @@
 					</td>
 					<td>{{row.gsx$sumofdominions.$t}}개</td>
 				</tr>
+				</template>
 				</template>
 			</tbody>
 		</table>
