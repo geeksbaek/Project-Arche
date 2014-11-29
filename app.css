@@ -115,7 +115,7 @@ core-item.core-selected {
     height: 100%;
   }
 	
-	.sub * {
+	.sub, .sub * {
 		display: none;
 	}
 }
