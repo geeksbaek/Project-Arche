@@ -25,7 +25,7 @@ table * {
 }
 
 paper-checkbox {
-	padding: 20px 15px 20px 20px;
+	padding: 20px 10px 20px 20px;
 }
 
 .panel core-label {
@@ -34,6 +34,12 @@ paper-checkbox {
 
 #clear-button {
 	padding: 0 0 0 40px;
+}
+
+#search-reset {
+	margin-left: 20px;
+	padding-top: 0;
+	width: 150px;
 }
 
 table, th, td {	

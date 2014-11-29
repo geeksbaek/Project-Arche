@@ -14,7 +14,7 @@ template.pages = [
   {name: '원정대', hash: 'Expeditions', url: 'Expeditions.html', icon: 'account-child'},
   //{name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
-  {name: '신화창조', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'swap-driving-apps-wheel'},
+  {name: '신화창조', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'star'},
   {name: '리셋창조', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
 ];
 
@@ -61,6 +61,8 @@ template.onResponse = function(e, detail, sender) {
 };
 
 template.checkboxChange = function() {
+	document.querySelector('#search-reset input').value = "";
+	
 	// find checked checkbox.
 	var checkbox = document.querySelectorAll('.reset-checkbox');
 	var falseTarget = [];
@@ -129,6 +131,24 @@ template.toggleAll = function() {
 			}
 		}
 	}
+}
+
+template.searchReset = function(v) {
+	var value = v.target.committedValue;
+	if(value == "") {
+		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+			v.style.display = "";
+		});
+		return;	
+	}
+	
+	[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+		if(v.dataset.name.indexOf(value) == -1) {
+			v.style.display = "none";
+		} else {
+			v.style.display = "";
+		}
+	});
 }
 
 })();

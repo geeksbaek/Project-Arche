@@ -30,6 +30,9 @@
 					<core-icon-button icon='done-all' on-click='{{toggleAll}}'></core-icon-button>
 			</div>
 		</div>
+		<paper-input-decorator label="검색 + Enter" id="search-reset">
+			<input is="core-input" on-change="{{searchReset}}"></input>
+		</paper-input-decorator>
 		<table class='table table-condensed'>
 			<thead>
 				<tr>
@@ -47,12 +50,12 @@
 							</div>
 						</core-tooltip>				
 					</th>			
-					<th class='sub'><core-tooltip label="오후 7시에 갱신">날짜</core-tooltip></th>
+					<th class='sub'><core-tooltip label="오후 8시마다">날짜</core-tooltip></th>
 				</tr>
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
-				<tr class='all {{row.gsx$validity.$t | setContextualClasses}} {{row.gsx$property.$t | propertyTranslate}}'>
+				<tr class='all {{row.gsx$validity.$t | setContextualClasses}} {{row.gsx$property.$t | propertyTranslate}}' data-name="{{row.gsx$name.$t}}">
 					<td>{{row.gsx$rank.$t}}위</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$expedition.$t}}</span></td>
 					<td class='sub'>{{row.gsx$class.$t}}</td>
