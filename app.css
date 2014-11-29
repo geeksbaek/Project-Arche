@@ -12,8 +12,6 @@
 }
 
 table * {
-	font-family: 'Nanum Gothic', serif;
-	font-weight: 400;
   -webkit-touch-callout: all;
 	-webkit-user-select: all;
 	-khtml-user-select: all;
@@ -81,6 +79,7 @@ body /deep/ core-toolbar {
   background-color: #31B404;
   color: #fff;
 	font-size: 1.4rem;
+	cursor: default;
 }
 
 nav {	
