@@ -153,7 +153,7 @@ template.searchReset = function(v) {
 	}
 	
 	[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
-		if(v.dataset.name.indexOf(value) == -1) {
+		if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
 			v.style.display = "none";
 		} else {
 			v.style.display = "";
