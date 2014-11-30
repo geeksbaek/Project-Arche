@@ -28,8 +28,8 @@ paper-checkbox {
 	padding: 20px 10px 20px 20px;
 }
 
-.panel core-label {
-	margin-right: 20px;
+.panel {
+	padding: 0 10px 0 10px;
 }
 
 #clear-button {
@@ -37,9 +37,36 @@ paper-checkbox {
 }
 
 #search-reset {
-	margin-left: 20px;
-	padding-top: 0;
 	width: 150px;
+}
+
+paper-radio-button::shadow #ink {
+  color: grey;
+}
+
+paper-radio-button.reset-black::shadow #onRadio {
+  background-color: grey;
+}
+
+paper-radio-button.reset-red::shadow #onRadio {
+  background-color: crimson;
+}
+
+paper-radio-button.reset-pink::shadow #onRadio {
+  background-color: hotpink;
+}
+
+paper-radio-button.reset-green::shadow #onRadio {
+  background-color: yellowgreen;
+}
+
+paper-radio-button.reset-blue::shadow #onRadio {
+  background-color: dodgerblue;
+}
+
+paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .cursor {
+	/* line color when the input is focused */
+	background-color: #0f9d58;
 }
 
 table, th, td {	
@@ -111,7 +138,7 @@ core-item.core-selected {
 	overflow: auto;
 }
 
-.content > div > table {	
+.content > div > table, .panel {	
 	max-width: 800px;
 }
 

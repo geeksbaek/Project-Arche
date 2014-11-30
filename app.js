@@ -60,48 +60,34 @@ template.onResponse = function(e, detail, sender) {
   this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
 };
 
-template.checkboxChange = function() {
+template.radioChange = function(el) {
 	document.querySelector('#search-reset input').value = "";
 	
-	// find checked checkbox.
-	var checkbox = document.querySelectorAll('.reset-checkbox');
-	var falseTarget = [];
-	var trueTarget = [];
-	
-	for(i in checkbox) {
-		if(checkbox[i].checked == false && checkbox[i].dataset.value) {
-			falseTarget.push("tr."+ checkbox[i].dataset.value.replace(" ", "."));
-		} else if(checkbox[i].checked == true && checkbox[i].dataset.value) {
-			trueTarget.push("tr."+ checkbox[i].dataset.value.replace(" ", "."));
-		}
+	if(!el.target.checked) {
+		return;
 	}
 	
-	var all = document.querySelector('#reset-checkbox-all').checked;
-	
-	if(all) {
+	var target = el.target.dataset.value;
+	if(target === "") {
 		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
 			v.style.display = "";
 		});
-		
-		for(i in falseTarget) {
-			[].forEach.call(document.querySelectorAll(falseTarget[i]), function(v) {
-				v.style.display = "none";	
-			});
-		}
+		[].forEach.call(document.querySelectorAll(".target"), function(v) {
+			var falseTarget = v.dataset.value;
+			for(i in falseTarget) {
+				[].forEach.call(document.querySelectorAll("tr." + falseTarget.replace(" ", ".")), function(v2) {
+					v2.style.display = "none";
+				});
+			}
+		});
 	} else {
 		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
 			v.style.display = "none";
 		});
-		
-		for(i in trueTarget) {
-			[].forEach.call(document.querySelectorAll(trueTarget[i]), function(v) {
-				v.style.display = "";	
-			});
-		}
+		[].forEach.call(document.querySelectorAll("tr." + target.replace(" ", ".")), function(v) {
+			v.style.display = "";
+		});
 	}
-	
-	
-	
 };
 
 template.toggleAll = function() {
