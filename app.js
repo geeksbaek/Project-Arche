@@ -15,8 +15,18 @@ template.pages = [
   //{name: 'Trade Price', hash: 'TradePrice', url: 'Trade_Price.html', icon: 'drive-fusiontable'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: 'Arena_Ranking.html', icon: 'stars'},
   {name: '신화창조', hash: 'GearRanking', url: 'Gear_Ranking.html', icon: 'star'},
-  {name: '리셋창조', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'},
+  {name: '리셋창조', hash: 'ResetRanking', url: 'Reset_Ranking.html', icon: 'visibility'}
 ];
+	
+template.servers = [
+	{name: '키프로사', value: 'kyprosa'},
+	{name: '진', value: 'gene'},
+	{name: '루키우스', value: 'lucius'},
+	{name: '에안나', value: 'eanna'},
+	{name: '안탈론', value: 'anthalon'},
+	{name: '크라켄', value: 'kraken'},
+	{name: '레비아탄', value: 'leviathan'}
+]
 
 template.addEventListener('template-bound', function(e) {
   scaffold = document.querySelector('#scaffold');
@@ -31,9 +41,9 @@ template.menuItemSelected = function(e, detail, sender) {
 		
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
-			if (!cache[ajax.url]) {
+			//if (!cache[ajax.url]) {
 				ajax.go();				
-			}
+			//}
 			
 			if (detail.item.tagName != 'CORE-SUBMENU') {
       	scaffold.closeDrawer();
@@ -59,6 +69,20 @@ template.onResponse = function(e, detail, sender) {
   var article = detail.response.querySelector('article').innerHTML;	
   this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
 };
+	
+template.serverChange = function(el) {
+	if(!el.target.checked) {
+		return;
+	}
+	
+	var target = el.target.dataset.value;
+	[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+		v.style.display = "none";
+	});
+	[].forEach.call(document.querySelectorAll("tr." + target), function(v) {
+		v.style.display = "";
+	});
+}
 
 template.radioChange = function(el) {
 	document.querySelector('#search-reset input').value = "";
@@ -210,6 +234,20 @@ PolymerExpressions.prototype.propertyTranslate = function (v) {
 	}
 	
 	return translated.join(" ");
+};
+
+PolymerExpressions.prototype.serverTranslate = function (v) {
+	var serverMap = {
+		'키프로사': 'kyprosa',
+		'진': 'gene',
+		'루키우스': 'lucius',
+		'에안나': 'eanna',
+		'안탈론': 'anthalon',
+		'크라켄': 'kraken',
+		'레비아탄': 'leviathan',
+	};
+	
+	return serverMap[v];
 };
 
 PolymerExpressions.prototype.getRow = function (v) {
