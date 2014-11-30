@@ -68,7 +68,7 @@ template.radioChange = function(el) {
 	}
 	
 	var target = el.target.dataset.value;
-	if(target === "") {
+	if(!target) {
 		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
 			v.style.display = "";
 		});
