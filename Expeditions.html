@@ -1,12 +1,13 @@
 <article>
 	<div class='panel sub'>
 		<paper-radio-group selected="default">
-			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-value="all"></paper-radio-button>
+			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-target="all-expedition" data-default="all-expedition"></paper-radio-button>
 			<template repeat="{{server in servers}}">
 				<paper-radio-button label="{{server.name}}"
 														class="target"
 														on-core-change="{{serverChange}}"
-														data-value="{{server.value}}">
+														data-target="{{server.value}}"
+														data-default="all-expedition">
 				</paper-radio-button>
 			</template>
 		</paper-radio-group>
@@ -31,7 +32,7 @@
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
-				<tr class="all {{row.gsx$server.$t | serverTranslate}}">
+				<tr class="all-expedition {{row.gsx$server.$t | serverTranslate}}">
 					<td>{{row.gsx$server.$t}}</td>
 					<td>{{row.gsx$nation.$t}}</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$expedition.$t | slice(8)}}</a></td>

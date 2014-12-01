@@ -1,12 +1,13 @@
 <article>
 	<div class='panel sub'>
 		<paper-radio-group selected="default">
-			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-value="all"></paper-radio-button>
+			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-target="all-gear" data-default="all-gear"></paper-radio-button>
 			<template repeat="{{server in servers}}">
 				<paper-radio-button label="{{server.name}}"
 														class="target"
 														on-core-change="{{serverChange}}"
-														data-value="{{server.value}}">
+														data-target="{{server.value}}"
+														data-default="all-gear">
 				</paper-radio-button>
 			</template>
 		</paper-radio-group>
@@ -28,7 +29,7 @@
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
-				<tr class="all {{row.gsx$server.$t | serverTranslate}}">
+				<tr class="all-gear {{row.gsx$server.$t | serverTranslate}}">
 					<td>{{row.gsx$rank.$t}}위</td>
 					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$server.$t}}</span></td>
 					<td>{{row.gsx$current.$t | comma}}<span class='sub'> / {{row.gsx$record.$t | comma}}</span></td>

@@ -41,9 +41,9 @@ template.menuItemSelected = function(e, detail, sender) {
 		
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
-			//if (!cache[ajax.url]) {
+			if (!cache[ajax.url]) {
 				ajax.go();				
-			//}
+			}
 			
 			if (detail.item.tagName != 'CORE-SUBMENU') {
       	scaffold.closeDrawer();
@@ -75,11 +75,12 @@ template.serverChange = function(el) {
 		return;
 	}
 	
-	var target = el.target.dataset.value;
-	[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+	var default_ = el.target.dataset.default;
+	var target = el.target.dataset.target;
+	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 		v.style.display = "none";
 	});
-	[].forEach.call(document.querySelectorAll("tr." + target), function(v) {
+	[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v) {
 		v.style.display = "";
 	});
 }
@@ -91,24 +92,25 @@ template.radioChange = function(el) {
 		return;
 	}
 	
-	var target = el.target.dataset.value;
+	var default_ = el.target.dataset.default;
+	var target = el.target.dataset.target;
 	if(!target) {
-		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
-		[].forEach.call(document.querySelectorAll(".target"), function(v) {
-			var falseTarget = v.dataset.value;
+		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v) {
+			var falseTarget = v.dataset.target;
 			for(i in falseTarget) {
-				[].forEach.call(document.querySelectorAll("tr." + falseTarget.replace(" ", ".")), function(v2) {
+				[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
 					v2.style.display = "none";
 				});
 			}
 		});
 	} else {
-		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "none";
 		});
-		[].forEach.call(document.querySelectorAll("tr." + target.replace(" ", ".")), function(v) {
+		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
 			v.style.display = "";
 		});
 	}
