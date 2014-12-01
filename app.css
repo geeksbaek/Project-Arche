@@ -72,7 +72,6 @@ paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .c
 table, th, td {	
 	text-align: center;
 	vertical-align: middle;
-	white-space: nowrap;
 }
 
 table {
@@ -142,7 +141,7 @@ core-item.core-selected {
 	max-width: 800px;
 }
 
-@media all and (max-width: 560px) {
+@media all and (max-width: 900px) {
   core-animated-pages {
     width: 100%;
     height: 100%;
