@@ -147,14 +147,15 @@ template.toggleAll = function() {
 
 template.searchReset = function(v) {
 	var value = v.target.committedValue;
+	var default_ = v.target.dataset.default;
 	if(value == "") {
-		[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
 		return;	
 	}
 	
-	[].forEach.call(document.querySelectorAll("tr.all"), function(v) {
+	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 		if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
 			v.style.display = "none";
 		} else {
