@@ -85,7 +85,7 @@ template.serverChange = function(el) {
 	});
 }
 
-template.radioChange = function(el) {
+template.resetChange = function(el) {
 	document.querySelector('#search-reset input').value = "";
 	
 	if(!el.target.checked) {
@@ -98,7 +98,7 @@ template.radioChange = function(el) {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
-		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v) {
+		[].forEach.call(document.querySelectorAll(".reset-target"), function(v) {
 			var falseTarget = v.dataset.target;
 			for(i in falseTarget) {
 				[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
