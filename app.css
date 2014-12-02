@@ -76,6 +76,10 @@ paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .c
 	background-color: #0f9d58;
 }
 
+html /deep/ paper-dialog {
+    max-width: 600px;
+}
+
 table, th, td {	
 	text-align: center;
 	vertical-align: middle;

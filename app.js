@@ -164,22 +164,18 @@ template.searchReset = function(v) {
 	});
 }
 
-})();
-
-function toggleFullScreen() {
-  var doc = window.document;
-  var docEl = doc.documentElement;
-      
-  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen;
-  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen;
-      
-  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement) { 
-    requestFullScreen.call(docEl);
-  }
-  else {
-    cancelFullScreen.call(doc);  
-  }
+template.toggleHelp = function(e) {
+	if (e.target.localName != 'core-icon-button') {
+		return;
+	}
+	var d = e.target.querySelector('paper-dialog,paper-action-dialog');
+	if (!d) {
+		return;
+	}
+	d.toggle();
 }
+
+})();
 
 PolymerExpressions.prototype.slice = function (v, n) {
   return v.slice(0, n) + (v.length > n ? "..." : "");
