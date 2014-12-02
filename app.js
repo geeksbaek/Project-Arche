@@ -165,10 +165,7 @@ template.searchReset = function(v) {
 }
 
 template.toggleHelp = function(e) {
-	if (e.target.localName != 'core-icon-button') {
-		return;
-	}
-	var d = e.target.querySelector('paper-dialog,paper-action-dialog');
+	var d = e.target.nextElementSibling;
 	if (!d) {
 		return;
 	}

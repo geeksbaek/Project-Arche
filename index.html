@@ -26,6 +26,7 @@
 	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
 	<link rel="import" href="./bower_components/paper-button/paper-button.html">
 	<link rel="import" href="./bower_components/paper-dialog/paper-dialog.html">
+	<link rel="import" href="./bower_components/paper-dialog/paper-action-dialog.html">
 	<link rel="import" href="./bower_components/paper-input/paper-input-decorator.html">
 	<link rel="import" href="./bower_components/paper-radio-group/paper-radio-group.html">
 	
@@ -75,20 +76,20 @@
 		<core-toolbar tool flex>
       <div flex>{{selectedPage.name}}</div>
 			<section on-tap="{{toggleHelp}}">
-			<core-icon-button icon="help" alt="Help">
-				<paper-dialog transition="core-transition-center" heading="Help">
-					<p>
-						이 서비스는 자동으로 일정 시간마다 http://archeage.xlgames.com 에서 가져온 정보를 
-						취합하여 보여줍니다. 국가, 원정대, 검투장 지배자, 신화창조는 2시간마다 자동으로 갱신되며,
-						리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
-						<br><br>
-						국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
-						매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
-						<br><br>
-						현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
-					</p>
-				</paper-dialog>
-			</core-icon-button>
+			<core-icon-button icon="help" alt="Help"></core-icon-button>
+			<paper-action-dialog id='help' backdrop transition="core-transition-center" class="size-position">
+				<p>
+					이 서비스는 자동으로 일정 시간마다 http://archeage.xlgames.com 에서 가져온 정보를 
+					취합하여 보여줍니다. 국가, 원정대, 검투장 지배자, 신화창조는 2시간마다 자동으로 갱신되며,
+					리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
+					<br><br>
+					국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
+					매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
+					<br><br>
+					현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
+				</p>
+				<paper-button affirmative autofocus>닫기</paper-button>
+			</paper-action-dialog>
 			</section>
     </core-toolbar>
 		

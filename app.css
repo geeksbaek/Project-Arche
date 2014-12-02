@@ -22,6 +22,11 @@ table * {
 	user-select: all;
 }
 
+body {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
 .small {
 	font-size: .7rem;
 }
@@ -76,8 +81,12 @@ paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .c
 	background-color: #0f9d58;
 }
 
-html /deep/ paper-dialog {
-    max-width: 600px;
+html /deep/ paper-action-dialog {
+	max-width: 400px;
+}
+
+html /deep/ [autofocus] {
+	color: #03a9f4;
 }
 
 table, th, td {	
