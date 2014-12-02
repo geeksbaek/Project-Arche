@@ -54,13 +54,13 @@
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
-				<tr class='all-reset {{row.gsx$validity.$t | setContextualClasses}} {{row.gsx$property.$t | propertyTranslate}}' data-name="{{row.gsx$name.$t}}">
-					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$expedition.$t}}</span></td>
-					<td class='sub'>{{row.gsx$class.$t}}</td>
-					<td>{{row.gsx$score.$t | comma}}</td>
-					<td class='sub' style='color: {{row.gsx$validity.$t | setColor}}'>{{row.gsx$validity.$t}}</td>
-					<td class='sub'>{{row.gsx$timestamp.$t | parseDate}}</td>
+				<tr class='all-reset {{row.gsx$validity.$t | setContextualClasses}} [[row.gsx$property.$t | propertyTranslate]]' data-name="[[row.gsx$name.$t]]">
+					<td>[[row.gsx$rank.$t]]위</td>
+					<td><a href='[[row.gsx$url.$t]]' target='_blank'>[[row.gsx$name.$t]]</a><span class='small'> @[[row.gsx$expedition.$t]]</span></td>
+					<td class='sub'>[[row.gsx$class.$t]]</td>
+					<td>[[row.gsx$score.$t | comma]]</td>
+					<td class='sub' style='color: [[row.gsx$validity.$t | setColor]]'>[[row.gsx$validity.$t]]</td>
+					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
 				</tr>
 				</tamplate>
 			</tbody>

@@ -29,11 +29,11 @@
 			</thead>
 			<tbody>
 				<template repeat="{{row in rows}}">
-				<tr class="all-gear {{row.gsx$server.$t | serverTranslate}}">
-					<td>{{row.gsx$rank.$t}}위</td>
-					<td><a href='{{row.gsx$url.$t}}' target='_blank'>{{row.gsx$name.$t}}</a><span class='small'> @{{row.gsx$server.$t}}</span></td>
-					<td>{{row.gsx$current.$t | comma}}<span class='sub'> / {{row.gsx$record.$t | comma}}</span></td>
-					<td class='sub'>{{row.gsx$timestamp.$t | parseDate}}</td>
+				<tr class="all-gear [[row.gsx$server.$t | serverTranslate]]">
+					<td>[[row.gsx$rank.$t]]위</td>
+					<td><a href='[[row.gsx$url.$t]]' target='_blank'>[[row.gsx$name.$t]]</a><span class='small'> @[[row.gsx$server.$t]]</span></td>
+					<td>[[row.gsx$current.$t | comma]]<span class='sub'> / [[row.gsx$record.$t | comma]]</span></td>
+					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
 				</tr>
 				</tamplate>
 			</tbody>
