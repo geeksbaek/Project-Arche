@@ -3,6 +3,8 @@
 * {
 	font-family: 'Nanum Gothic', serif;
 	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
   -webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
