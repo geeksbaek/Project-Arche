@@ -3,12 +3,7 @@
 		<paper-radio-group selected="default">
 			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-target="all-arena" data-default="all-arena"></paper-radio-button>
 			<template repeat="{{server in servers}}">
-				<paper-radio-button label="{{server.name}}"
-														class="target"
-														on-core-change="{{serverChange}}"
-														data-target="{{server.value}}"
-														data-default="all-arena">
-				</paper-radio-button>
+				<paper-radio-button label="{{server.name}}"	class="target" on-core-change="{{serverChange}}" data-target="{{server.value}}"	data-default="all-arena"></paper-radio-button>
 			</template>
 		</paper-radio-group>
 	</div>

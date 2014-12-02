@@ -3,12 +3,7 @@
 		<paper-radio-group selected="default">
 			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-target="all-expedition" data-default="all-expedition"></paper-radio-button>
 			<template repeat="{{server in servers}}">
-				<paper-radio-button label="{{server.name}}"
-														class="target"
-														on-core-change="{{serverChange}}"
-														data-target="{{server.value}}"
-														data-default="all-expedition">
-				</paper-radio-button>
+				<paper-radio-button label="{{server.name}}" class="target" on-core-change="{{serverChange}}" data-target="{{server.value}}" data-default="all-expedition"></paper-radio-button>
 			</template>
 		</paper-radio-group>
 	</div>
@@ -35,10 +30,20 @@
 				<tr class="all-expedition [[row.gsx$server.$t | serverTranslate]]">
 					<td>[[row.gsx$server.$t]]</td>
 					<td>[[row.gsx$nation.$t]]</td>
-					<td><a href='[[row.gsx$url.$t]]' target='_blank'>[[row.gsx$expedition.$t | slice(8)]]</a></td>
+					<td>
+						<a href='[[row.gsx$url.$t]]' target='_blank'>[[row.gsx$expedition.$t | slice(8)]]</a>
+					</td>
 					<td class='sub'>[[row.gsx$master.$t | slice(5)]]</td>
-					<td>[[row.gsx$lv55.$t]]명</td>
-					<td class='sub'>[[row.gsx$total.$t]]명</td>
+					<td>[[row.gsx$lv55.$t | comma]]명
+						<template if="[[row.gsx$lv55diff.$t != '0']]">
+							<span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t | comma]]</span>
+						</template>
+					</td>
+					<td class='sub'>[[row.gsx$total.$t | comma]]명
+						<template if="[[row.gsx$totaldiff.$t != '0']]">
+							<span style='color: [[row.gsx$totaldiff.$t | redOrBlue]]'> [[row.gsx$totaldiff.$t | comma]]</span>
+						</template>
+					</td>
 					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
 				</tr>
 				</template>

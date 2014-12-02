@@ -193,6 +193,11 @@ PolymerExpressions.prototype.toFixed = function (v, n) {
   return v.toFixed(n);
 };
 
+PolymerExpressions.prototype.redOrBlue = function (v) {
+	var i = parseInt(v);
+  return i > 0 ? 'red' : i < 0 ? 'blue' : '';
+};
+
 PolymerExpressions.prototype.setColor = function (v) {
   switch(v) {
 		case "통과":
