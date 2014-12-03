@@ -32,12 +32,12 @@
 					<td class='sub'>[[row.gsx$master.$t | slice(5)]]</td>
 					<td>[[row.gsx$lv55.$t | comma]]명
 						<template if="[[row.gsx$lv55diff.$t != '0']]">
-							<span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t | comma]]</span>
+							<span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t > 0 ? '+' + row.gsx$lv55diff.$t : row.gsx$lv55diff.$t]]</span>
 						</template>
 					</td>
 					<td class='sub'>[[row.gsx$total.$t | comma]]명
 						<template if="[[row.gsx$totaldiff.$t != '0']]">
-							<span style='color: [[row.gsx$totaldiff.$t | redOrBlue]]'> [[row.gsx$totaldiff.$t | comma]]</span>
+							<span style='color: [[row.gsx$totaldiff.$t | redOrBlue]]'> [[row.gsx$totaldiff.$t > 0 ? '+' + row.gsx$totaldiff.$t : row.gsx$totaldiff.$t]]</span>
 						</template>
 					</td>
 					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>

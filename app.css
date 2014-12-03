@@ -15,6 +15,10 @@ body {
 	transform: translateZ(0);
 }
 
+.cursor-help {
+	cursor: help;
+}
+
 .small {
 	font-size: .7rem;
 }

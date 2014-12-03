@@ -26,7 +26,7 @@
 					<td>
 						[[row.gsx$sumoflv55.$t | comma]]명
 						<template if="[[row.gsx$sumoflv55diff.$t != '0']]">
-							<span style='color: [[row.gsx$sumoflv55diff.$t | redOrBlue]]'> [[row.gsx$sumoflv55diff.$t | comma]]</span>
+							<span style='color: [[row.gsx$sumoflv55diff.$t | redOrBlue]]'> [[row.gsx$sumoflv55diff.$t > 0 ? '+' + row.gsx$sumoflv55diff.$t : row.gsx$sumoflv55diff.$t]]</span>
 						</template>	
 						<br>
 						<span class='small'>([[ {arr: rows, t:row, m:'gsx$sumoflv55'} | nationPercentage ]]%)</span>
@@ -34,7 +34,7 @@
 					<td class='sub'>
 						[[row.gsx$sumoftotal.$t | comma]]명
 						<template if="[[row.gsx$sumoftotaldiff.$t != '0']]">
-							<span style='color: [[row.gsx$sumoftotaldiff.$t | redOrBlue]]'> [[row.gsx$sumoftotaldiff.$t | comma]]</span>
+							<span style='color: [[row.gsx$sumoftotaldiff.$t | redOrBlue]]'> [[row.gsx$sumoftotaldiff.$t > 0 ? '+' + row.gsx$sumoftotaldiff.$t : row.gsx$sumoftotaldiff.$t]]</span>
 						</template>	
 						<br>
 						<span class='small'>([[ {arr: rows, t:row, m:'gsx$sumoftotal'} | nationPercentage ]]%)</span>
@@ -44,7 +44,7 @@
 					</td>
 					<td>[[row.gsx$sumofdominions.$t]]개
 						<template if="[[row.gsx$sumofdominionsdiff.$t != '0']]">
-							<span style='color: [[row.gsx$sumofdominionsdiff.$t | redOrBlue]]'> [[row.gsx$sumofdominionsdiff.$t | comma]]</td>
+							<span style='color: [[row.gsx$sumofdominionsdiff.$t | redOrBlue]]'> [[row.gsx$sumofdominionsdiff.$t > 0 ? '+' + row.gsx$sumofdominionsdiff.$t : row.gsx$sumofdominionsdiff.$t]]</td>
 						</template>
 				</tr>
 				</template>
