@@ -116,35 +116,6 @@ template.resetChange = function(el) {
 	}
 };
 
-template.toggleAll = function() {
-	var checkbox = document.querySelectorAll('.reset-checkbox');
-	var trueOrFalse = false;
-	var count = 0;
-	for(i in checkbox) {
-		if(!checkbox[i].checked) {
-			trueOrFalse = true;
-			break;
-		}
-		count++;
-	}
-	
-	trueOrFalse = count == checkbox.length ? false : true;
-	
-	if(trueOrFalse == true) {
-		for(i in checkbox) {
-			if(checkbox[i].checked == false) {
-				checkbox[i].checked = true;
-			}
-		}
-	} else {
-		for(i in checkbox) {
-			if(checkbox[i].checked == true) {
-				checkbox[i].checked = false;
-			}
-		}
-	}
-}
-
 template.searchReset = function(v) {
 	var value = v.target.committedValue;
 	var default_ = v.target.dataset.default;
@@ -160,6 +131,12 @@ template.searchReset = function(v) {
 			v.style.display = "none";
 		} else {
 			v.style.display = "";
+		}
+	});
+	
+	[].forEach.call(document.querySelectorAll('.reset-radio[checked]'), function(v) {
+		if(v.checked) {
+			v.checked = false;
 		}
 	});
 }
@@ -181,10 +158,6 @@ template.refresh = function(e) {
 
 PolymerExpressions.prototype.slice = function (v, n) {
   return v.slice(0, n) + (v.length > n ? "..." : "");
-};
-
-PolymerExpressions.prototype.toInt = function (v) {
-  return parseInt(v);
 };
 
 PolymerExpressions.prototype.toFixed = function (v, n) {
