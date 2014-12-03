@@ -74,27 +74,30 @@
 		</nav>
 		
 		<core-toolbar tool flex>
-      <div flex>{{selectedPage.name}}</div>
+      <p flex class='marquee'>{{selectedPage.name}}</p>
+			<section on-tap="{{refresh}}">
+				<core-icon-button icon="refresh" alt="Refresh"></core-icon-button>
+			</section>
 			<section on-tap="{{toggleHelp}}">
-			<core-icon-button icon="help" alt="Help"></core-icon-button>
-			<paper-action-dialog id='help' backdrop transition="core-transition-center" class="size-position">
-				<p>
-					이 서비스는 자동으로 일정 시간마다 http://archeage.xlgames.com 에서 가져온 정보를 
-					취합하여 보여줍니다.
-					<br><br>
-					국가, 원정대, 검투장 지배자, 신화창조는 2시간마다 자동으로 갱신되며,
-					리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
-					<br><br>
-					국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
-					매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
-					<br><br>
-					현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
-					<br><br>
-					모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면
-					큰 화면의 디바이스를 통해 접속해야 합니다.
-				</p>
-				<paper-button affirmative autofocus>닫기</paper-button>
-			</paper-action-dialog>
+				<core-icon-button icon="help" alt="Help"></core-icon-button>
+				<paper-action-dialog id='help' backdrop transition="core-transition-center" class="size-position">
+					<p>
+						이 서비스는 자동으로 일정 시간마다 http://archeage.xlgames.com 에서 가져온 정보를 
+						취합하여 보여줍니다.
+						<br><br>
+						국가, 원정대, 검투장 지배자, 신화창조는 2시간마다 자동으로 갱신되며,
+						리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
+						<br><br>
+						국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
+						매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
+						<br><br>
+						현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
+						<br><br>
+						모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면
+						큰 화면의 디바이스를 통해 접속해야 합니다.
+					</p>
+					<paper-button affirmative autofocus>닫기</paper-button>
+				</paper-action-dialog>
 			</section>
     </core-toolbar>
 		
@@ -110,7 +113,8 @@
     </div>
 	</core-scaffold>
 </template>
-<script src="app.js"></script>
+<script src="./prefixfree.min.js"></script>
+<script src="./app.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

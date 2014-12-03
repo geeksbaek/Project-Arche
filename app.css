@@ -3,27 +3,15 @@
 * {
 	font-family: 'Nanum Gothic', serif;
 	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-  -webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 }
 
 table * {
-  -webkit-touch-callout: all;
-	-webkit-user-select: all;
-	-khtml-user-select: all;
-	-moz-user-select: all;
-	-ms-user-select: all;
 	user-select: all;
 }
 
 body {
-	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
 }
 
@@ -169,5 +157,21 @@ core-item.core-selected {
 	
 	.sub, .sub * {
 		display: none;
+	}
+}
+
+@media all and (max-width: 400px) {
+	.marquee {
+		margin: 0 auto;
+		overflow: hidden;
+		white-space: nowrap;
+		box-sizing: border-box;
+		animation: marquee 10s linear infinite;
+	}
+
+	/* Make it move */
+	@keyframes marquee {
+		from  { text-indent:  100% }
+		to    { text-indent: -100% }
 	}
 }

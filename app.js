@@ -42,7 +42,7 @@ template.menuItemSelected = function(e, detail, sender) {
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
 			if (!cache[ajax.url]) {
-				ajax.go();				
+				ajax.go();
 			}
 			
 			if (detail.item.tagName != 'CORE-SUBMENU') {
@@ -170,6 +170,11 @@ template.toggleHelp = function(e) {
 		return;
 	}
 	d.toggle();
+}
+
+template.refresh = function(e) {
+	console.log('refresh');
+	ajax.go();
 }
 
 })();
