@@ -28,6 +28,13 @@ body {
 	width: 36px;
 }
 
+.spin {
+	transition: transform .5s ease-in-out;  
+}
+.spin:hover {
+	transform: rotate(360deg);
+}
+
 paper-checkbox {
 	padding: 20px 10px 20px 20px;
 }
@@ -41,7 +48,8 @@ paper-checkbox {
 }
 
 #search-reset {
-	width: 150px;
+	width: 80%;
+	max-width: 200px;
 }
 
 paper-radio-button::shadow #ink {
@@ -74,11 +82,11 @@ paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .c
 }
 
 html /deep/ paper-action-dialog {
-	max-width: 400px;
+	max-width: 600px;
 }
 
 html /deep/ [autofocus] {
-	color: #03a9f4;
+	color: #0f9d58;
 }
 
 table, th, td {	

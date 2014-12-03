@@ -24,6 +24,7 @@
 	
 	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
 	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
+	<link rel="import" href="./bower_components/paper-icon-button/paper-icon-button.html">
 	<link rel="import" href="./bower_components/paper-button/paper-button.html">
 	<link rel="import" href="./bower_components/paper-dialog/paper-dialog.html">
 	<link rel="import" href="./bower_components/paper-dialog/paper-action-dialog.html">
@@ -76,10 +77,10 @@
 		<core-toolbar tool flex>
       <p flex class='marquee'>{{selectedPage.name}}</p>
 			<section on-tap="{{refresh}}">
-				<core-icon-button icon="refresh" alt="Refresh"></core-icon-button>
+				<paper-icon-button class='spin' icon="refresh" alt="Refresh" noink></paper-icon-button>
 			</section>
 			<section on-tap="{{toggleHelp}}">
-				<core-icon-button icon="help" alt="Help"></core-icon-button>
+				<paper-icon-button class='spin' icon="help" alt="Help" noink></paper-icon-button>
 				<paper-action-dialog id='help' backdrop transition="core-transition-center" class="size-position">
 					<p>
 						이 서비스는 자동으로 일정 시간마다 http://archeage.xlgames.com 에서 가져온 정보를 
