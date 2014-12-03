@@ -24,19 +24,17 @@
 					</template>
 					<td>[[row.gsx$_cokwr.$t]]</td>
 					<td>
-						[[row.gsx$sumoflv55.$t | comma]]명
+						[[row.gsx$sumoflv55.$t | comma]]명<template if="[[row.gsx$sumoflv55diff.$t == '0']]"><br></template>
 						<template if="[[row.gsx$sumoflv55diff.$t != '0']]">
-							<span style='color: [[row.gsx$sumoflv55diff.$t | redOrBlue]]'> [[row.gsx$sumoflv55diff.$t > 0 ? '+' + row.gsx$sumoflv55diff.$t : row.gsx$sumoflv55diff.$t]]</span>
-						</template>	
-						<br>
+							<span style='color: [[row.gsx$sumoflv55diff.$t | redOrBlue]]'> [[row.gsx$sumoflv55diff.$t > 0 ? '+' + row.gsx$sumoflv55diff.$t : row.gsx$sumoflv55diff.$t]]</span><br>
+						</template>
 						<span class='small'>([[ {arr: rows, t:row, m:'gsx$sumoflv55'} | nationPercentage ]]%)</span>
 					</td>
 					<td class='sub'>
-						[[row.gsx$sumoftotal.$t | comma]]명
+						[[row.gsx$sumoftotal.$t | comma]]명<template if="[[row.gsx$sumoftotaldiff.$t == '0']]"><br></template>
 						<template if="[[row.gsx$sumoftotaldiff.$t != '0']]">
-							<span style='color: [[row.gsx$sumoftotaldiff.$t | redOrBlue]]'> [[row.gsx$sumoftotaldiff.$t > 0 ? '+' + row.gsx$sumoftotaldiff.$t : row.gsx$sumoftotaldiff.$t]]</span>
-						</template>	
-						<br>
+							<span style='color: [[row.gsx$sumoftotaldiff.$t | redOrBlue]]'> [[row.gsx$sumoftotaldiff.$t > 0 ? '+' + row.gsx$sumoftotaldiff.$t : row.gsx$sumoftotaldiff.$t]]</span><br>
+						</template>
 						<span class='small'>([[ {arr: rows, t:row, m:'gsx$sumoftotal'} | nationPercentage ]]%)</span>
 					</td>
 					<td class='sub'>
