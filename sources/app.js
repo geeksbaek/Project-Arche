@@ -123,22 +123,23 @@ template.searchReset = function(v) {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
+		console.log(value);
 		return;	
+	} else {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+				v.style.display = "none";
+			} else {
+				v.style.display = "";
+			}
+		});
+
+		[].forEach.call(document.querySelectorAll('paper-radio-button.reset-radio[checked=true]'), function(v) {
+			if(v.checked) {
+				v.checked = false;
+			}
+		});
 	}
-	
-	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-		if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
-			v.style.display = "none";
-		} else {
-			v.style.display = "";
-		}
-	});
-	
-	[].forEach.call(document.querySelectorAll('.reset-radio[checked]'), function(v) {
-		if(v.checked) {
-			v.checked = false;
-		}
-	});
 }
 
 template.toggleHelp = function(e) {
