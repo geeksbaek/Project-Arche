@@ -154,6 +154,8 @@ template.refresh = function(e) {
 	ajax.go();
 }
 
+})();
+
 PolymerExpressions.prototype.slice = function (v, n) {
   return v.slice(0, n) + (v.length > n ? "..." : "");
 };
@@ -368,5 +370,3 @@ PolymerExpressions.prototype.parseDate = function (v) {
 	
 	return timeSince(d) + " 전";
 }
-
-})();
