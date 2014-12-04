@@ -86,11 +86,11 @@ template.serverChange = function(el) {
 }
 
 template.resetChange = function(el) {
-	document.querySelector('#search-reset input').value = "";
-	
 	if(!el.target.checked) {
 		return;
 	}
+	
+	document.querySelector('#search-reset input').value = "";
 	
 	var default_ = el.target.dataset.default;
 	var target = el.target.dataset.target;
@@ -132,11 +132,8 @@ template.searchReset = function(v) {
 				v.style.display = "";
 			}
 		});
-
-		[].forEach.call(document.querySelectorAll('.reset-radio[checked=true]'), function(v) {
-			if(v.checked) {
-				v.checked = false;
-			}
+		[].forEach.call(document.querySelectorAll('.reset-radio[checked]'), function(v) {
+			v.checked = false;
 		});
 	}
 }
