@@ -123,7 +123,6 @@ template.searchReset = function(v) {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
-		console.log(value);
 		return;	
 	} else {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
@@ -134,7 +133,7 @@ template.searchReset = function(v) {
 			}
 		});
 
-		[].forEach.call(document.querySelectorAll('paper-radio-button.reset-radio[checked=true]'), function(v) {
+		[].forEach.call(document.querySelectorAll('.reset-radio[checked=true]'), function(v) {
 			if(v.checked) {
 				v.checked = false;
 			}

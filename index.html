@@ -78,10 +78,10 @@
 		
 		<core-toolbar tool flex>
       <p flex class='marquee'>{{selectedPage.name}}</p>
-			<section on-tap="{{refresh}}">
+			<section on-tap="{{refresh}}" vertical center layout>
 				<paper-icon-button class='spin' icon="refresh" alt="Refresh" noink></paper-icon-button>
 			</section>
-			<section on-tap="{{toggleHelp}}">
+			<section on-tap="{{toggleHelp}}" vertical center layout>
 				<paper-icon-button class='spin' icon="help" alt="Help" noink></paper-icon-button>
 				<paper-action-dialog id='help' backdrop transition="core-transition-center" class="size-position">
 					<p>
