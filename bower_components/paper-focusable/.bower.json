@@ -13,6 +13,6 @@
     "commit": "614d071edd49091eb8bcf5775917db1ac9778db9"
   },
   "_source": "git://github.com/Polymer/paper-focusable.git",
-  "_target": "^0.4.0",
+  "_target": "~0.4.0",
   "_originalSource": "Polymer/paper-focusable"
 }
