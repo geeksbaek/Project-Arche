@@ -31,6 +31,7 @@ body {
 .spin {
 	transition: transform .5s ease-in-out;  
 }
+
 .spin:hover {
 	transform: rotate(360deg);
 }
@@ -89,7 +90,7 @@ html /deep/ [autofocus] {
 	color: #0f9d58;
 }
 
-table, th, td {	
+table, th, td, tr {	
 	text-align: center;
 	vertical-align: middle;
 }
@@ -118,7 +119,7 @@ a:hover, a:focus {
 core-animated-pages {
   width: 100%;
   height: 100%;
-  -webkit-user-select: none;
+  user-select: none;
   overflow: hidden;
 }
 
@@ -138,17 +139,17 @@ nav {
 	overflow-y: auto;
 }
 
-core-menu {
+#menu {
   color: #298A08;
   margin: 10px 0 0 0;
 }
 
-core-item, core-submenu {
+.nav-item {
   transition: all 300ms ease-in-out;
 	padding: 4px 16px;
 }
 
-core-item.core-selected {
+.nav-item.core-selected {
   background: #E3F6CE;
 	font-weight: normal;
 }
@@ -158,7 +159,7 @@ core-item.core-selected {
 }
 
 .content > div > table, .panel {	
-	max-width: 800px;
+	max-width: 900px;
 }
 
 @media all and (max-width: 800px) {

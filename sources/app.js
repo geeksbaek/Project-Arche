@@ -9,13 +9,13 @@ var cache = {};
 
 template.pages = [
   //{name: '소개', hash: 'Notice', url: './pages/Notice.html', icon: 'home'},
-  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'perm-identity'},
   {name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance'},
   {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
   //{name: 'Trade Price', hash: 'TradePrice', url: './pages/Trade_Price.html', icon: 'drive-fusiontable'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
   {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'star'},
   {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
+  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'accessibility'}
 ];
 	
 template.servers = [
@@ -147,7 +147,6 @@ template.toggleHelp = function(e) {
 }
 
 template.refresh = function(e) {
-	console.log('refresh');
 	ajax.go();
 }
 

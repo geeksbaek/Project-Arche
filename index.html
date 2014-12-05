@@ -22,6 +22,9 @@
 	<link rel="import" href="./bower_components/core-tooltip/core-tooltip.html">
 	<link rel="import" href="./bower_components/core-label/core-label.html">
 	<link rel="import" href="./bower_components/core-input/core-input.html">
+	<link rel="import" href="./bower_components/core-dropdown/core-dropdown.html">
+	<link rel="import" href="./bower_components/core-dropdown-menu/core-dropdown-menu.html">
+	<link rel="import" href="./bower_components/core-localstorage/core-localstorage.html">
 	
 	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
 	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
@@ -67,7 +70,7 @@
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">
 				<template repeat="{{pages}}">
-					<core-item icon="{{icon}}" label="{{name}}" hash="{{hash}}">
+					<core-item class='nav-item' icon="{{icon}}" label="{{name}}" hash="{{hash}}">
 						<paper-ripple class="recenteringTouch" fit>
 							<a href="{{url}}"></a>
 						</paper-ripple>
@@ -87,7 +90,7 @@
 					<p>
 						Project Arche는 일정 시간마다 http://archeage.xlgames.com 에서 정보를 가져와 보여줍니다.
 						<br><br>
-						국가, 원정대, 검투장 지배자, 신화창조는 2시간마다 자동으로 갱신되며,
+						국가와 원정대는 1시간마다, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
 						리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
 						<br><br>
 						국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 

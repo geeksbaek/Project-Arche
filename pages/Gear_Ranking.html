@@ -1,6 +1,6 @@
 <article>
 	<div class='panel sub'>
-		<paper-radio-group selected="default">
+		<paper-radio-group selected="default" horizontal center-justified layout>
 			<paper-radio-button name="default" label="전체" on-core-change="{{serverChange}}" data-target="all-gear" data-default="all-gear"></paper-radio-button>
 			<template repeat="{{server in servers}}">
 				<paper-radio-button label="{{server.name}}" class="target" on-core-change="{{serverChange}}" data-target="{{server.value}}" data-default="all-gear"></paper-radio-button>
