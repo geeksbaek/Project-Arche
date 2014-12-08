@@ -17,7 +17,7 @@
 					<th flex>국가</th>
 					<th class='sub'>총원</th>
 					<th class='sub'>장비점수 총합</th>
-					<th class='sub'>장비점수 평균</th>
+					<th>장비점수 평균</th>
 					<th>
 						<core-tooltip position='bottom' class='fancy' role='tooltip'>
 							Top 100 평균<span class="small">(?)</span>
@@ -36,7 +36,7 @@
 					<td>[[row.gsx$nation.$t]]</td>
 					<td class='sub'>[[row.gsx$total.$t | comma]]</td>
 					<td class='sub'>[[row.gsx$scoresum.$t | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoresum', value: row.gsx$scoresum.$t} | getRankIndex }}위)</span></td>
-					<td class='sub'>[[row.gsx$scoreavg.$t | parseInt | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoreavg', value: row.gsx$scoreavg.$t} | getRankIndex }}위)</span></td>
+					<td>[[row.gsx$scoreavg.$t | parseInt | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoreavg', value: row.gsx$scoreavg.$t} | getRankIndex }}위)</span></td>
 					<td style='font-weight: bold'>[[row.gsx$scoreavgtop100.$t | parseInt | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoreavgtop100', value: row.gsx$scoreavgtop100.$t} | getRankIndex }}위)</span></td>
 					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
 				</tr>
