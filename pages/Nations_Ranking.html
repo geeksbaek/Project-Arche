@@ -15,10 +15,18 @@
 				<tr>
 					<th>순위</th>
 					<th class='sub'>서버</th>
-					<th>국가</th>
+					<th flex>국가</th>
 					<th class='sub'>총원</th>
 					<th class='sub'>장비점수 총점</th>
-					<th>장비점수 평균</th>
+					<th class='sub'>장비점수 평균</th>
+					<th>
+						<core-tooltip position='bottom' class='fancy' role='tooltip'>
+							장비점수 평균 of Top 100<span class="small">(?)</span>
+							<div tip>
+								국가 내 장비점수 상위<br><br>100명에 대한 평균값입니다.
+							</div>
+						</core-tooltip>		
+					</th>
 					<th class='sub'>날짜</th>
 				</tr>
 			</thead>
@@ -30,7 +38,8 @@
 					<td>[[row.gsx$nation.$t]]</td>
 					<td class='sub'>[[row.gsx$total.$t | comma]]</td>
 					<td class='sub'>[[row.gsx$scoresum.$t | comma]]</td>
-					<td style='font-weight: bold'>[[row.gsx$scoreavg.$t | parseInt | comma]]</td>
+					<td class='sub'>[[row.gsx$scoreavg.$t | parseInt | comma]]</td>
+					<td style='font-weight: bold'>[[row.gsx$scoreavgtop100.$t | parseInt | comma]]</td>
 					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
 				</tr>
 				</template>
