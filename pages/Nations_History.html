@@ -1,0 +1,14 @@
+<article>
+	<template is="auto-binding">
+		<google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" gid="10" rows="{{rw}}" published></google-sheets>
+		<template repeat="{{row, i in rw}}">
+			<template if='{{ i == 0 }}'>
+			<google-chart
+				type='column'
+				options='{"title": "Distribution of days in 2001Q1"}'
+				data='[[ rw | fff ]]'>
+			</google-chart>
+			</template>
+		</template>
+	</template>
+</article>

@@ -57,23 +57,23 @@ paper-radio-button::shadow #ink {
   color: grey;
 }
 
-paper-radio-button.reset-black::shadow #onRadio {
+paper-radio-button.radio-black::shadow #onRadio {
   background-color: grey;
 }
 
-paper-radio-button.reset-red::shadow #onRadio {
+paper-radio-button.radio-red::shadow #onRadio {
   background-color: crimson;
 }
 
-paper-radio-button.reset-pink::shadow #onRadio {
+paper-radio-button.radio-pink::shadow #onRadio {
   background-color: hotpink;
 }
 
-paper-radio-button.reset-green::shadow #onRadio {
+paper-radio-button.radio-green::shadow #onRadio {
   background-color: yellowgreen;
 }
 
-paper-radio-button.reset-blue::shadow #onRadio {
+paper-radio-button.radio-blue::shadow #onRadio {
   background-color: dodgerblue;
 }
 

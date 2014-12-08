@@ -1,0 +1,58 @@
+<article>
+	<template is="auto-binding">
+		<google-sheets key="1agigo8tZhB7pMxYcpMvCurSi6I11io__5U1EtzMtfhE" gid="2" rows="{{rows}}" published></google-sheets>
+		<div class='panel sub' horizontal center-justified layout>
+			<paper-radio-group selected="default">
+				<paper-radio-button label="전체" class="gear-extend-radio radio-black" on-core-change="{{totalChange}}" data-target="all-gear-extend" data-default="all-gear-extend"  name="default"></paper-radio-button>
+				<paper-radio-button label="죽마" class="gear-extend-radio gear-extend-target radio-red" on-core-change="{{totalChange}}" data-target="{{'죽음 마법' | propertyTranslate}}" data-default="all-gear-extend"></paper-radio-button>
+				<paper-radio-button label="힐러" class="gear-extend-radio gear-extend-target radio-pink" on-core-change="{{totalChange}}" data-target="{{'사랑' | propertyTranslate}}" data-default="all-gear-extend"></paper-radio-button>
+				<paper-radio-button label="탱커" class="gear-extend-radio gear-extend-target radio-green" on-core-change="{{totalChange}}" data-target="{{'철벽 의지' | propertyTranslate}}" data-default="all-gear-extend"></paper-radio-button>
+				<paper-radio-button label="원딜" class="gear-extend-radio gear-extend-target radio-blue" on-core-change="{{totalChange}}" data-target="{{'야성' | propertyTranslate}}" data-default="all-gear-extend"></paper-radio-button>
+				<paper-radio-button label="근딜" class="gear-extend-radio gear-extend-target radio-blue" on-core-change="{{totalChange}}" data-target="{{'격투 사명' | propertyTranslate}}" data-default="all-gear-extend"></paper-radio-button>
+				<paper-radio-button label="나머지" class="gear-extend-radio radio-blue" on-core-change="{{totalChange}}" data-target="" data-default="all-gear-extend"></paper-radio-button>
+			</paper-radio-group>
+		</div>
+		<div horizontal center-justified layout class='panel'>
+			<paper-input-decorator label="Search" id="search-gear-extend">
+				<input is="core-input" on-change="{{searchTotal}}" data-default="all-gear-extend"></input>
+			</paper-input-decorator>
+		</div>
+		<table class='table table-condensed'>
+			<thead>
+				<tr>
+					<th>랭킹</th>
+					<th>서버</th>
+					<th>이름<span class='small'> @국가</span></th>
+					<th class='sub'>
+					<core-tooltip>
+						직업<span class="small">(?)</span>
+						<div tip>
+							<span style='color: crimson'>죽마</span> = [죽음, 마법]<br><br>
+							<span style='color: hotpink'>힐러</span> = [사랑]<br><br>
+							<span style='color: yellowgreen'>탱커</span> = [철벽, 의지]<br><br>
+							<span style='color: dodgerblue'>원딜</span> = [야성]<br><br>
+							<span style='color: dodgerblue'>근딜</span> = [격투, 사명]
+						</div>
+					</core-tooltip>
+					</th>
+					<th>장비점수</th>
+					<th class='sub'>날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<template repeat="{{row, i in rows}}">
+					<template if="{{row.gsx$name.$t}}">
+						<tr class='all-gear-extend [[row.gsx$property.$t | propertyTranslate]]' data-name="[[row.gsx$name.$t]]">
+							<td>[[ {arr: rows, v: row.gsx$rank.$t} | getRank ]]</td>
+							<td>[[row.gsx$server.$t]]</td>
+							<td><a href='[[row.gsx$url.$t]]' target='_blank'>[[row.gsx$name.$t]]</a><span class='small'> @[[row.gsx$nation.$t]]</span></td>
+							<td class='sub cursor-help' title='[[row.gsx$property.$t]]'>[[row.gsx$class.$t]]</td>
+							<td>[[row.gsx$score.$t | comma]]</td>
+							<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
+						</tr>
+					</tamplate>
+				</tamplate>
+			</tbody>
+		</table>
+	</template>
+</article>

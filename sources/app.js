@@ -8,12 +8,12 @@ var ajax, pages, scaffold;
 var cache = {};
 
 template.pages = [
-  //{name: '소개', hash: 'Notice', url: './pages/Notice.html', icon: 'home'},
   {name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance'},
+	//{name: '국가 기록관', hash: 'NationsHistory', url: './pages/Nations_History.html', icon: 'home'},
   {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
-  //{name: 'Trade Price', hash: 'TradePrice', url: './pages/Trade_Price.html', icon: 'drive-fusiontable'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
-  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'star'},
+  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'star-half'},
+  //{name: '신화창조 for Nations', hash: 'TotalRanking', url: './pages/Total_Ranking.html', icon: 'star'},
   {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
   //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'accessibility'}
 ];
@@ -41,13 +41,11 @@ template.menuItemSelected = function(e, detail, sender) {
 		
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
-			if (!cache[ajax.url]) {
+			//if (!cache[ajax.url]) {
 				ajax.go();
-			}
+			//}
 			
-			if (detail.item.tagName != 'CORE-SUBMENU') {
-      	scaffold.closeDrawer();
-			}
+			scaffold.closeDrawer();
     });
 
   }
@@ -58,32 +56,31 @@ template.ajaxLoad = function(e, detail, sender) {
 };
 
 template.onResponse = function(e, detail, sender) {	
-	cache[ajax.url] = detail.response;
+	//cache[ajax.url] = detail.response;
 	
+	/*
 	setTimeout(function(cache, url) {
 		return function() {
 			cache[url] = null;			
 		}
 	}(cache, ajax.url), 600000);
+	*/
 	
-  var article = detail.response.querySelector('article').innerHTML;	
-  this.injectBoundHTML(article, pages.selectedItem.firstElementChild);
+  var article = detail.response.querySelector('article').innerHTML;
+	var selectedIndex = pages.selectedIndex;
+	var t = this;
+	
+	[].forEach.call(pages.items, function(v, i) {
+		if(i == selectedIndex) {
+			t.injectBoundHTML(article, pages.items[i].firstElementChild);
+		} else {
+			var node = pages.items[i].firstElementChild;
+			while (node.hasChildNodes()) {
+				node.removeChild(node.firstChild);
+			}
+		}
+	});
 };
-	
-template.serverChange = function(el) {
-	if(!el.target.checked) {
-		return;
-	}
-	
-	var default_ = el.target.dataset.default;
-	var target = el.target.dataset.target;
-	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-		v.style.display = "none";
-	});
-	[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v) {
-		v.style.display = "";
-	});
-}
 
 template.resetChange = function(el) {
 	if(!el.target.checked) {
@@ -92,19 +89,17 @@ template.resetChange = function(el) {
 	
 	document.querySelector('#search-reset input').value = "";
 	
-	var default_ = el.target.dataset.default;
-	var target = el.target.dataset.target;
+	var default_ = el.target.dataset.default.trim();
+	var target = el.target.dataset.target.trim();
 	if(!target) {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
 		});
 		[].forEach.call(document.querySelectorAll(".reset-target"), function(v) {
-			var falseTarget = v.dataset.target;
-			for(i in falseTarget) {
-				[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
-					v2.style.display = "none";
-				});
-			}
+			var falseTarget = v.dataset.target.trim();
+			[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
+				v2.style.display = "none";
+			});
 		});
 	} else {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
@@ -117,8 +112,8 @@ template.resetChange = function(el) {
 };
 
 template.searchReset = function(v) {
-	var value = v.target.committedValue;
-	var default_ = v.target.dataset.default;
+	var value = v.target.committedValue.trim();
+	var default_ = v.target.dataset.default.trim();
 	if(value == "") {
 		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
 			v.style.display = "";
@@ -137,6 +132,72 @@ template.searchReset = function(v) {
 		});
 	}
 }
+	
+template.serverChange = function(el) {
+	if(!el.target.checked) {
+		return;
+	}
+	
+	var default_ = el.target.dataset.default.trim();
+	var target = el.target.dataset.target.trim();
+	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+		v.style.display = "none";
+	});
+	[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v, i) {
+		v.style.display = "";
+	});
+}
+
+template.totalChange = function(el) {
+	if(!el.target.checked) {
+		return;
+	}
+	
+	document.querySelector('#search-gear-extend input').value = "";
+	
+	var default_ = el.target.dataset.default.trim();
+	var target = el.target.dataset.target.trim();
+	if(!target) {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+			v.style.display = "";
+		});
+		[].forEach.call(document.querySelectorAll(".gear-extend-target"), function(v) {
+			var falseTarget = v.dataset.target.trim();
+			[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
+				v2.style.display = "none";
+			});
+		});
+	} else {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+			v.style.display = "none";
+		});
+		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
+			v.style.display = "";
+		});
+	}
+};
+
+template.searchTotal = function(v) {
+	var value = v.target.committedValue.trim();
+	var default_ = v.target.dataset.default.trim();
+	if(value == "") {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+			v.style.display = "";
+		});
+		return;	
+	} else {
+		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+				v.style.display = "none";
+			} else {
+				v.style.display = "";
+			}
+		});
+		[].forEach.call(document.querySelectorAll('.gear-extend-radio[checked]'), function(v) {
+			v.checked = false;
+		});
+	}
+}
 
 template.toggleHelp = function(e) {
 	var d = e.target.nextElementSibling;
@@ -150,7 +211,18 @@ template.refresh = function(e) {
 	ajax.go();
 }
 
+String.prototype.insert = function (index, string) {
+  if (index > 0)
+    return this.substring(0, index) + string + this.substring(index, this.length);
+  else
+    return string + this;
+};
+
 })();
+
+PolymerExpressions.prototype.getRank = function(v) {
+	return v.v + " of " + v.arr.length;
+};
 
 PolymerExpressions.prototype.slice = function (v, n) {
   return v.slice(0, n) + (v.length > n ? "..." : "");
