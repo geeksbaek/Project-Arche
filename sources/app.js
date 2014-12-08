@@ -4,7 +4,7 @@
 var DEFAULT_ROUTE = 'Nations';
 
 var template = document.querySelector('#t');
-var ajax, pages, scaffold;
+var ajax, pages, scaffold, nowPage;
 var cache = {};
 
 template.pages = [
@@ -46,6 +46,7 @@ template.menuItemSelected = function(e, detail, sender) {
 			//}
 			
 			scaffold.closeDrawer();
+			nowPage = pages.selectedItem;
     });
 
   }
@@ -71,6 +72,15 @@ template.onResponse = function(e, detail, sender) {
 	var t = this;
 	
 	[].forEach.call(pages.items, function(v, i) {
+		setTimeout(function() {if(i == selectedIndex) {
+			t.injectBoundHTML(article, pages.items[i].firstElementChild);
+		} else {
+			var node = pages.items[i].firstElementChild;
+			while (node.hasChildNodes()) {
+				node.removeChild(node.firstChild);
+			}
+		}}, 0);
+		/*
 		if(i == selectedIndex) {
 			t.injectBoundHTML(article, pages.items[i].firstElementChild);
 		} else {
@@ -79,34 +89,39 @@ template.onResponse = function(e, detail, sender) {
 				node.removeChild(node.firstChild);
 			}
 		}
+		*/
 	});
 };
 
-template.resetChange = function(el) {
+template.changeReset = function(el) {
 	if(!el.target.checked) {
 		return;
 	}
 	
-	document.querySelector('#search-reset input').value = "";
+	nowPage.querySelector('#search-reset input').value = "";
 	
 	var default_ = el.target.dataset.default.trim();
 	var target = el.target.dataset.target.trim();
 	if(!target) {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "";}, 0);
+			//v.style.display = "";
 		});
-		[].forEach.call(document.querySelectorAll(".reset-target"), function(v) {
+		[].forEach.call(nowPage.querySelectorAll(".reset-target"), function(v) {
 			var falseTarget = v.dataset.target.trim();
-			[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
-				v2.style.display = "none";
+			[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
+				setTimeout(function() {v2.style.display = "none";}, 0);
+				//v2.style.display = "none";
 			});
 		});
 	} else {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "none";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "none";}, 0);
+			//v.style.display = "none";
 		});
-		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
+			setTimeout(function() {v.style.display = "";}, 0);
+			//v.style.display = "";
 		});
 	}
 };
@@ -115,64 +130,97 @@ template.searchReset = function(v) {
 	var value = v.target.committedValue.trim();
 	var default_ = v.target.dataset.default.trim();
 	if(value == "") {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "";}, 0);
+			//v.style.display = "";
 		});
 		return;	
 	} else {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+				v.style.display = "none";
+			} else {
+				v.style.display = "";
+			}}, 0);
+			/*
 			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
 				v.style.display = "none";
 			} else {
 				v.style.display = "";
 			}
+			*/
 		});
-		[].forEach.call(document.querySelectorAll('.reset-radio[checked]'), function(v) {
-			v.checked = false;
+		[].forEach.call(nowPage.querySelectorAll('.reset-radio[checked]'), function(v) {
+		setTimeout(function() {v.checked = false;}, 0);
+			//v.checked = false;
 		});
 	}
 }
 	
-template.serverChange = function(el) {
+template.changeServer = function(el) {
 	if(!el.target.checked) {
 		return;
 	}
 	
 	var default_ = el.target.dataset.default.trim();
 	var target = el.target.dataset.target.trim();
-	[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-		v.style.display = "none";
+	[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+		setTimeout(function() {v.style.display = "none";}, 0);
+		//v.style.display = "none";
 	});
-	[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target), function(v, i) {
-		v.style.display = "";
+	[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target), function loop(v, i) {
+		setTimeout(function() {v.style.display = "";}, 0);
+		//v.style.display = "";
 	});
 }
 
-template.totalChange = function(el) {
+template.changeTotal = function(el) {
 	if(!el.target.checked) {
 		return;
 	}
 	
-	document.querySelector('#search-gear-extend input').value = "";
+	nowPage.querySelector('#search-gear-extend input').value = "";
 	
 	var default_ = el.target.dataset.default.trim();
 	var target = el.target.dataset.target.trim();
 	if(!target) {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "";}, 0);
+			//v.style.display = "";
 		});
-		[].forEach.call(document.querySelectorAll(".gear-extend-target"), function(v) {
+		[].forEach.call(nowPage.querySelectorAll(".gear-extend-target"), function(v) {
 			var falseTarget = v.dataset.target.trim();
-			[].forEach.call(document.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
-				v2.style.display = "none";
+			[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
+				setTimeout(function() {v2.style.display = "none";}, 0);
+				//v2.style.display = "none";
 			});
 		});
 	} else {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "none";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "none";}, 0);
+			//v.style.display = "none";
 		});
-		[].forEach.call(document.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function loop(v, i) {
+			setTimeout(function() {if(loop.stop){ 
+				return; 
+			}
+
+			if(i >= 100){
+				loop.stop = true; 
+			} else {
+				v.style.display = "";
+			}}, 0);
+			/*
+			if(loop.stop){ 
+				return; 
+			}
+
+			if(i >= 100){
+				loop.stop = true; 
+			} else {
+				v.style.display = "";
+			}
+			*/
 		});
 	}
 };
@@ -181,20 +229,29 @@ template.searchTotal = function(v) {
 	var value = v.target.committedValue.trim();
 	var default_ = v.target.dataset.default.trim();
 	if(value == "") {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
-			v.style.display = "";
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {v.style.display = "";}, 0);
+			//v.style.display = "";
 		});
 		return;	
 	} else {
-		[].forEach.call(document.querySelectorAll("tr." + default_), function(v) {
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+				v.style.display = "none";
+			} else {
+				v.style.display = "";
+			}}, 0);
+			/*
 			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
 				v.style.display = "none";
 			} else {
 				v.style.display = "";
 			}
+			*/
 		});
-		[].forEach.call(document.querySelectorAll('.gear-extend-radio[checked]'), function(v) {
-			v.checked = false;
+		[].forEach.call(nowPage.querySelectorAll('.gear-extend-radio[checked]'), function(v) {
+			setTimeout(function() {v.checked = false;}, 0);
+			//v.checked = false;
 		});
 	}
 }
