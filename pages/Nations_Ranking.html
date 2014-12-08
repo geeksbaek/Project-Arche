@@ -1,0 +1,40 @@
+<article>
+	<div class='panel sub' horizontal center-justified layout>
+		<paper-radio-group selected="default">
+			<paper-radio-button name="default" label="전체" on-core-change="{{changeServer}}" data-target="all-nation-ranking" data-default="all-nation-ranking"></paper-radio-button>
+			<template repeat="{{server in servers}}">
+				<paper-radio-button label="{{server.name}}" class="target" on-core-change="{{changeServer}}" data-target="{{server.value}}" data-default="all-nation-ranking"></paper-radio-button>
+			</template>
+		</paper-radio-group>
+	</div>
+	
+	<template is="auto-binding">
+		<google-sheets key="1agigo8tZhB7pMxYcpMvCurSi6I11io__5U1EtzMtfhE" gid="4" rows="{{rows}}" published></google-sheets>
+		<table class='table table-condensed'>
+			<thead>
+				<tr>
+					<th>순위</th>
+					<th class='sub'>서버</th>
+					<th>국가</th>
+					<th class='sub'>총원</th>
+					<th class='sub'>장비점수 총점</th>
+					<th>장비점수 평균</th>
+					<th class='sub'>날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<template repeat="{{row, i in rows}}">				
+				<tr class="all-nation-ranking [[row.gsx$server.$t | serverTranslate]]">
+					<td>{{i + 1}}위</td>
+					<td class='sub'>[[row.gsx$server.$t]]</td>
+					<td>[[row.gsx$nation.$t]]</td>
+					<td class='sub'>[[row.gsx$total.$t | comma]]</td>
+					<td class='sub'>[[row.gsx$scoresum.$t | comma]]</td>
+					<td style='font-weight: bold'>[[row.gsx$scoreavg.$t | parseInt | comma]]</td>
+					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
+				</tr>
+				</template>
+			</tbody>
+		</table>
+	</template>		
+</article>

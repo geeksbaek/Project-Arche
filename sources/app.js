@@ -12,10 +12,12 @@ template.pages = [
 	//{name: '국가 기록관', hash: 'NationsHistory', url: './pages/Nations_History.html', icon: 'home'},
   {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
-  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'star-half'},
+  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
   //{name: '신화창조 for Nations', hash: 'TotalRanking', url: './pages/Total_Ranking.html', icon: 'star'},
+  {name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
+  //{name: '신화창조 (원정대)', hash: 'ExpeditionsRanking', url: './pages/Expeditions_Ranking.html', icon: 'account-child'},
   {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
-  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'accessibility'}
+  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'accessibility'},
 ];
 	
 template.servers = [
@@ -283,6 +285,10 @@ PolymerExpressions.prototype.getRank = function(v) {
 
 PolymerExpressions.prototype.slice = function (v, n) {
   return v.slice(0, n) + (v.length > n ? "..." : "");
+};
+
+PolymerExpressions.prototype.parseInt = function (v) {
+  return parseInt(v);
 };
 
 PolymerExpressions.prototype.toFixed = function (v, n) {
