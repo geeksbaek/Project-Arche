@@ -295,6 +295,22 @@ PolymerExpressions.prototype.toFixed = function (v, n) {
   return v.toFixed(n);
 };
 
+PolymerExpressions.prototype.getRankIndex = function (v) {
+	var items = [];
+  for(i in v.arr) {
+		if(v.arr[i][v.target]) {
+			items.push(v.arr[i][v.target]['$t']);
+		}
+	}
+	
+	var index = items.sort(function(a, b) {
+		var a = parseInt(a);
+		var b = parseInt(b);
+		return a > b ? -1 : a < b ? 1 : 0;
+	}).indexOf(v.value);
+	return index + 1;
+};
+
 PolymerExpressions.prototype.redOrBlue = function (v) {
 	var i = parseInt(v);
   return i > 0 ? 'red' : i < 0 ? 'blue' : '';
