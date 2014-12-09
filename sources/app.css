@@ -12,7 +12,7 @@ table * {
 }
 
 body {
-	
+	transform: rotateX(0);
 }
 
 .cursor-help {
