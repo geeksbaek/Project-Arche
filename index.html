@@ -7,7 +7,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 	
-	<script src="./bower_components/webcomponentsjs/webcomponents.js"></script>
+	<!--script src="./bower_components/webcomponentsjs/webcomponents.js"></script-->
 	<!--script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script-->
 	<!--script src="./sources/jquery-2.1.1.min.js"></script-->
 	<!--script src="./sources/jquery.dataTables.min.js"></script-->
@@ -19,7 +19,8 @@
 	<link rel="import" href="./bower_components/core-menu/core-menu.html">
 	<link rel="import" href="./bower_components/core-menu/core-submenu.html">
 
-	<link rel="import" href="./bower_components/core-animated-pages/core-animated-pages.html">
+	<link rel="import" href="./bower_components/core-pages/core-pages.html">
+	<!--link rel="import" href="./bower_components/core-animated-pages/core-animated-pages.html"-->
 	<link rel="import" href="./bower_components/flatiron-director/flatiron-director.html">
 	<link rel="import" href="./bower_components/core-ajax/core-ajax.html">
 	<link rel="import" href="./bower_components/core-a11y-keys/core-a11y-keys.html">
@@ -117,14 +118,14 @@
     </core-toolbar>
 		
 		<div layout fit>
-      <core-animated-pages id="pages" selected="{{route}}" valueattr="hash">
+      <core-pages id="pages" selected="{{route}}" valueattr="hash">
         <template repeat="{{page, i in pages}}">
 					<section class="content" hash="{{page.hash}}" layout>
 						<div style="max-width:100%;">
 						</div>
 					</section>          
         </template>
-      </core-animated-pages>
+      </core-pages>
     </div>
 	</core-scaffold>
 </template>
