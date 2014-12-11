@@ -9,7 +9,7 @@
 
 table * {
 	user-select: all;
-  transition: opacity .3s linear;
+  transition: opacity .3s ease-in-out;
 }
 
 body {
