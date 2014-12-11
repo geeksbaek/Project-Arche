@@ -1,9 +1,9 @@
 <article>
 	<div class='panel sub' horizontal center-justified layout>
 		<paper-radio-group selected="default">
-			<paper-radio-button name="default" label="전체" on-core-change="{{changeServer}}" data-target="all-nation-ranking" data-default="all-nation-ranking"></paper-radio-button>
+			<paper-radio-button name="default" label="전체" on-core-change="{{changeServer2}}" data-target="all-nation-ranking" data-default="all-nation-ranking"></paper-radio-button>
 			<template repeat="{{server in servers}}">
-				<paper-radio-button label="{{server.name}}" class="target" on-core-change="{{changeServer}}" data-target="{{server.value}}" data-default="all-nation-ranking"></paper-radio-button>
+				<paper-radio-button label="{{server.name}}" class="target" on-core-change="{{changeServer2}}" data-target="{{server.value}}" data-default="all-nation-ranking"></paper-radio-button>
 			</template>
 		</paper-radio-group>
 	</div>
