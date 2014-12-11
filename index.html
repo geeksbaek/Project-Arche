@@ -40,6 +40,7 @@
 	<link rel="import" href="./bower_components/paper-input/paper-input-decorator.html">
 	<link rel="import" href="./bower_components/paper-radio-group/paper-radio-group.html">
 	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
+	<link rel="import" href="./bower_components/paper-spinner/paper-spinner.html">
 	
 	<link rel="import" href="./bower_components/google-sheets/google-sheets.html">
 	<!--link rel="import" href="./bower_components/google-chart/google-chart.html"-->
@@ -78,7 +79,7 @@
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">
 				<template repeat="{{pages}}">
-					<core-item class='nav-item' icon="{{icon}}" label="{{name}}" hash="{{hash}}">
+					<core-item class='nav-item' icon="{{icon}}" label="{{name}}" hash="{{hash}}" style="display: {{hash == 'ResetRanking' ? 'none' : ''}}">
 						<paper-ripple class="recenteringTouch" fit>
 							<a href="{{url}}"></a>
 						</paper-ripple>
@@ -121,16 +122,15 @@
       <core-pages id="pages" selected="{{route}}" valueattr="hash">
         <template repeat="{{page, i in pages}}">
 					<section class="content" hash="{{page.hash}}" layout>
-						<div style="max-width:100%;">
-						</div>
-					</section>          
+						<div style="max-width:100%;"></div>
+					</section>
         </template>
       </core-pages>
     </div>
 	</core-scaffold>
 </template>
 <script src="./sources/prefixfree.min.js"></script>
-<script src="./sources/app.js"></script>
+<script src="./sources/app.js" async></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -9,15 +9,11 @@ var cache = {};
 
 template.pages = [
   {name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance'},
-	//{name: '국가 기록관', hash: 'NationsHistory', url: './pages/Nations_History.html', icon: 'home'},
   {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
   {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
   {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
-  //{name: '신화창조 for Nations', hash: 'TotalRanking', url: './pages/Total_Ranking.html', icon: 'star'},
   {name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
-  //{name: '신화창조 (원정대)', hash: 'ExpeditionsRanking', url: './pages/Expeditions_Ranking.html', icon: 'account-child'},
   {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
-  //{name: '장비 시뮬레이터', hash: 'EquipSimulate', url: './pages/Equip_Simulate.html', icon: 'accessibility'},
 ];
 	
 template.servers = [
@@ -204,7 +200,7 @@ template.changeTotal = function(el) {
 		});
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function loop(v, i) {
 			setTimeout(function() {if(loop.stop){ 
-				return; 
+        return; 
 			}
 
 			if(i >= 100){
