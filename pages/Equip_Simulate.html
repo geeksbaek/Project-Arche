@@ -1,0 +1,72 @@
+<article>
+	<core-ajax auto id='gear-ajax' url="./sources/gears.json" handleAs="json" on-core-response="{{handleJSONResponse}}"></core-ajax>
+	<!--core-localstorage name="gear-storage" value="{{gears.response}}" useRaw='true' on-core-localstorage-load="{{handleLocalstorageResponse}}"></core-localstorage-->
+	<div id='container'>
+		<core-dropdown-menu label="한손 장비" class='gear-dropdown-menu' relative layout inline horizontal center>
+			<core-dropdown class="gear-dropdown dropdown constrained-height" style="outline: none; width: 170px; height: 150px; box-sizing: border-box; display: none;">
+				<core-menu>
+					<template repeat="{{gear in gears.response}}">
+						<template if="[[gear['SLOT'] == '한손 장비' && gear['REQUIRED LEVEL'] >= 50]]">
+							<core-item class='gear-item' horizontal center layout>[[ gear['NAME'] ]]</core-item>
+						</template>
+					</template>
+				</core-menu>
+			</core-dropdown>
+		</core-dropdown-menu>
+	</div>
+	
+	
+	
+	
+	
+	
+	<style shim-shadowdom>
+		#container {
+			padding: 15px;	
+		}
+		
+    html /deep/ .gear-dropdown-menu {
+      box-sizing: border-box;
+      width: auto;
+			font-size: 0.8rem;
+    }
+		
+		html /deep/ .gear-dropdown-menu * {
+			transition-duration: 0.05s;
+			font-size: 0.8rem;
+    }
+
+    html /deep/ .gear-dropdown {
+      box-sizing: border-box;
+      min-width: 200px;
+			min-height: 300px;
+      background-color: #eee;
+      color: #000;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .gear-item {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+			min-height: 20px;
+    }
+
+    html /deep/ core-collapse {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    .constrained-height {
+      height: 300px;
+    }
+
+    .colored {
+      border: 1px solid #0f9d58;
+      background-color: #b7e1cd;
+      color: #0f9d58;
+    }
+  </style>
+	
+</article>
