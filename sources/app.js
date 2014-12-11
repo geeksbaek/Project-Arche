@@ -102,24 +102,28 @@ template.changeReset = function(el) {
 	var target = el.target.dataset.target.trim();
 	if(!target) {
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "";}, 0);
-			//v.style.display = "";
+			setTimeout(function() {
+        v.style.display = "";
+      }, 0);
 		});
 		[].forEach.call(nowPage.querySelectorAll(".reset-target"), function(v) {
 			var falseTarget = v.dataset.target.trim();
 			[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
-				setTimeout(function() {v2.style.display = "none";}, 0);
-				//v2.style.display = "none";
+				setTimeout(function() {
+          v2.style.display = "none";
+        }, 0);
 			});
 		});
 	} else {
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "none";}, 0);
-			//v.style.display = "none";
+			setTimeout(function() {
+        v.style.display = "none";
+      }, 0);
 		});
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function(v) {
-			setTimeout(function() {v.style.display = "";}, 0);
-			//v.style.display = "";
+			setTimeout(function() {
+        v.style.display = "";
+      }, 0);
 		});
 	}
 };
@@ -129,32 +133,28 @@ template.searchReset = function(v) {
 	var default_ = v.target.dataset.default.trim();
 	if(value == "") {
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "";}, 0);
-			//v.style.display = "";
+			setTimeout(function() {
+        v.style.display = "";
+      }, 0);
 		});
 		return;	
 	} else {
 		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+			setTimeout(function() {
+        if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
 				v.style.display = "none";
 			} else {
 				v.style.display = "";
 			}}, 0);
-			/*
-			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
-				v.style.display = "none";
-			} else {
-				v.style.display = "";
-			}
-			*/
 		});
 		[].forEach.call(nowPage.querySelectorAll('.reset-radio[checked]'), function(v) {
-		setTimeout(function() {v.checked = false;}, 0);
-			//v.checked = false;
+      setTimeout(function() {
+        v.checked = false;
+      }, 0);
 		});
 	}
 }
-	
+
 template.changeServer = function(el) {
 	if(!el.target.checked) {
 		return;
@@ -163,12 +163,33 @@ template.changeServer = function(el) {
 	var default_ = el.target.dataset.default.trim();
 	var target = el.target.dataset.target.trim();
 	[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-		setTimeout(function() {v.style.opacity = "0.3";}, 0);
-		//v.style.display = "none";
+		setTimeout(function() {
+      v.style.display = "none";
+    }, 0);
 	});
 	[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target), function loop(v, i) {
-		setTimeout(function() {v.style.opacity = "1";}, 0);
-		//v.style.display = "";
+		setTimeout(function() {
+      v.style.display = "";
+    }, 0);
+	});
+}
+	
+template.changeServer2 = function(el) {
+	if(!el.target.checked) {
+		return;
+	}
+	
+	var default_ = el.target.dataset.default.trim();
+	var target = el.target.dataset.target.trim();
+	[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+		setTimeout(function() {
+      v.style.opacity = "0.3";
+    }, 0);
+	});
+	[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target), function loop(v, i) {
+		setTimeout(function() {
+      v.style.opacity = "1";
+    }, 0);
 	});
 }
 
