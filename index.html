@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#298A08">
 	
 	<script src="./bower_components/webcomponentsjs/webcomponents.js"></script>
 	<!--script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script-->
@@ -51,11 +52,12 @@
 	
 	<title>Project Arche</title>
 	
-	<link rel="icon" href="./favicons/32x32.png" type="image/x-icon"/>
-	<link rel="apple-touch-icon" sizes="57x57" href="./favicons/57x57.png" />
-	<link rel="apple-touch-icon" sizes="72x72" href="./favicons/72x72.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="./favicons/114x114.png" />
-	<link rel="apple-touch-icon" sizes="144x144" href="./favicons/144x144.png" />
+	<!--link rel="icon" sizes="32x32" href="./favicons/32x32.png">
+	<link rel="icon" sizes="57x57" href="./favicons/57x57.png">
+	<link rel="icon" sizes="72x72" href="./favicons/72x72.png">
+	<link rel="icon" sizes="114x114" href="./favicons/114x114.png">
+	<link rel="icon" sizes="144x144" href="./favicons/144x144.png"-->
+	<link rel="icon" sizes="144x144" href="./favicons/192x192.png">
 
 </head>
 	
@@ -63,9 +65,6 @@
 <template is="auto-binding" id="t">
   <!-- Route controller. -->
   <flatiron-director route="{{route}}" autoHash></flatiron-director>
-
-  <!-- Keyboard nav controller. -->
-  <core-a11y-keys id="keys" target="{{parentElement}}" keys="up down left right space space+shift" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>                 
 
   <!-- Dynamic content controller -->
   <core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
