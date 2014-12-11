@@ -163,95 +163,13 @@ template.changeServer = function(el) {
 	var default_ = el.target.dataset.default.trim();
 	var target = el.target.dataset.target.trim();
 	[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-		setTimeout(function() {v.style.display = "none";}, 0);
+		setTimeout(function() {v.style.opacity = "0.3";}, 0);
 		//v.style.display = "none";
 	});
 	[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target), function loop(v, i) {
-		setTimeout(function() {v.style.display = "";}, 0);
+		setTimeout(function() {v.style.opacity = "1";}, 0);
 		//v.style.display = "";
 	});
-}
-
-template.changeTotal = function(el) {
-	if(!el.target.checked) {
-		return;
-	}
-	
-	nowPage.querySelector('#search-gear-extend input').value = "";
-	
-	var default_ = el.target.dataset.default.trim();
-	var target = el.target.dataset.target.trim();
-	if(!target) {
-		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "";}, 0);
-			//v.style.display = "";
-		});
-		[].forEach.call(nowPage.querySelectorAll(".gear-extend-target"), function(v) {
-			var falseTarget = v.dataset.target.trim();
-			[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + falseTarget.replace(" ", ".")), function(v2) {
-				setTimeout(function() {v2.style.display = "none";}, 0);
-				//v2.style.display = "none";
-			});
-		});
-	} else {
-		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "none";}, 0);
-			//v.style.display = "none";
-		});
-		[].forEach.call(nowPage.querySelectorAll("tr." + default_ + "." + target.replace(" ", ".")), function loop(v, i) {
-			setTimeout(function() {if(loop.stop){ 
-				return; 
-			}
-
-			if(i >= 100){
-				loop.stop = true; 
-			} else {
-				v.style.display = "";
-			}}, 0);
-			/*
-			if(loop.stop){ 
-				return; 
-			}
-
-			if(i >= 100){
-				loop.stop = true; 
-			} else {
-				v.style.display = "";
-			}
-			*/
-		});
-	}
-};
-
-template.searchTotal = function(v) {
-	var value = v.target.committedValue.trim();
-	var default_ = v.target.dataset.default.trim();
-	if(value == "") {
-		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {v.style.display = "";}, 0);
-			//v.style.display = "";
-		});
-		return;	
-	} else {
-		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
-			setTimeout(function() {if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
-				v.style.display = "none";
-			} else {
-				v.style.display = "";
-			}}, 0);
-			/*
-			if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
-				v.style.display = "none";
-			} else {
-				v.style.display = "";
-			}
-			*/
-		});
-		[].forEach.call(nowPage.querySelectorAll('.gear-extend-radio[checked]'), function(v) {
-			setTimeout(function() {v.checked = false;}, 0);
-			//v.checked = false;
-		});
-	}
 }
 
 template.toggleHelp = function(e) {
