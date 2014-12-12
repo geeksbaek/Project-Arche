@@ -154,7 +154,6 @@ core-menu {
 
 .nav-item.core-selected:not([nobackground]) {
   background: #E3F6CE;
-	font-weight: normal;
 }
 
 .core-selected {
