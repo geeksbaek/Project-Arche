@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
 	color: #31B404;
+  font-weight: normal;
 }
 
 a:hover, a:focus {
@@ -141,7 +142,7 @@ nav {
 	overflow-y: auto;
 }
 
-#menu {
+core-menu {
   color: #298A08;
   margin: 10px 0 0 0;
 }
@@ -151,9 +152,13 @@ nav {
 	padding: 4px 16px;
 }
 
-.nav-item.core-selected {
+.nav-item.core-selected:not([nobackground]) {
   background: #E3F6CE;
 	font-weight: normal;
+}
+
+.core-selected {
+  font-weight: normal;
 }
 
 .content {
