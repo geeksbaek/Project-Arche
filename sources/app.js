@@ -218,10 +218,6 @@ PolymerExpressions.prototype.getRank = function(v) {
 	return v.v + " of " + v.arr.length;
 };
 
-PolymerExpressions.prototype.slice = function (v, n) {
-  return v.slice(0, n) + (v.length > n ? "..." : "");
-};
-
 PolymerExpressions.prototype.parseInt = function (v) {
   return parseInt(v);
 };

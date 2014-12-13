@@ -13,7 +13,7 @@
 		<table class='table table-condensed table-hover'>
 			<thead>
 				<tr>
-					<th>서버</th>
+					<th class='sub'>서버</th>
 					<th>국가</th>
 					<th>원정대</th>
 					<th class='sub'>원정대장</th>
@@ -25,12 +25,12 @@
 			<tbody>
 				<template repeat="{{row, i in rows}}">				
 				<tr class="all-expedition [[row.gsx$server.$t | serverTranslate]]">
-					<td>[[row.gsx$server.$t]]</td>
+					<td class='sub'>[[row.gsx$server.$t]]</td>
 					<td>[[row.gsx$nation.$t]]</td>
 					<td>
-						<a href='[[row.gsx$url.$t]]' target='_blank' title='[[row.gsx$expedition.$t]]'>[[row.gsx$expedition.$t | slice(8)]]</a>
+						<a href='[[row.gsx$url.$t]]' target='_blank' title='[[row.gsx$expedition.$t]]'>[[row.gsx$expedition.$t]]</a>
 					</td>
-					<td class='sub' title='[[row.gsx$master.$t]]'>[[row.gsx$master.$t | slice(5)]]</td>
+					<td class='sub' title='[[row.gsx$master.$t]]'>[[row.gsx$master.$t]]</td>
 					<td>[[row.gsx$lv55.$t | comma]]명
 						<template if="[[row.gsx$lv55diff.$t != '0']]">
 							<span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t > 0 ? '+' + row.gsx$lv55diff.$t : row.gsx$lv55diff.$t]]</span>

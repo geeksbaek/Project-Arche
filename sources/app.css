@@ -93,7 +93,14 @@ html /deep/ [autofocus] {
 
 table, th, td, tr {	
 	text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
 	vertical-align: middle;
+  white-space: nowrap;
+}
+
+td {
+  max-width: 100px;
 }
 
 table {

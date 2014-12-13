@@ -48,6 +48,8 @@
 	<!--link rel="import" href="./bower_components/google-chart/google-chart.html"-->
 	
 	<!--link rel="import" href="./bower_components/sortable-table/sortable-table.html"-->
+  
+	<link rel="import" href="./sources/geeksbaek-feedback.html">
 	
 	<link rel="stylesheet" href="./sources/bootstrap.css">
 	<link rel="stylesheet" href="./sources/app.css">
@@ -135,15 +137,7 @@
       </core-pages>
     </div>
 	</core-scaffold>
-  <div id="geeksbaek" class='sub'><a href="mailto:geeksbaek@gmail.com" style="text-decoration: none; color: rgb(245, 245, 245); padding: 10px 20px; background-color: rgb(0, 164, 228);">feedback</a></div>
-  <style>
-  #geeksbaek {
-    position: fixed; z-index: 2147483647; right: 30px; bottom: -10px; opacity: 0.5; transition: all 0.3s ease 0s;
-  }
-  #geeksbaek:hover {
-    right: 30px; bottom: 10px; opacity: 1;
-  }
-  </style>
+  <geeksbaek-feedback></geeksbaek-feedback>
 </template>
   
 <script src="./sources/prefixfree.min.js"></script>
