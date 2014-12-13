@@ -145,6 +145,12 @@ body /deep/ core-toolbar {
 	cursor: default;
 }
 
+#titlebar {  
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 nav {	
 	overflow-y: auto;
 }
@@ -185,19 +191,4 @@ core-menu {
 		display: none;
 	}
 }
-
-@media all and (max-width: 400px) {
-	.marquee {
-		margin: 0 auto;
-		overflow: hidden;
-		white-space: nowrap;
-		box-sizing: border-box;
-		animation: marquee 10s linear infinite;
-	}
-
-	/* Make it move */
-	@keyframes marquee {
-		from  { text-indent:  100% }
-		to    { text-indent: -100% }
-	}
 }
