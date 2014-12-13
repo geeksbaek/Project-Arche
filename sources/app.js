@@ -215,7 +215,7 @@ String.prototype.insert = function (index, string) {
 })();
 
 PolymerExpressions.prototype.getRank = function(v) {
-	return v.v + " of " + v.arr.length;
+	return Math.ceil((v.v / v.arr.length) * 100).toFixed() + "%";
 };
 
 PolymerExpressions.prototype.parseInt = function (v) {
