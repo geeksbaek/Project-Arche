@@ -20,12 +20,12 @@
     "test",
     "tests"
   ],
-  "version": "0.5.1",
-  "_release": "0.5.1",
+  "version": "0.5.2",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.1",
-    "commit": "d2bddc493969723c3bd63c0333ab9bc7f065f54b"
+    "tag": "0.5.2",
+    "commit": "361869a104e3c9b703ce7af65071a82eb4ba4c13"
   },
   "_source": "git://github.com/Polymer/TemplateBinding.git",
   "_target": "^0.5.0",

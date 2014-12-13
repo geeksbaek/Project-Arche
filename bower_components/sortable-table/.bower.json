@@ -41,12 +41,12 @@
     "prism-js": "prism-js#>=0.1.0",
     "polymer-jsonp": "polymer/polymer-jsonp#>=0.3.0"
   },
-  "version": "0.10.1",
-  "_release": "0.10.1",
+  "version": "0.10.2",
+  "_release": "0.10.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.10.1",
-    "commit": "924d1e14ef3ffa7afb675051f4ef2a34d3b4999e"
+    "tag": "v0.10.2",
+    "commit": "b91f1c56c5fd4a6d23d31e1a347c060d4ee33541"
   },
   "_source": "git://github.com/stevenrskelton/sortable-table.git",
   "_target": "~0.10.0",

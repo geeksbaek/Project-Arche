@@ -16,15 +16,14 @@
     "test",
     "tests"
   ],
-  "version": "0.5.1",
-  "_release": "0.5.1",
+  "version": "0.5.2",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.1",
-    "commit": "712b9b6a5194a0fa289d58afd693bd04469a3b60"
+    "tag": "0.5.2",
+    "commit": "37358e5c91bcd39c5f3cd863598a4ddb86f407d2"
   },
   "_source": "git://github.com/Polymer/polymer-expressions.git",
   "_target": "~0.5.1",
-  "_originalSource": "Polymer/polymer-expressions",
-  "_direct": true
+  "_originalSource": "Polymer/polymer-expressions"
 }

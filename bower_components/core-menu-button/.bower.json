@@ -14,13 +14,13 @@
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^1.1.4"
   },
-  "version": "0.5.1",
+  "version": "0.5.2",
   "homepage": "https://github.com/Polymer/core-menu-button",
-  "_release": "0.5.1",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.1",
-    "commit": "c2324384e4a6442d02b442fe6080c7363a04ea50"
+    "tag": "0.5.2",
+    "commit": "578563f77c0ff5a7dc4cf85e5523894ddedb1c9a"
   },
   "_source": "git://github.com/Polymer/core-menu-button.git",
   "_target": "^0.5.0",

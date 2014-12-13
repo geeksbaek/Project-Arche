@@ -13,12 +13,12 @@
     "test",
     "tests"
   ],
-  "version": "0.5.1",
-  "_release": "0.5.1",
+  "version": "0.5.2",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.1",
-    "commit": "04d15ed38f3c5d2d5506d95d4909ff6704f52692"
+    "tag": "0.5.2",
+    "commit": "0d7b96ce959b71c65362d90ec9a1c8c8ba2236ac"
   },
   "_source": "git://github.com/Polymer/NodeBind.git",
   "_target": "^0.5.0",

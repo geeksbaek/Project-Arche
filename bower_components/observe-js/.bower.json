@@ -18,12 +18,12 @@
     "test",
     "tests"
   ],
-  "version": "0.5.1",
-  "_release": "0.5.1",
+  "version": "0.5.2",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.1",
-    "commit": "d530515b4afe7d0a6b61c06f1a6c64f07bcbbf57"
+    "tag": "0.5.2",
+    "commit": "542ba18eb3a2d73360b541c534f2b766bfc2d71d"
   },
   "_source": "git://github.com/Polymer/observe-js.git",
   "_target": "^0.5.0",
