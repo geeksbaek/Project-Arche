@@ -1,5 +1,1 @@
-###Porject-Arche
-Project-Arche는 Polymer를 사용해 만든 single page application 이다. github를 통해 html 호스팅만 하고 있으며, server side 로직은 없다. Polymer의 google-sheet element를 이용해 Google Spreadsheets에 있는 데이터를 읽어와 적절히 파싱해서 뿌려주는 기능을 하고 있다. 
-
-###Data Source
-모든 데이터는 Google App Script를 통해 가져온 뒤 Spreadsheets에 쌓아놓는다. 짧게 말하자면 urlfetch 서비스와 time-based trigger를 이용한다. 일일 제한이 있는 서비스이기 때문에 가져올 수 있는 데이터에 한계가 있다. 더 많은 데이터를 가져올 수 있는 방안을 찾고 있다.
+Project-Arche는 Polymer를 사용해 만든 Single Page Application이다. 서버는 따로 운영하지 않고 Google Sheet와 Google Apps Script 서비스를 사용한다. 일정 주기마다 Apps Script에서 지원하는 UrlFetch API 등을 이용해 공식 홈페이지의 데이터를 가져와 파싱한 뒤 Google Sheet에 저장해두고, 클라이언트 사이드에서 이 Google Sheet의 데이터를 가져와 뿌려주고 있다.
