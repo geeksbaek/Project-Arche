@@ -55,27 +55,27 @@ paper-checkbox {
 }
 
 paper-radio-button::shadow #ink {
-  color: grey;
+  	color: grey;
 }
 
 paper-radio-button.radio-black::shadow #onRadio {
-  background-color: grey;
+	background-color: grey;
 }
 
 paper-radio-button.radio-red::shadow #onRadio {
-  background-color: crimson;
+  	background-color: crimson;
 }
 
 paper-radio-button.radio-pink::shadow #onRadio {
-  background-color: hotpink;
+  	background-color: hotpink;
 }
 
 paper-radio-button.radio-green::shadow #onRadio {
-  background-color: yellowgreen;
+  	background-color: yellowgreen;
 }
 
 paper-radio-button.radio-blue::shadow #onRadio {
-  background-color: dodgerblue;
+  	background-color: dodgerblue;
 }
 
 paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .cursor {
@@ -93,18 +93,19 @@ html /deep/ [autofocus] {
 
 table, th, td, tr {	
 	text-align: center;
-  text-overflow: ellipsis; 
-  overflow: hidden;
+	text-overflow: ellipsis; 
+	overflow: hidden;
 	vertical-align: middle;
-  white-space: nowrap;
+	white-space: nowrap;
+	table-layout: fixed;
 }
 
 tr:first-child > * {
-  overflow: visible;
+	overflow: visible;
 }
 
 td {
-  max-width: 100px;
+	ax-width: 100px;
 }
 
 table {
@@ -122,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
 	color: #31B404;
-  font-weight: normal;
+  	font-weight: normal;
 }
 
 a:hover, a:focus {
@@ -130,29 +131,29 @@ a:hover, a:focus {
 }
 
 core-animated-pages, core-pages {
-  width: 100%;
-  height: 100%;
-  user-select: none;
-  overflow: hidden;
+  	width: 100%;
+  	height: 100%;
+  	user-select: none;
+  	overflow: hidden;
 	background-color: white;
 }
 
 core-animated-pages > *, , core-pages > * {
-  border-radius: 5px;
-  background-color: white;
+  	border-radius: 5px;
+  	background-color: white;
 }
 
 body /deep/ core-toolbar {
-  background-color: #31B404;
-  color: #fff;
+  	background-color: #31B404;
+  	color: #fff;
 	font-size: 1.4rem;
 	cursor: default;
 }
 
 #titlebar {  
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  	text-overflow: ellipsis;
+  	overflow: hidden;
+  	white-space: nowrap;
 }
 
 nav {	
@@ -160,21 +161,21 @@ nav {
 }
 
 core-menu {
-  color: #298A08;
-  margin: 10px 0 0 0;
+  	color: #298A08;
+  	margin: 10px 0 0 0;
 }
 
 .nav-item {
-  transition: all 300ms ease-in-out;
+  	transition: all 300ms ease-in-out;
 	padding: 4px 16px;
 }
 
 .nav-item.core-selected:not([nobackground]) {
-  background: #E3F6CE;
+  	background: #E3F6CE;
 }
 
 .core-selected {
-  font-weight: normal;
+  	font-weight: normal;
 }
 
 .content {
@@ -186,13 +187,12 @@ core-menu {
 }
 
 @media all and (max-width: 800px) {
-  core-animated-pages, , core-pages {
-    width: 100%;
-    height: 100%;
-  }
+  	core-animated-pages, , core-pages {
+    	width: 100%;
+    	height: 100%;
+  	}
 	
 	.sub, .sub * {
 		display: none;
 	}
-}
 }
