@@ -5,8 +5,8 @@
     "The Polymer Authors"
   ],
   "dependencies": {
-    "NodeBind": "Polymer/NodeBind#^0.5.0",
-    "observe-js": "Polymer/observe-js#^0.5.0"
+    "NodeBind": "Polymer/NodeBind#^0.5",
+    "observe-js": "Polymer/observe-js#^0.5"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^1.0.1"
@@ -20,12 +20,12 @@
     "test",
     "tests"
   ],
-  "version": "0.5.2",
-  "_release": "0.5.2",
+  "version": "0.5.5",
+  "_release": "0.5.5",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.2",
-    "commit": "361869a104e3c9b703ce7af65071a82eb4ba4c13"
+    "tag": "0.5.5",
+    "commit": "72dcfd6838febce9f15cd5a431f0347790d2aeed"
   },
   "_source": "git://github.com/Polymer/TemplateBinding.git",
   "_target": "^0.5.0",

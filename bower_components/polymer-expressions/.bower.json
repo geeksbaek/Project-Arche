@@ -5,7 +5,7 @@
     "The Polymer Authors"
   ],
   "dependencies": {
-    "TemplateBinding": "Polymer/TemplateBinding#^0.5.0"
+    "TemplateBinding": "Polymer/TemplateBinding#^0.5"
   },
   "license": "BSD",
   "private": true,
@@ -16,12 +16,12 @@
     "test",
     "tests"
   ],
-  "version": "0.5.2",
-  "_release": "0.5.2",
+  "version": "0.5.5",
+  "_release": "0.5.5",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.2",
-    "commit": "37358e5c91bcd39c5f3cd863598a4ddb86f407d2"
+    "tag": "0.5.5",
+    "commit": "6936e10fbbc359cad8c38b3f4f2ae1346d7e7e0b"
   },
   "_source": "git://github.com/Polymer/polymer-expressions.git",
   "_target": "~0.5.1",

@@ -14,10 +14,6 @@
 
 (function(shared, scope, testing) {
 
-  function groupChildDuration(node) {
-    return node._timing.delay + node.activeDuration + node._timing.endDelay;
-  };
-
   function KeyframeEffect(effect) {
     this._frames = shared.normalizeKeyframes(effect);
   }
@@ -51,7 +47,7 @@
     return scope.timeline.play(new scope.Animation(this, effect, timing));
   };
 
-  var nullTarget = document.createElement('div');
+  var nullTarget = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
   scope.newUnderlyingPlayerForAnimation = function(animation) {
     var target = animation.target || nullTarget;
     var effect = animation._effect;
@@ -96,37 +92,6 @@
     },
   });
 
-  // TODO: Call into this less frequently.
-  scope.Player.prototype._updateChildren = function() {
-    if (this.startTime === null || !this.source || !this._isGroup)
-      return;
-    var offset = this.source._timing.delay;
-    for (var i = 0; i < this.source.children.length; i++) {
-      var child = this.source.children[i];
-      var childPlayer;
-
-      if (i >= this._childPlayers.length) {
-        childPlayer = window.document.timeline.play(child);
-        child.player = this.source.player;
-        this._childPlayers.push(childPlayer);
-      } else {
-        childPlayer = this._childPlayers[i];
-      }
-
-      if (childPlayer.startTime != this.startTime + offset) {
-        childPlayer.startTime = this.startTime + offset;
-        childPlayer._updateChildren();
-      }
-
-      if (this.playbackRate == -1 && this.currentTime < offset && childPlayer.currentTime !== -1) {
-        childPlayer.currentTime = -1;
-      }
-
-      if (this.source instanceof window.AnimationSequence)
-        offset += groupChildDuration(child);
-    }
-  };
-
   window.Animation = scope.Animation;
   window.Element.prototype.getAnimationPlayers = function() {
     return document.timeline.getAnimationPlayers().filter(function(player) {
@@ -134,6 +99,4 @@
     }.bind(this));
   };
 
-  scope.groupChildDuration = groupChildDuration;
-
-}(webAnimationsShared, webAnimationsMaxifill, webAnimationsTesting));
+}(webAnimationsShared, webAnimationsNext, webAnimationsTesting));
