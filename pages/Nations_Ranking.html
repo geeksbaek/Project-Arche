@@ -2,7 +2,7 @@
 	<div horizontal center-justified center layout fit id='spinner'>
 		<paper-spinner active></paper-spinner>
 	</div>
-	<div class='panel sub' horizontal center-justified layout>
+	<div class='panel sub' horizontal center-justified layout style='display: none;' id='serverToggle'>
 		<paper-radio-group selected="default">
 			<paper-radio-button name="default" label="전체" on-core-change="{{changeServer2}}" data-target="all-nation-ranking" data-default="all-nation-ranking"></paper-radio-button>
 			<template repeat="{{server in servers}}">
@@ -52,6 +52,7 @@
 		  sheet.addEventListener('google-sheet-data', function(e) {
 		  	document.querySelector('#spinner').style.display = 'none';
 		  	document.querySelector('#datatable').style.display = '';
+		  	document.querySelector('#serverToggle').style.display = '';
 		  });
 		</script>
 	</template>		
