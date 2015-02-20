@@ -1,4 +1,7 @@
 <article>
+	<div horizontal center-justified center layout fit id='spinner'>
+		<paper-spinner active></paper-spinner>
+	</div>
 	<div class='panel sub' horizontal center-justified layout>
 		<paper-radio-group selected="default">
 			<paper-radio-button name="default" label="전체" on-core-change="{{changeServer2}}" data-target="all-nation-ranking" data-default="all-nation-ranking"></paper-radio-button>
@@ -10,7 +13,7 @@
 	
 	<template is="auto-binding">
 		<google-sheets key="1agigo8tZhB7pMxYcpMvCurSi6I11io__5U1EtzMtfhE" gid="4" rows="{{rows}}" published></google-sheets>
-		<table class='table table-condensed table-hover'>
+		<table class='table table-condensed table-hover' style='display: none;' id='datatable'>
 			<thead>
 				<tr>
 					<th class='sub'>서버</th>
@@ -43,5 +46,13 @@
 				</template>
 			</tbody>
 		</table>
+		<script>
+		  var sheet = document.querySelector('google-sheets');
+
+		  sheet.addEventListener('google-sheet-data', function(e) {
+		  	document.querySelector('#spinner').style.display = 'none';
+		  	document.querySelector('#datatable').style.display = '';
+		  });
+		</script>
 	</template>		
 </article>
