@@ -60,18 +60,14 @@
 	<link rel="icon" sizes="192x192" href="./favicons/192x192.png">
 </head>
 	
-<body unresolved fullbleed>
+<body unresolved fullbleed>  
 <template is="auto-binding" id="t">
-	<!-- Route controller. -->
 	<flatiron-director route="{{route}}" autoHash></flatiron-director>
-
-	<!-- Dynamic content controller -->
-	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}"></core-ajax>
-	
+	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>	
 	<core-scaffold id="scaffold" responsiveWidth="800px">
 		<nav drawer>
 			<core-toolbar tool horizontal center-justified layout>
-				<div><core-icon class="big" src="./favicons/57x57.png"></core-icon> Project Arche</div>
+				<div><core-icon class="big" src="./favicons/192x192.png"></core-icon> Project Arche</div>
 			</core-toolbar>
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">

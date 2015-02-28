@@ -115,8 +115,7 @@ Fired when the spreadsheet's cell information is available.
   // 2 > 0d4
   function gid_to_wid_(gid) {
     // (gid xor 31578) encoded in base 36
-    // return parseInt((gid ^ 31578)).toString(36);
-		return gid;
+    return parseInt((gid ^ 31578)).toString(36);
   }
 
   Polymer('google-sheets', {
@@ -221,8 +220,17 @@ Fired when the spreadsheet's cell information is available.
       // TODO(ericbidelman): need to better handle updates to the key attribute.
       // Below doesn't account for private feeds.
       if (this.published) {
+        /* 
+        gid를 wid로 바꾸어 요청하면 아래와 같이 요청이 실패함.
+        request > https://spreadsheets.google.com/feeds/list/18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU/od7/public/values?alt=json
+        response > grid_id에 대한 검색어 매개 변수 값이 올바르지 않습니다.
+        
         var url = SCOPE_ + '/list/' + this.key + '/' +
                   gid_to_wid_(this.gid) + '/public/values';
+        */
+        var url = SCOPE_ + '/list/' + this.key + '/' +
+                  this.gid + '/public/values';
+        
         this.$.publicajax.url = url;
       }
     },
