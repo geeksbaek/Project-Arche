@@ -44,6 +44,7 @@
 	<link rel="import" href="./bower_components/paper-radio-group/paper-radio-group.html">
 	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
 	<link rel="import" href="./bower_components/paper-spinner/paper-spinner.html">
+	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
 	
 	<link rel="import" href="./bower_components/google-sheets/google-sheets.html">
 	
@@ -60,10 +61,10 @@
 	<link rel="icon" sizes="192x192" href="./favicons/192x192.png">
 </head>
 	
-<body unresolved fullbleed>  
+<body fullbleed unresolved>
 <template is="auto-binding" id="t">
 	<flatiron-director route="{{route}}" autoHash></flatiron-director>
-	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>	
+	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>
 	<core-scaffold id="scaffold" responsiveWidth="800px">
 		<nav drawer>
 			<core-toolbar tool horizontal center-justified layout>
@@ -80,19 +81,19 @@
 				</template>
         	<hr>
 			</core-menu>
-	      	<core-menu>
-		        <core-item class='nav-item' icon="alarm-add" label="알리미" nobackground>
-	          		<a href="https://docs.google.com/forms/d/1ls8yGL2lX5dtSjDSVUCczEjSxxqd36iZ56HA4XuZvj0/viewform" target="_blank"></a>
-		        </core-item>
-	      	</core-menu>
+      <core-menu>
+        <core-item class='nav-item' icon="alarm-add" label="알리미" nobackground>
+            <a href="https://docs.google.com/forms/d/1ls8yGL2lX5dtSjDSVUCczEjSxxqd36iZ56HA4XuZvj0/viewform" target="_blank"></a>
+        </core-item>
+      </core-menu>
 		</nav>
 		
 		<core-toolbar tool flex>
       	<p flex id='titlebar'>{{selectedPage.name}}</p>
-		<section on-tap="{{refresh}}" vertical center layout>
+		<section on-tap="{{refresh}}">
 			<paper-icon-button class='spin' icon="refresh" alt="Refresh" noink></paper-icon-button>
 		</section>
-		<section on-tap="{{toggleHelp}}" vertical center layout>
+		<section on-tap="{{toggleHelp}}">
 			<paper-icon-button class='spin' icon="help" alt="Help" noink></paper-icon-button>
 			<paper-action-dialog id='help' backdrop class="size-position">
 				<p>
