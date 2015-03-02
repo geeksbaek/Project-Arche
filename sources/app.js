@@ -218,6 +218,14 @@ PolymerExpressions.prototype.getRank = function(v) {
 	return Math.ceil((v.v / v.arr.length) * 100).toFixed() + "%";
 };
 
+PolymerExpressions.prototype.getChangeSimbol = function(v) {
+	return v > 0 ? '▲' + v : v < 0 ? '▼' + Math.abs(v) : '';
+};
+
+PolymerExpressions.prototype.getChangeColor = function(v) {
+	return v > 0 ? 'red' : v < 0 ? 'blue' : 'black';
+};
+
 PolymerExpressions.prototype.parseInt = function (v) {
   return parseInt(v);
 };
