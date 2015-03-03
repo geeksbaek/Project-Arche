@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
 
 * {
 	font-family: 'Nanum Gothic', serif;
@@ -156,8 +157,16 @@ body /deep/ core-toolbar {
   	white-space: nowrap;
 }
 
-nav {	
-	overflow-y: auto;
+#navheader {	
+	background-image: url(../background01.png);
+  background-size: contain;
+}
+
+#navtext {
+  margin-left: .2rem;
+  font-family: 'Patua One', cursive;
+  color: white;
+  text-shadow: 1px 1px black, 1px 1px black, 1px 1px black, 1px 1px black;
 }
 
 core-menu {

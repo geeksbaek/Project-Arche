@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="./sources/jquery.dataTables.min.css"-->
 
 	<link rel="import" href="./bower_components/core-scaffold/core-scaffold.html">
+	<link rel="import" href="./bower_components/core-header-panel/core-header-panel.html">
 	<link rel="import" href="./bower_components/core-item/core-item.html">
 	<link rel="import" href="./bower_components/core-menu/core-menu.html">
 	<link rel="import" href="./bower_components/core-menu/core-submenu.html">
@@ -66,9 +67,12 @@
 	<flatiron-director route="{{route}}" autoHash></flatiron-director>
 	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>
 	<core-scaffold id="scaffold" responsiveWidth="800px">
-		<nav drawer>
-			<core-toolbar tool horizontal center-justified layout>
-				<div><core-icon class="big" src="./favicons/192x192.png"></core-icon> Project Arche</div>
+		<core-header-panel navigation flex drawer mode='waterfall-tall'>
+			<core-toolbar id='navheader' horizontal center-justified end layout>
+				<div horizontal layout center>
+          <core-icon class="big" src="./favicons/192x192.png"></core-icon>
+          <span id='navtext'>Project Arche</span>
+        </div>
 			</core-toolbar>
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">
@@ -86,7 +90,7 @@
             <a href="https://docs.google.com/forms/d/1ls8yGL2lX5dtSjDSVUCczEjSxxqd36iZ56HA4XuZvj0/viewform" target="_blank"></a>
         </core-item>
       </core-menu>
-		</nav>
+		</core-header-panel>
 		
 		<core-toolbar tool flex>
       	<p flex id='titlebar'>{{selectedPage.name}}</p>
