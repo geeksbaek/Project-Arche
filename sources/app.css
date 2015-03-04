@@ -157,9 +157,10 @@ body /deep/ core-toolbar {
   	white-space: nowrap;
 }
 
-#navheader {	
-	background-image: url(../background01.png);
-  background-size: contain;
+#navheader {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #navtext {

@@ -68,7 +68,7 @@
 	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>
 	<core-scaffold id="scaffold" responsiveWidth="800px">
 		<core-header-panel navigation flex drawer mode='waterfall-tall'>
-			<core-toolbar id='navheader' horizontal center-justified end layout>
+			<core-toolbar id='navheader' horizontal center-justified end layout style='background-image: url(./background[[ getRandomNumber(9) ]].jpg);'>
 				<div horizontal layout center>
           <core-icon class="big" src="./favicons/192x192.png"></core-icon>
           <span id='navtext'>Project Arche</span>
