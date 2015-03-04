@@ -66,9 +66,10 @@
 <template is="auto-binding" id="t">
 	<flatiron-director route="{{route}}" autoHash></flatiron-director>
 	<core-ajax id="ajax" url="{{selectedPage.url}}" handleAs="document" on-core-response="{{onResponse}}" loading="{{loading}}"></core-ajax>
+  
 	<core-scaffold id="scaffold" responsiveWidth="800px">
-		<core-header-panel navigation flex drawer mode='waterfall-tall'>
-			<core-toolbar id='navheader' horizontal center-justified end layout style='background-image: url(./background[[ getRandomNumber(9) ]].jpg);'>
+		<core-header-panel navigation flex mode='waterfall-tall'>
+			<core-toolbar id='navheader' horizontal center-justified end layout style='background-image: url(./{{selectedPage.bg}});'>
 				<div horizontal layout center>
           <core-icon class="big" src="./favicons/192x192.png"></core-icon>
           <span id='navtext'>Project Arche</span>
@@ -91,47 +92,47 @@
         </core-item>
       </core-menu>
 		</core-header-panel>
-		
-		<core-toolbar tool flex>
-      	<p flex id='titlebar'>{{selectedPage.name}}</p>
-		<section on-tap="{{refresh}}">
-			<paper-icon-button class='spin' icon="refresh" alt="Refresh" noink></paper-icon-button>
-		</section>
-		<section on-tap="{{toggleHelp}}">
-			<paper-icon-button class='spin' icon="help" alt="Help" noink></paper-icon-button>
-			<paper-action-dialog id='help' backdrop class="size-position">
-				<p>
-					Project Arche는 일정 시간마다 http://archeage.xlgames.com 에서 정보를 가져와 보여줍니다.
-					<br><br>
-					국가와 원정대는 1시간마다, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
-					리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
-					<br><br>
-					국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
-					매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
-					<br><br>
-					현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
-					<br><br>
-					모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면
-					큰 화면의 디바이스를 통해 접속해야 합니다.
-					<br><br>
-					데이터를 가져오는 과정에서 예상치 못한 문제가 발생할 수 있습니다. 이런 경우 데이터가 보이지
-					않거나 엉뚱한 값이 표기될 수 있습니다. 대부분의 경우 다음 갱신에서 올바르게 수정됩니다.
-				</p>
-				<paper-button affirmative autofocus>닫기</paper-button>
-			</paper-action-dialog>
-		</section>
-	    </core-toolbar>
 			
-		<div layout fit>
-	      	<core-pages id="pages" selected="{{route}}" valueattr="hash">
-		        <template repeat="{{page, i in pages}}">
-					<section class="content" hash="{{page.hash}}" layout>
-						<div style="max-width:100%;">
-						</div>
-					</section>          
-		        </template>
-	      	</core-pages>
-	    </div>
+    <core-toolbar tool flex>
+      <p flex id='titlebar'>{{selectedPage.name}}</p>
+      <section on-tap="{{refresh}}">
+        <paper-icon-button class='spin' icon="refresh" alt="Refresh" noink></paper-icon-button>
+      </section>
+      <section on-tap="{{toggleHelp}}">
+        <paper-icon-button class='spin' icon="help" alt="Help" noink></paper-icon-button>
+        <paper-action-dialog id='help' backdrop class="size-position">
+          <p>
+            Project Arche는 일정 시간마다 http://archeage.xlgames.com 에서 정보를 가져와 보여줍니다.
+            <br><br>
+            국가와 원정대는 1시간마다, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
+            리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
+            <br><br>
+            국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
+            매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
+            <br><br>
+            현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
+            <br><br>
+            모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면
+            큰 화면의 디바이스를 통해 접속해야 합니다.
+            <br><br>
+            데이터를 가져오는 과정에서 예상치 못한 문제가 발생할 수 있습니다. 이런 경우 데이터가 보이지
+            않거나 엉뚱한 값이 표기될 수 있습니다. 대부분의 경우 다음 갱신에서 올바르게 수정됩니다.
+          </p>
+          <paper-button affirmative autofocus>닫기</paper-button>
+        </paper-action-dialog>
+      </section>
+    </core-toolbar>
+    
+    <core-header-panel mode='waterfall' fit>
+      <core-pages id="pages" selected="{{route}}" valueattr="hash">
+        <template repeat="{{page, i in pages}}">
+          <section class="content" hash="{{page.hash}}" layout>
+            <div style="max-width:100%;"></div>
+          </section>          
+        </template>
+      </core-pages>
+    </core-header-panel>
+    
 	</core-scaffold>
 </template>
   

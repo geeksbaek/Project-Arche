@@ -8,12 +8,12 @@ var ajax, pages, scaffold, nowPage;
 var cache = {};
 
 template.pages = [
-  {name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance'},
-  {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
-  {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
-  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
-  {name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
-  {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
+  {name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance', bg: 'bg1.jpg'},
+  {name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child', bg: 'bg2.jpg'},
+  {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars', bg: 'bg3.jpg'},
+  {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade', bg: 'bg4.jpg'},
+  {name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance', bg: 'bg5.jpg'},
+  {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility', bg: 'bg6.jpg'}
 ];
 	
 template.servers = [
@@ -35,18 +35,15 @@ template.addEventListener('template-bound', function(e) {
 });
 
 template.menuItemSelected = function(e, detail, sender) {
-  if (detail.isSelected) {
-		
+  if (detail.isSelected) {		
     // Need to wait one rAF so <core-ajax> has it's URL set.
     this.async(function() {
 			//if (!cache[ajax.url]) {
         ajax.go();
 			//}
-			
 			scaffold.closeDrawer();
 			nowPage = pages.selectedItem;
     });
-
   }
 };
 
@@ -64,7 +61,7 @@ template.onResponse = function(e, detail, sender) {
 		}
 	}(cache, ajax.url), 600000);
 	*/
-	
+  
   var article = detail.response.querySelector('article').innerHTML;
 	var selectedIndex = pages.selectedIndex;
 	var t = this;
