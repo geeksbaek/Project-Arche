@@ -223,10 +223,6 @@ PolymerExpressions.prototype.getChangeColor = function(v) {
 	return v > 0 ? 'red' : v < 0 ? 'blue' : 'black';
 };
 
-PolymerExpressions.prototype.getRandomNumber = function(v) {
-	return Math.floor((Math.random() * v) + 1);
-};
-
 PolymerExpressions.prototype.parseInt = function (v) {
   return parseInt(v);
 };
