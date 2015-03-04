@@ -8,6 +8,11 @@
 	user-select: none;
 }
 
+body:after{
+    display: none;
+    content: url(../bg1.jpg), url(../bg2.jpg), url(../bg3.jpg), url(../bg4.jpg), url(../bg5.jpg), url(../bg6.jpg);
+}
+
 table * {
 	user-select: all;
   transition: opacity .3s ease-in-out;
