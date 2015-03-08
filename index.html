@@ -11,12 +11,7 @@
 	<link rel="manifest" href="./manifest.json?v=3">
 	
 	<!--script src="./bower_components/webcomponentsjs/webcomponents.js"></script>
-	<script src="./sources/jquery-2.1.1.min.js"></script>
-	<script src="./sources/d3.min.js"></script>
-	<script src="./sources/metricsgraphics.min.js"></script>
-	<script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script>
-	<script src="./sources/jquery.dataTables.min.js"></script>
-	<link rel="stylesheet" href="./sources/jquery.dataTables.min.css"-->
+	<script src="https://cdn.polyfill.io/v1/polyfill.min.js"></script-->
 
 	<link rel="import" href="./bower_components/core-scaffold/core-scaffold.html">
 	<link rel="import" href="./bower_components/core-header-panel/core-header-panel.html">
@@ -46,8 +41,10 @@
 	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
 	<link rel="import" href="./bower_components/paper-spinner/paper-spinner.html">
 	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
+	<link rel="import" href="./bower_components/paper-dropdown/paper-dropdown.html">
 	
 	<link rel="import" href="./bower_components/google-sheets/google-sheets.html">
+	<link rel="import" href="./bower_components/google-chart/google-chart.html">
 	
 	<link rel="stylesheet" href="./sources/bootstrap.css">
 	<link rel="stylesheet" href="./sources/app.css">
@@ -104,7 +101,7 @@
           <p>
             Project Arche는 일정 시간마다 http://archeage.xlgames.com 에서 정보를 가져와 보여줍니다.
             <br><br>
-            국가와 원정대는 1시간마다, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
+            국가와 원정대, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
             리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
             <br><br>
             국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 

@@ -43,7 +43,7 @@ paper-checkbox {
 }
 
 .panel {
-	padding: 0 10px 0 10px;  
+	padding: 0 10px 0 10px;
 }
 
 #clear-button {
@@ -56,7 +56,7 @@ paper-checkbox {
 }
 
 paper-radio-button::shadow #ink {
-  	color: grey;
+  color: grey;
 }
 
 paper-radio-button.radio-black::shadow #onRadio {
@@ -64,19 +64,19 @@ paper-radio-button.radio-black::shadow #onRadio {
 }
 
 paper-radio-button.radio-red::shadow #onRadio {
-  	background-color: crimson;
+  background-color: crimson;
 }
 
 paper-radio-button.radio-pink::shadow #onRadio {
-  	background-color: hotpink;
+  background-color: hotpink;
 }
 
 paper-radio-button.radio-green::shadow #onRadio {
-  	background-color: yellowgreen;
+  background-color: yellowgreen;
 }
 
 paper-radio-button.radio-blue::shadow #onRadio {
-  	background-color: dodgerblue;
+  background-color: dodgerblue;
 }
 
 paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .cursor {
@@ -176,6 +176,10 @@ core-menu {
   	margin: 10px 0 0 0;
 }
 
+#scaffold > core-header-panel:nth-child(1) > core-menu:nth-child(3) {
+  margin-bottom: 10px; 
+}
+
 .nav-item {
   	transition: all 300ms ease-in-out;
 	padding: 4px 16px;
@@ -206,4 +210,9 @@ core-menu {
 	.sub, .sub * {
 		display: none;
 	}
+}
+
+google-chart {
+  height: 100%;
+  width: 100%;
 }

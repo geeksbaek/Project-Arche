@@ -13,6 +13,7 @@ template.pages = [
   {name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},
   {name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
   {name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
+  {name: '서버 인구 그래프', hash: 'Chart', url: './pages/Chart.html', icon: 'trending-down'},
   {name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
 ];
 	
@@ -75,16 +76,6 @@ template.onResponse = function(e, detail, sender) {
 				node.removeChild(node.firstChild);
 			}
 		}}, 0);
-		/*
-		if(i == selectedIndex) {
-			t.injectBoundHTML(article, pages.items[i].firstElementChild);
-		} else {
-			var node = pages.items[i].firstElementChild;
-			while (node.hasChildNodes()) {
-				node.removeChild(node.firstChild);
-			}
-		}
-		*/
 	});
 };
 

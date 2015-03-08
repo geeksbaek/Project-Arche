@@ -1,0 +1,59 @@
+<article id='chart'>
+  <div horizontal center-justified center layout fit id='spinner'>
+		<paper-spinner active></paper-spinner>
+	</div>
+  <google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" gid="10" published></google-sheets>
+  <google-chart id='chart' 
+                type='line'
+                options='{"curveType": "function",
+                         "legend": { "position": "top", "maxLines": 3 },
+                         "fontName": "Nanum Gothic",
+                         "hAxis": { "format": "yyyy-MM-dd" },
+                         "chartArea": { "left": "12%", "top": "12%", "width": "76%", "height": "76%" } }'>
+  </google-chart>
+  <script>
+    var sheet = document.querySelector('google-sheets');
+    var chart = document.querySelector('google-chart');
+    var spinner = document.querySelector('#spinner');
+
+    sheet.addEventListener('google-sheet-data', function(e) {
+      if(chart.data.length == 0) {        
+        var data = this.rows;
+        var json = [
+          [
+            'data',
+            //'전체',
+            '키프로사',
+            '진',
+            '루키우스',
+            '에안나',
+            '안탈론',
+            '크라켄',
+            '레비아탄'
+          ]
+        ];
+
+        for(var i = 0; i < data.length; i++) {
+          json.push([
+            new Date(data[i].gsx$date.$t),
+            //parseInt(data[i].gsx$total.$t),
+            parseInt(data[i].gsx$kyprosa.$t),
+            parseInt(data[i].gsx$gene.$t),
+            parseInt(data[i].gsx$lucius.$t),
+            parseInt(data[i].gsx$eanna.$t),
+            parseInt(data[i].gsx$anthalon.$t),
+            parseInt(data[i].gsx$kraken.$t),
+            parseInt(data[i].gsx$leviathan.$t)
+          ]);
+        }
+
+        chart.data = json;
+        chart.drawChart();
+      }
+    });
+    
+    chart.addEventListener('google-chart-render', function(e) {
+      spinner.style.display = 'none';    
+    });
+  </script>
+</article>
