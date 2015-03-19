@@ -52,7 +52,7 @@
 <p>A <code>&lt;google-sheets></code> element returns data from a Google Spreadsheet:</p>
 
 <!-- Example: published spreadsheet -->
-<google-sheets id="sheet" key="0Anye-JMjUkZZdDBkMVluMEhZMmFGeHpYdDJJV1FBRWc" published></google-sheets>
+<google-sheets id="sheet" key="0Anye-JMjUkZZdDBkMVluMEhZMmFGeHpYdDJJV1FBRWc" tabid="1" published></google-sheets>
 
 <main layout horizontal>
 
@@ -80,26 +80,29 @@
 
   <!-- Example of using Polymer's <template is="auto-binding"> -->
   <template is="auto-binding">
-    <google-sheets key="0Anye-JMjUkZZdDBkMVluMEhZMmFGeHpYdDJJV1FBRWc" rows="{{rows}}" published></google-sheets>
+    <google-sheets id="sheet2" key="0Anye-JMjUkZZdDBkMVluMEhZMmFGeHpYdDJJV1FBRWc" tabid="1" rows="{{rows}}" published></google-sheets>
     <google-map disableDefaultUI fittomarkers>
       <template repeat="{{row in rows}}">
         <google-map-marker latitude="{{row.gsx$lat.$t}}" longitude="{{row.gsx$lng.$t}}"></google-map-marker>
       </template>
     </google-map>
+
+    <button on-click="{{useTab}}" data-tabid="1">View tab 1 data</button>
+    <button on-click="{{useTab}}" data-tabid="2">View tab 2 data</button>
   </template>
 
 </section>
 
 </main>
 
-<!-- Example: private spreadsheet -->
-<!-- <google-sheets id="sheet"
-         clientId="750497606405-1hq66meqmr4dp09dn54j9ggv85vbv0gp.apps.googleusercontent.com"
-         key="0Anye-JMjUkZZdDdSR2ZXMW5SVjRid19vUTdnRXA2cXc"></google-sheets>
--->
-
 <script>
 var sheet = document.querySelector('#sheet');
+var template = document.querySelector('template[is="auto-binding"]');
+
+template.useTab = function(e, detail, sender) {
+  sheet.tabid = Number(sender.dataset.tabid);
+  document.querySelector('#sheet2').tabid = Number(sender.dataset.tabid);
+};
 
 sheet.addEventListener('google-sheet-data', function(e) {
   switch (e.detail.type) {
@@ -115,7 +118,7 @@ sheet.addEventListener('google-sheet-data', function(e) {
 });
 
 sheet.addEventListener('core-error', function(e) {
-  alert(e.detail.response);
+  console.error(e.detail.response);
 });
 </script>
 </body>

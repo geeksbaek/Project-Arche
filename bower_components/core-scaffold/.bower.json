@@ -16,6 +16,7 @@
     "commit": "20066b1e2006c3401eb7d7f6637ddd3b62cff6ce"
   },
   "_source": "git://github.com/Polymer/core-scaffold.git",
-  "_target": "^0.5",
-  "_originalSource": "Polymer/core-scaffold"
+  "_target": "~0.5.5",
+  "_originalSource": "Polymer/core-scaffold",
+  "_direct": true
 }

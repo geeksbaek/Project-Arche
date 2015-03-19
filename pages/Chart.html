@@ -9,7 +9,8 @@
                          "legend": { "position": "top", "maxLines": 3 },
                          "fontName": "Nanum Gothic",
                          "hAxis": { "format": "yyyy-MM-dd" },
-                         "chartArea": { "left": "14%", "top": "14%", "width": "72%", "height": "72%" } }'>
+                         "chartArea": { "left": "14%", "top": "14%", "width": "72%", "height": "72%" },
+                         "trendlines": {  } }'>
   </google-chart>
   <script>
     var sheet = document.querySelector('google-sheets');
@@ -22,7 +23,7 @@
         var json = [
           [
             'data',
-            //'전체',
+            '전체',
             '키프로사',
             '진',
             '루키우스',
@@ -36,7 +37,7 @@
         for(var i = 0; i < data.length; i++) {
           json.push([
             new Date(data[i].gsx$date.$t),
-            //parseInt(data[i].gsx$total.$t),
+            parseInt(data[i].gsx$total.$t),
             parseInt(data[i].gsx$kyprosa.$t),
             parseInt(data[i].gsx$gene.$t),
             parseInt(data[i].gsx$lucius.$t),
@@ -50,6 +51,10 @@
         chart.data = json;
         chart.drawChart();
       }
+    });
+    
+    sheet.addEventListener('core-error', function(e) {
+      
     });
     
     chart.addEventListener('google-chart-render', function(e) {

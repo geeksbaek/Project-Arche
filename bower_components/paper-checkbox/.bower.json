@@ -22,6 +22,7 @@
     "commit": "9d68f68f50c2d211f9e2ded803648abbce9b27ba"
   },
   "_source": "git://github.com/Polymer/paper-checkbox.git",
-  "_target": "^0.5.0",
-  "_originalSource": "Polymer/paper-checkbox"
+  "_target": "~0.5.5",
+  "_originalSource": "Polymer/paper-checkbox",
+  "_direct": true
 }

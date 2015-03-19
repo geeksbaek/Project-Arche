@@ -23,6 +23,6 @@
     "commit": "bb806f0d130c1e276f97b1ddef83400a828c17be"
   },
   "_source": "git://github.com/Polymer/core-a11y-keys.git",
-  "_target": "^0.5.0",
+  "_target": "^0.5",
   "_originalSource": "Polymer/core-a11y-keys"
 }

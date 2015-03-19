@@ -16,6 +16,7 @@
     "commit": "b887973c1f0f95b926d135dafbdf6e47dffb38b6"
   },
   "_source": "git://github.com/Polymer/core-menu.git",
-  "_target": "^0.5",
-  "_originalSource": "Polymer/core-menu"
+  "_target": "~0.5.5",
+  "_originalSource": "Polymer/core-menu",
+  "_direct": true
 }

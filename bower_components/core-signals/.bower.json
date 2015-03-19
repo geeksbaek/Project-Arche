@@ -13,6 +13,6 @@
     "commit": "52658118c7388fb8240dbb66d9eacaed66b71891"
   },
   "_source": "git://github.com/Polymer/core-signals.git",
-  "_target": "^0.5",
+  "_target": "~0.5.1",
   "_originalSource": "Polymer/core-signals"
 }

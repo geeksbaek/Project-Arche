@@ -23,6 +23,7 @@
     "commit": "475d3961d07d946c4e4fdb502365b23e6cd9c766"
   },
   "_source": "git://github.com/Polymer/core-label.git",
-  "_target": "^0.5",
-  "_originalSource": "Polymer/core-label"
+  "_target": "~0.5.5",
+  "_originalSource": "Polymer/core-label",
+  "_direct": true
 }
