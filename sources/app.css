@@ -10,7 +10,7 @@
 
 table * {
 	user-select: all;
-  transition: opacity .3s ease-in-out;
+  	transition: opacity .3s ease-in-out;
 }
 
 body {
@@ -56,7 +56,7 @@ paper-checkbox {
 }
 
 paper-radio-button::shadow #ink {
-  color: grey;
+  	color: grey;
 }
 
 paper-radio-button.radio-black::shadow #onRadio {
@@ -64,19 +64,19 @@ paper-radio-button.radio-black::shadow #onRadio {
 }
 
 paper-radio-button.radio-red::shadow #onRadio {
-  background-color: crimson;
+  	background-color: crimson;
 }
 
 paper-radio-button.radio-pink::shadow #onRadio {
-  background-color: hotpink;
+  	background-color: hotpink;
 }
 
 paper-radio-button.radio-green::shadow #onRadio {
-  background-color: yellowgreen;
+  	background-color: yellowgreen;
 }
 
 paper-radio-button.radio-blue::shadow #onRadio {
-  background-color: dodgerblue;
+  	background-color: dodgerblue;
 }
 
 paper-input-decorator /deep/ .focused-underline, paper-input-decorator /deep/ .cursor {
@@ -158,17 +158,17 @@ body /deep/ core-toolbar {
 }
 
 #navheader {
-  background-image: url(../bg1.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+	background-image: url(../bg1.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 #navtext {
-  margin-left: .2rem;
-  font-family: 'Patua One', cursive;
-  color: white;
-  text-shadow: 1px 1px black, 1px 1px black, 1px 1px black, 1px 1px black;
+	margin-left: .2rem;
+	font-family: 'Patua One', cursive;
+	color: white;
+	text-shadow: 1px 1px black, 1px 1px black, 1px 1px black, 1px 1px black;
 }
 
 core-menu {
@@ -177,7 +177,7 @@ core-menu {
 }
 
 #scaffold > core-header-panel:nth-child(1) > core-menu:nth-child(3) {
-  margin-bottom: 10px; 
+	margin-bottom: 10px; 
 }
 
 .nav-item {
@@ -213,7 +213,7 @@ core-menu {
 }
 
 google-chart {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 }
