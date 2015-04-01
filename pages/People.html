@@ -1,0 +1,42 @@
+<article>
+	<style>
+	.card {
+		height: 120px;
+		padding: 16px;
+	}
+
+	.avatar {
+		width: 60px;
+		height: 60px;
+		border-radius: 10%;
+		margin-right: 16px;
+		background-color: white;
+	}
+	</style>
+	<template is="auto-binding">
+		<google-sheets key="1agigo8tZhB7pMxYcpMvCurSi6I11io__5U1EtzMtfhE" tabid="2" rows="{{data}}" published></google-sheets>
+		<core-list data='{{data}}' fit flex>
+			<template>
+				<section class='card' layout horizontal center>
+					<span data-index='{{index}}'>{{model.gsx$rank.$t}}위</span>
+					<core-image class='avatar'
+								style='background-size: cover; background-image: url( {{model.gsx$url.$t | getProfileImage}} )'
+								preload
+								fade
+								data-index='{{index}}'>
+					</core-image>
+					<span data-index='{{index}}'>
+						<strong>
+							<a href='{{model.gsx$url.$t}}' target="_blank">{{model.gsx$name.$t}}</a>
+						</strong>
+					</span>
+					<span data-index='{{index}}'>@{{model.gsx$server.$t}}</span>
+					<span data-index='{{index}}'>{{model.gsx$nation.$t}}</span>
+					<span data-index='{{index}}'>{{model.gsx$expedition.$t}}</span>
+					<span data-index='{{index}}'>{{model.gsx$score.$t}}</span>
+					<span data-index='{{index}}'>{{model.gsx$timestamp.$t | parseDate}}</span>
+				</section>
+			</template>
+		</core-list>
+	</template>
+</article>

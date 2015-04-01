@@ -1,3 +1,7 @@
+PolymerExpressions.prototype.getProfileImage = function(v) {
+	return v + '/profileImage';
+}
+
 PolymerExpressions.prototype.getRank = function(v) {
     return Math.ceil((v.v / v.arr.length) * 100).toFixed() + "%";
 };

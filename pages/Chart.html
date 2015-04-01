@@ -6,59 +6,70 @@
   <google-chart id='chart' 
                 type='line'
                 options='{"curveType": "function",
-                         "legend": { "position": "top", "maxLines": 3 },
+                         "legend": { "position": "top", "maxLines": 1, "alignment": "center" },
                          "fontName": "Nanum Gothic",
-                         "hAxis": { "format": "yyyy-MM-dd" },
-                         "chartArea": { "left": "14%", "top": "14%", "width": "72%", "height": "72%" },
-                         "trendlines": {  } }'>
+                         "hAxis": { "format": "yyyy-MM-dd", "textPosition": "in" },
+                         "chartArea": { "left": "14%", "top": "14%", "width": "72%", "height": "72%" } }'>
   </google-chart>
   <script>
-    var sheet = document.querySelector('google-sheets');
-    var chart = document.querySelector('google-chart');
-    var spinner = document.querySelector('#spinner');
+	var sheet = document.querySelector('google-sheets');
+	var chart = document.querySelector('google-chart');
+	var spinner = document.querySelector('#spinner');
 
-    sheet.addEventListener('google-sheet-data', function(e) {
-      if(chart.data.length == 0) {        
-        var data = this.rows;
-        var json = [
-          [
-            'data',
-            //'전체',
-            '키프로사',
-            '진',
-            '루키우스',
-            '에안나',
-            '안탈론',
-            '크라켄',
-            '레비아탄'
-          ]
-        ];
+	sheet.addEventListener('google-sheet-data', function(e) {
+		if(chart.data.length == 0) {        
+			var data = this.rows;
+			var json = [
+				[
+				'data',
+				//'전체',
+				'키프로사',
+				'진',
+				'루키우스',
+				'에안나',
+				'안탈론',
+				'크라켄',
+				'레비아탄'
+				]
+			];
 
-        for(var i = 0; i < data.length; i++) {
-          json.push([
-            new Date(data[i].gsx$date.$t),
-            //parseInt(data[i].gsx$total.$t),
-            parseInt(data[i].gsx$kyprosa.$t),
-            parseInt(data[i].gsx$gene.$t),
-            parseInt(data[i].gsx$lucius.$t),
-            parseInt(data[i].gsx$eanna.$t),
-            parseInt(data[i].gsx$anthalon.$t),
-            parseInt(data[i].gsx$kraken.$t),
-            parseInt(data[i].gsx$leviathan.$t)
-          ]);
-        }
+			for(var i = 0; i < data.length; i++) {
+				var pass = true;
+				var arr = [
+					new Date(data[i].gsx$date.$t),
+					//parseInt(data[i].gsx$total.$t),
+					parseInt(data[i].gsx$kyprosa.$t),
+					parseInt(data[i].gsx$gene.$t),
+					parseInt(data[i].gsx$lucius.$t),
+					parseInt(data[i].gsx$eanna.$t),
+					parseInt(data[i].gsx$anthalon.$t),
+					parseInt(data[i].gsx$kraken.$t),
+					parseInt(data[i].gsx$leviathan.$t)
+				];
+				
+				for(var j = 1; j < arr.length; j++) {
+					if(isNaN(arr[j])) {
+						pass = false;
+						break;
+					}
+				}
 
-        chart.data = json;
-        chart.drawChart();
-      }
-    });
-    
-    sheet.addEventListener('core-error', function(e) {
-      
-    });
-    
-    chart.addEventListener('google-chart-render', function(e) {
-      spinner.style.display = 'none';    
-    });
+				if(pass) {
+					json.push(arr);
+				}
+			}
+
+			chart.data = json;
+			chart.drawChart();
+		}
+	});
+
+	sheet.addEventListener('core-error', function(e) {
+
+	});
+
+	chart.addEventListener('google-chart-render', function(e) {
+		spinner.style.display = 'none';    
+	});
   </script>
 </article>

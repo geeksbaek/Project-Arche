@@ -10,9 +10,6 @@
   
 	<link rel="manifest" href="./manifest.json?v=3">
     
-	<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-	    
-	
 	<link rel="import" href="./bower_components/flatiron-director/flatiron-director.html">
 	<link rel="import" href="./bower_components/core-scaffold/core-scaffold.html">
 	<link rel="import" href="./bower_components/core-header-panel/core-header-panel.html">
@@ -24,6 +21,7 @@
 	<link rel="import" href="./bower_components/core-tooltip/core-tooltip.html">
 	<link rel="import" href="./bower_components/core-label/core-label.html">
 	<link rel="import" href="./bower_components/core-input/core-input.html">
+	<link rel="import" href="./bower_components/core-list/core-list.html">
 	<link rel="import" href="./bower_components/core-dropdown/core-dropdown.html">
 	<link rel="import" href="./bower_components/core-dropdown-menu/core-dropdown-menu.html">
 	
@@ -42,8 +40,6 @@
 	
 	<link rel="import" href="./bower_components/google-sheets/google-sheets.html">
 	<link rel="import" href="./bower_components/google-chart/google-chart.html">
-	
-	<link rel="import" href="./sources/expressions.html">
     
 	<link rel="stylesheet" href="./sources/bootstrap.css">
 	<link rel="stylesheet" href="./sources/app.css">
@@ -74,7 +70,7 @@
 			
 			<core-menu id="menu" valueattr="hash" selected="{{route}}" selectedModel="{{selectedPage}}" on-core-select="{{menuItemSelected}}" on-click="{{ajaxLoad}}">
 				<template repeat="{{pages}}">
-					<core-item class='nav-item' icon="{{icon}}" label="{{name}}" hash="{{hash}}" style="display: {{hash == 'ResetRanking' ? 'none' : ''}}">
+					<core-item class='nav-item' icon="{{icon}}" label="{{name}}" hash="{{hash}}">
 						<paper-ripple class="recenteringTouch" fit>
 							<a href="{{url}}"></a>
 						</paper-ripple>
@@ -132,6 +128,7 @@
 </template>
   
 <script src="./sources/prefixfree.min.js"></script>
+<script src="./sources/expressions.js"></script>
 <script src="./sources/app.js"></script>
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

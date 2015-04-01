@@ -49,13 +49,13 @@
 			</tbody>
 		</table>
     <script>
-		  var sheet = document.querySelector('google-sheets');
+	  var sheet = document.querySelector('google-sheets');
 
-		  sheet.addEventListener('google-sheet-data', function(e) {
-		  	document.querySelector('#spinner').style.display = 'none';
-		  	document.querySelector('#datatable').style.display = '';
-		  	document.querySelector('#serverToggle').style.display = '';
-		  });
-		</script>
+	  sheet.addEventListener('google-sheet-data', function(e) {
+		document.querySelector('#spinner').style.display = 'none';
+		document.querySelector('#datatable').style.display = '';
+		document.querySelector('#serverToggle').style.display = '';
+	  });
+	</script>
 	</template>		
 </article>
