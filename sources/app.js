@@ -9,13 +9,12 @@ var cache = {};
 
 template.pages = [
 	{name: '국가', hash: 'Nations', url: './pages/Nations.html', icon: 'account-balance'},
-	{name: '국민', hash: 'People', url: './pages/People.html', icon: 'face'},
+	//{name: '국민', hash: 'People', url: './pages/People.html', icon: 'face'},
 	{name: '원정대', hash: 'Expeditions', url: './pages/Expeditions.html', icon: 'account-child'},
 	{name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},	
 	{name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
 	{name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
 	{name: '서버 인구 그래프', hash: 'Chart', url: './pages/Chart.html', icon: 'trending-down'}
-	//{name: '리셋창조', hash: 'ResetRanking', url: './pages/Reset_Ranking.html', icon: 'visibility'}
 ];
 	
 template.servers = [
