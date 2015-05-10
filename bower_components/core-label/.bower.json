@@ -14,16 +14,15 @@
     "test",
     "tests"
   ],
-  "version": "0.5.5",
+  "version": "0.5.6",
   "homepage": "https://github.com/Polymer/core-label",
-  "_release": "0.5.5",
+  "_release": "0.5.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.5",
-    "commit": "475d3961d07d946c4e4fdb502365b23e6cd9c766"
+    "tag": "0.5.6",
+    "commit": "48741cf39da33c676f72f01551c1606330b5c321"
   },
   "_source": "git://github.com/Polymer/core-label.git",
   "_target": "~0.5.5",
-  "_originalSource": "Polymer/core-label",
-  "_direct": true
+  "_originalSource": "Polymer/core-label"
 }

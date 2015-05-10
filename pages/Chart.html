@@ -53,6 +53,10 @@
 						break;
 					}
 				}
+				
+				if(json.length > 1 && json[json.length - 1].slice(1).equals(arr.slice(1))) {
+					pass = false;
+				}
 
 				if(pass) {
 					json.push(arr);
