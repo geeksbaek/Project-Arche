@@ -1,7 +1,7 @@
 (function() {
 "use strict";
 
-var DEFAULT_ROUTE = 'Nations';
+var DEFAULT_ROUTE = 'Noarta';
 
 var template = document.querySelector('#t');
 var ajax, pages, scaffold, nowPage;
@@ -14,7 +14,9 @@ template.pages = [
 	{name: '검투장 지배자', hash: 'ArenaRanking', url: './pages/Arena_Ranking.html', icon: 'stars'},	
 	{name: '신화창조', hash: 'GearRanking', url: './pages/Gear_Ranking.html', icon: 'grade'},
 	{name: '신화창조 (국가)', hash: 'NationsRanking', url: './pages/Nations_Ranking.html', icon: 'account-balance'},
-	{name: '서버 인구 그래프', hash: 'Chart', url: './pages/Chart.html', icon: 'trending-down'}
+	{name: '서버 인구 그래프', hash: 'Chart', url: './pages/Chart.html', icon: 'trending-down'},
+	//{name: '무역시세표', hash: 'TradeTable', url: './pages/Trade_Table.html', icon: 'trending-down'},
+	{name: '노아르타', hash: 'Noarta', url:'./pages/Noarta.html', icon: 'swap-horiz'}
 ];
 	
 template.servers = [
@@ -24,7 +26,8 @@ template.servers = [
 	{name: '에안나', value: 'eanna'},
 	{name: '안탈론', value: 'anthalon'},
 	{name: '크라켄', value: 'kraken'},
-	{name: '레비아탄', value: 'leviathan'}
+	{name: '레비아탄', value: 'leviathan'},
+	//{name: '노아르타', value: 'noarta'},
 ]
 
 template.addEventListener('template-bound', function(e) {
@@ -68,14 +71,16 @@ template.onResponse = function(e, detail, sender) {
 	var t = this;
 	
 	[].forEach.call(pages.items, function(v, i) {
-		setTimeout(function() {if(i == selectedIndex) {
+		setTimeout(function() {
+          if(i == selectedIndex) {
 			t.injectBoundHTML(article, pages.items[i].firstElementChild);
-		} else {
-			var node = pages.items[i].firstElementChild;
-			while (node.hasChildNodes()) {
-				node.removeChild(node.firstChild);
-			}
-		}}, 0);
+          } else {
+            var node = pages.items[i].firstElementChild;
+            while(node.hasChildNodes()) {
+                node.removeChild(node.firstChild);
+            }
+          }
+        }, 0);
 	});
 };
 
@@ -139,6 +144,28 @@ template.searchReset = function(v) {
       setTimeout(function() {
         v.checked = false;
       }, 0);
+		});
+	}
+}
+
+template.searchNoarta = function(v) {
+	var value = v.target.committedValue.trim();
+	var default_ = v.target.dataset.default.trim();
+	if(value == "") {
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {
+        v.style.display = "";
+      }, 0);
+		});
+		return;	
+	} else {
+		[].forEach.call(nowPage.querySelectorAll("tr." + default_), function(v) {
+			setTimeout(function() {
+        if(v.dataset.name && v.dataset.name.indexOf(value) == -1) {
+				v.style.display = "none";
+			} else {
+				v.style.display = "";
+			}}, 0);
 		});
 	}
 }
@@ -222,6 +249,18 @@ Array.prototype.equals = function (array) {
         }           
     }       
     return true;
+}
+
+function launchIntoFullscreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
 }
 
 })();

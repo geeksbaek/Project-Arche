@@ -11,51 +11,51 @@
 		</paper-radio-group>
 	</div>
 	<template is="auto-binding">
-		<google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" tabid="1" rows="{{rows}}" published></google-sheets>
-		<table class='table table-condensed table-hover' style='display: none;' id='datatable'>
-			<thead>
-				<tr>
-					<th class='sub'>서버</th>
-					<th>국가</th>
-					<th>원정대</th>
-					<th class='sub'>원정대장</th>
-					<th>55레벨</th>
-					<th class='sub'>총원</th>
-					<th class='sub'>날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<template repeat="{{row, i in rows}}">				
-				<tr class="all-expedition [[row.gsx$server.$t | serverTranslate]]">
-					<td class='sub'>[[row.gsx$server.$t]]</td>
-					<td>[[row.gsx$nation.$t]]</td>
-					<td>
-						<a href='[[row.gsx$url.$t]]' target='_blank' title='[[row.gsx$expedition.$t]]'>[[row.gsx$expedition.$t]]</a>
-					</td>
-					<td class='sub' title='[[row.gsx$master.$t]]'>[[row.gsx$master.$t]]</td>
-					<td>[[row.gsx$lv55.$t | comma]]명
-						<template if="[[row.gsx$lv55diff.$t != '0']]">
-							<span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t > 0 ? '+' + row.gsx$lv55diff.$t : row.gsx$lv55diff.$t]]</span>
-						</template>
-					</td>
-					<td class='sub'>[[row.gsx$total.$t | comma]]명
-						<template if="[[row.gsx$totaldiff.$t != '0']]">
-							<span style='color: [[row.gsx$totaldiff.$t | redOrBlue]]'> [[row.gsx$totaldiff.$t > 0 ? '+' + row.gsx$totaldiff.$t : row.gsx$totaldiff.$t]]</span>
-						</template>
-					</td>
-					<td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
-				</tr>
-				</template>
-			</tbody>
-		</table>
-    <script>
-	  var sheet = document.querySelector('google-sheets');
+      <google-sheets key="18eSf_Z6ptdk3YOxTEdZhbweNdVvDdb952fR__w-ofIU" tabid="1" rows="{{rows}}" published></google-sheets>
+      <table class='table table-condensed table-hover' style='display: none;' id='datatable'>
+        <thead>
+            <tr>
+                <th class='sub'>서버</th>
+                <th>국가</th>
+                <th>원정대</th>
+                <th class='sub'>원정대장</th>
+                <th>55레벨</th>
+                <th class='sub'>총원</th>
+                <th class='sub'>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template repeat="{{row, i in rows}}">				
+            <tr class="all-expedition [[row.gsx$server.$t | serverTranslate]]">
+                <td class='sub'>[[row.gsx$server.$t]]</td>
+                <td>[[row.gsx$nation.$t]]</td>
+                <td>
+                    <a href='[[row.gsx$url.$t]]' target='_blank' title='[[row.gsx$expedition.$t]]'>[[row.gsx$expedition.$t]]</a>
+                </td>
+                <td class='sub' title='[[row.gsx$master.$t]]'>[[row.gsx$master.$t]]</td>
+                <td>[[row.gsx$lv55.$t | comma]]명
+                    <template if="[[row.gsx$lv55diff.$t != '0']]">
+                        <span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t > 0 ? '+' + row.gsx$lv55diff.$t : row.gsx$lv55diff.$t]]</span>
+                    </template>
+                </td>
+                <td class='sub'>[[row.gsx$total.$t | comma]]명
+                    <template if="[[row.gsx$totaldiff.$t != '0']]">
+                        <span style='color: [[row.gsx$totaldiff.$t | redOrBlue]]'> [[row.gsx$totaldiff.$t > 0 ? '+' + row.gsx$totaldiff.$t : row.gsx$totaldiff.$t]]</span>
+                    </template>
+                </td>
+                <td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
+            </tr>
+            </template>
+        </tbody>
+      </table>
+      <script>
+        var sheet = document.querySelector('google-sheets');
 
-	  sheet.addEventListener('google-sheet-data', function(e) {
-		document.querySelector('#spinner').style.display = 'none';
-		document.querySelector('#datatable').style.display = '';
-		document.querySelector('#serverToggle').style.display = '';
-	  });
-	</script>
+        sheet.addEventListener('google-sheet-data', function(e) {
+          document.querySelector('#spinner').style.display = 'none';
+          document.querySelector('#datatable').style.display = '';
+          document.querySelector('#serverToggle').style.display = '';
+        });
+      </script>
 	</template>		
 </article>

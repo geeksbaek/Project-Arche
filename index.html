@@ -26,6 +26,7 @@
 	<link rel="import" href="./bower_components/core-list/core-list.html">
 	<link rel="import" href="./bower_components/core-dropdown/core-dropdown.html">
 	<link rel="import" href="./bower_components/core-dropdown-menu/core-dropdown-menu.html">
+	<link rel="import" href="./bower_components/core-animated-pages/core-animated-pages.html">
 	
 	<link rel="import" href="./bower_components/paper-ripple/paper-ripple.html">
 	<link rel="import" href="./bower_components/paper-checkbox/paper-checkbox.html">
@@ -39,6 +40,7 @@
 	<link rel="import" href="./bower_components/paper-spinner/paper-spinner.html">
 	<link rel="import" href="./bower_components/paper-shadow/paper-shadow.html">
 	<link rel="import" href="./bower_components/paper-dropdown/paper-dropdown.html">
+	<link rel="import" href="./bower_components/paper-tabs/paper-tabs.html">
 	
 	<link rel="import" href="./bower_components/google-sheets/google-sheets.html">
 	<link rel="import" href="./bower_components/google-chart/google-chart.html">
@@ -78,13 +80,13 @@
 						</paper-ripple>
 					</core-item>
 				</template>
-        		<hr>
 			</core-menu>
+            <hr>
 	        <core-menu>
 		        <core-item class='nav-item' icon="alarm-add" label="알리미" nobackground>
 		            <a href="https://docs.google.com/forms/d/1ls8yGL2lX5dtSjDSVUCczEjSxxqd36iZ56HA4XuZvj0/viewform" target="_blank"></a>
 		        </core-item>
-	        </core-menu>
+	        </core-menu>      
 		</core-header-panel>
 			
 	    <core-toolbar tool flex>
@@ -98,19 +100,18 @@
 					<p>
 						Project Arche는 일정 시간마다 http://archeage.xlgames.com 에서 정보를 가져와 보여줍니다.
 						<br><br>
-						국가와 원정대, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며
-						리셋창조는 매일 오후 8시를 전후하여 갱신됩니다.
+						국가와 원정대, 검투장 지배자와 신화창조는 2시간마다 자동으로 갱신되며, 신화창조 (국가)는 매일 정오 경에 갱신됩니다.
+						국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 매주 수요일 오전 5시 데이터를 기준으로 차이를 계산합니다.
 						<br><br>
-						국가, 원정대 정보에서는 각 원정대와 국가의 인원 변경에 따른 차이를 보여주는데, 
-						매주 수요일 오전 5시 데이터를	기준으로 차이를 계산합니다.
+						서버 인구 그래프는 각 서버의 모든 국가 인원을 합한 값을 토대로 그려집니다. 비국가 인원은 계산하지 않는다는 것을 참고해주세요.
 						<br><br>
 						현재 크롬 브라우저에서만 완전한 동작을 보장하며, 모바일 역시 크롬 브라우저만을 지원합니다.
-						<br><br>
-						모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면
-						큰 화면의 디바이스를 통해 접속해야 합니다.
+						모바일 버전에서는 작은 화면 때문에 최소한의 정보만 표시하게 되어있습니다. 모든 정보를 보시려면 큰 화면의 디바이스를 통해 접속해야 합니다.
 						<br><br>
 						데이터를 가져오는 과정에서 예상치 못한 문제가 발생할 수 있습니다. 이런 경우 데이터가 보이지
 						않거나 엉뚱한 값이 표기될 수 있습니다. 대부분의 경우 다음 갱신에서 올바르게 수정됩니다.
+                        <br><br>                        
+                        <span style='font-size: 0.8rem'>by 색지 @노아르타</span>
 					</p>
 				  <paper-button affirmative autofocus>닫기</paper-button>
 				</paper-action-dialog>

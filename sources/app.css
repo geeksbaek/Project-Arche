@@ -181,7 +181,7 @@ core-menu {
   	margin: 10px 0 0 0;
 }
 
-#scaffold > core-header-panel:nth-child(1) > core-menu:nth-child(3) {
+#scaffold > core-header-panel:nth-child(1) > core-menu:last-child {
 	margin-bottom: 10px; 
 }
 
@@ -217,8 +217,12 @@ core-menu {
 	}
 }
 
-google-chart {
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
+#footer > span {
+  font-size: 0.6rem;
+  margin: 10px;
+}
+
+#spinner {
+  color: 'yellow';
+  z-index: 1;
 }
