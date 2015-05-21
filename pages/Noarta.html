@@ -88,7 +88,7 @@
                   </td>
                   <td class='sub'>[[row.gsx$total.$t | comma]]명</td>
                   <td class='sub'>[[row.gsx$glevel.$t]]</td>
-                  <td>[[row.gsx$scoresum.$t | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoresum', value: row.gsx$scoresum.$t} | getRankIndex }}위)</span></td>
+                  <td style='font-weight: bold'>[[row.gsx$scoresum.$t | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoresum', value: row.gsx$scoresum.$t} | getRankIndex }}위)</span></td>
                   <td class='sub'>[[row.gsx$scoreavg.$t | parseInt | comma]] <span class='small'>({{ {arr: rows, target: 'gsx$scoreavg', value: row.gsx$scoreavg.$t} | getRankIndex }}위)</span></td>
                   <td class='sub'>[[row.gsx$timestamp.$t | parseDate]]</td>
                 </tr>
