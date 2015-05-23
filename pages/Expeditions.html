@@ -19,6 +19,7 @@
                 <th>국가</th>
                 <th>원정대</th>
                 <th class='sub'>원정대장</th>
+                <th class='sub'>원정대 레벨</th>
                 <th>55레벨</th>
                 <th class='sub'>총원</th>
                 <th class='sub'>날짜</th>
@@ -33,6 +34,7 @@
                     <a href='[[row.gsx$url.$t]]' target='_blank' title='[[row.gsx$expedition.$t]]'>[[row.gsx$expedition.$t]]</a>
                 </td>
                 <td class='sub' title='[[row.gsx$master.$t]]'>[[row.gsx$master.$t]]</td>
+                <td class='sub'>[[row.gsx$glevel.$t]]</td>
                 <td>[[row.gsx$lv55.$t | comma]]명
                     <template if="[[row.gsx$lv55diff.$t != '0']]">
                         <span style='color: [[row.gsx$lv55diff.$t | redOrBlue]]'> [[row.gsx$lv55diff.$t > 0 ? '+' + row.gsx$lv55diff.$t : row.gsx$lv55diff.$t]]</span>
