@@ -19,6 +19,9 @@ func init() {
 	// about Expedition REST API
 	r.HandleFunc("/expedition/{expedition_name}", expedition)
 
+	// about notice REST API
+	r.HandleFunc("/notice", notice)
+
 	http.Handle("/", r)
 }
 
@@ -41,4 +44,9 @@ func auction(w http.ResponseWriter, r *http.Request) {
 
 func expedition(w http.ResponseWriter, r *http.Request) {
 
+}
+
+func notice(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	fmt.Fprintln(w, fetchAllNotice(ctx))
 }
