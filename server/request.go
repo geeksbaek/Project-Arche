@@ -6,10 +6,15 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/net/context"
 	"google.golang.org/appengine/urlfetch"
+)
+
+const (
+	timeout = time.Second * 2
 )
 
 func form(m map[string]string) io.Reader {
@@ -34,6 +39,7 @@ func do(ctx context.Context, url, method string, form io.Reader) (*goquery.Docum
 	if err != nil {
 		return nil, err
 	}
+	client.Timeout = timeout
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Fatal(err)
