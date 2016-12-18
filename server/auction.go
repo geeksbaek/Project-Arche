@@ -91,39 +91,13 @@ func auctionSearch(ctx context.Context, ap AuctionSearchParam) (searchResult str
 		var searchResult AuctionSearchResult
 
 		// get price
-		moneyCells := row.Find(priceQuery)
-		switch moneyCells.Length() {
-		case 3:
-			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
-				switch i {
-				case 0:
-					searchResult.TotalPrice.Gold, _ = strconv.Atoi(moneyCell.Text())
-				case 1:
-					searchResult.TotalPrice.Silver, _ = strconv.Atoi(moneyCell.Text())
-				case 2:
-					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
-				}
-			})
-		case 2:
-			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
-				switch i {
-				case 0:
-					searchResult.TotalPrice.Silver, _ = strconv.Atoi(moneyCell.Text())
-				case 1:
-					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
-				}
-			})
-		case 1:
-			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
-				switch i {
-				case 0:
-					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
-				}
-			})
-		}
-
-		searchResult.Quantity, err = strconv.Atoi(row.Find(quantityQuery).Text())
-		if err != nil {
+		sumIntPrice := 0
+		row.Find(priceQuery).Each(func(i int, moneyCell *goquery.Selection) {
+			n, _ := strconv.Atoi(moneyCell.Text())
+			sumIntPrice = (sumIntPrice * 100) + n
+		})
+		searchResult.TotalPrice = IntPrice(sumIntPrice).Price()
+		if searchResult.Quantity, err = strconv.Atoi(row.Find(quantityQuery).Text()); err != nil {
 			searchResult.Quantity = 1
 		}
 		searchResult.Image, _ = row.Find(imageQuery).Attr("src")
