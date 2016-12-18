@@ -16,11 +16,12 @@ type AuctionSearchParam struct {
 	ItemGrade   string
 }
 
-// SearchResult 구조체는 경매장 검색 결과를 표현합니다.
-type SearchResult struct {
-	Quantity int
-	Image    string
-	Price
+// AuctionSearchResult 구조체는 경매장 검색 결과를 표현합니다.
+type AuctionSearchResult struct {
+	Quantity    int
+	Image       string
+	TotalPrice  Price
+	SinglePrice Price
 }
 
 // Price 구조체는 금, 은, 동으로 이루어진 가격 정보를 표현합니다.
@@ -28,6 +29,32 @@ type Price struct {
 	Gold   int
 	Silver int
 	Bronze int
+}
+
+// Int 메소드는 Price 구조체를 정수로 변환합니다.
+func (p Price) Int() int {
+	return p.Bronze + p.Silver*100 + p.Gold*10000
+}
+
+// IntPrice 타입은 정수에서 Price 타입으로 변환하기 위한 메소드를 붙이기 위한 타입입니다.
+type IntPrice int
+
+// Price 메소드는 정수를 Price 타입으로 변환합니다.
+func (i IntPrice) Price() Price {
+	return Price{
+		Gold:   int(i) / 10000,
+		Silver: (int(i) % 10000) / 100,
+		Bronze: (int(i) % 10000) % 100,
+	}
+}
+
+// func (p Price) Add(p2 Price) (ret Price) {}
+// func (p Price) Sub(p2 Price) (ret Price) {}
+// func (p Price) Mul(n int) (ret Price) {}
+
+// Div 메소드는 Price의 값을 주어진 정수로 나눕니다.
+func (p Price) Div(n int) (ret Price) {
+	return IntPrice(p.Int() / n).Price()
 }
 
 // url
@@ -38,7 +65,7 @@ const (
 // query
 const (
 	rowQuery      = `.tlist`
-	priceQuery    = `.money-layer .buybid .gol_num`
+	priceQuery    = `.auction-bidmoney > .buybid em.gol_num`
 	quantityQuery = `.item-num`
 	imageQuery    = `.eq_img img`
 )
@@ -58,30 +85,54 @@ func auctionSearch(ctx context.Context, ap AuctionSearchParam) (searchResult str
 		return
 	}
 
-	var searchResults []SearchResult
+	var searchResults []AuctionSearchResult
 
 	doc.Find(rowQuery).Each(func(i int, row *goquery.Selection) {
-		var searchResult SearchResult
+		var searchResult AuctionSearchResult
 
 		// get price
-		row.Find(priceQuery).Each(func(i int, cell *goquery.Selection) {
-			switch i {
-			case 0:
-				searchResult.Gold, _ = strconv.Atoi(cell.Text())
-			case 1:
-				searchResult.Silver, _ = strconv.Atoi(cell.Text())
-			case 2:
-				searchResult.Bronze, _ = strconv.Atoi(cell.Text())
-			}
-		})
+		moneyCells := row.Find(priceQuery)
+		switch moneyCells.Length() {
+		case 3:
+			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
+				switch i {
+				case 0:
+					searchResult.TotalPrice.Gold, _ = strconv.Atoi(moneyCell.Text())
+				case 1:
+					searchResult.TotalPrice.Silver, _ = strconv.Atoi(moneyCell.Text())
+				case 2:
+					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
+				}
+			})
+		case 2:
+			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
+				switch i {
+				case 0:
+					searchResult.TotalPrice.Silver, _ = strconv.Atoi(moneyCell.Text())
+				case 1:
+					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
+				}
+			})
+		case 1:
+			moneyCells.Each(func(i int, moneyCell *goquery.Selection) {
+				switch i {
+				case 0:
+					searchResult.TotalPrice.Bronze, _ = strconv.Atoi(moneyCell.Text())
+				}
+			})
+		}
 
-		searchResult.Quantity, _ = strconv.Atoi(row.Find(quantityQuery).Text())
+		searchResult.Quantity, err = strconv.Atoi(row.Find(quantityQuery).Text())
+		if err != nil {
+			searchResult.Quantity = 1
+		}
 		searchResult.Image, _ = row.Find(imageQuery).Attr("src")
+		searchResult.SinglePrice = searchResult.TotalPrice.Div(searchResult.Quantity)
 
 		searchResults = append(searchResults, searchResult)
 	})
 
-	marshaled, err := json.Marshal(searchResults)
+	marshaled, err := json.MarshalIndent(searchResults, "", "\t")
 	if err != nil {
 		return
 	}
