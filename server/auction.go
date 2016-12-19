@@ -1,9 +1,8 @@
 package main
 
 import (
-	"strconv"
-
 	"encoding/json"
+	"strconv"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/net/context"
