@@ -1,12 +1,12 @@
 cron:
 
 # Notices
-- url: /tasks/notices
+- url: /tasks/fetch/notices
   schedule: every 5 mins
   timezone: Asia/Seoul
 
 # Server Status
-- url: /tasks/serverStatus
+- url: /tasks/fetch/serverStatus
   schedule: every 1 mins
   timezone: Asia/Seoul
 

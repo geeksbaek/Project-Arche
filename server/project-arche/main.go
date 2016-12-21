@@ -36,17 +36,9 @@ func init() {
 	r.HandleFunc("/api/unsubscribe/{topic}/{token}", apiHandler(unsubscribe)).Methods("DELETE")
 
 	// cron job
-	r.HandleFunc("/tasks/notices", func(w http.ResponseWriter, r *http.Request) {
-		ctx := appengine.NewContext(r)
-		fetchNotice(ctx)
-		notices := Notices{}
-		if err := getFromFirebase(ctx, "notices", &notices); err == nil && len(notices) > 0 {
-			notifyNotices(ctx, notices)
-		}
-	})
-	r.HandleFunc("/tasks/notify/{topic}", func(w http.ResponseWriter, r *http.Request) {
-		taskWorker(mux.Vars(r)["topic"])
-	})
+	r.HandleFunc("/tasks/fetch/notices", fetchNotices)
+	r.HandleFunc("/tasks/fetch/serverStatus", fetchServerStatus)
+	r.HandleFunc("/tasks/notify/{topic}", notifyTopic)
 
 	http.Handle("/", r)
 }
@@ -63,16 +55,14 @@ func index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "It's Project-Arche REST Service")
 }
 
-func createAuctionSearchParam(vars map[string]string) (ap AuctionSearchParam) {
-	ap.ItemName = vars["item_name"]
-	ap.ServerGroup = vars["server_group"]
-	ap.ItemGrade = vars["item_grade"]
-	return
-}
-
 func auctions(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
-	auctionSearchParam := createAuctionSearchParam(mux.Vars(r))
+	auctionSearchParam := func(vars map[string]string) (ap AuctionSearchParam) {
+		ap.ItemName = vars["item_name"]
+		ap.ServerGroup = vars["server_group"]
+		ap.ItemGrade = vars["item_grade"]
+		return
+	}(mux.Vars(r))
 	fmt.Fprintln(w, auctionSearch(ctx, auctionSearchParam))
 }
 
@@ -115,8 +105,19 @@ func unsubscribe(w http.ResponseWriter, r *http.Request) {
 	// }
 }
 
-func taskWorker(event string) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		notifyDaily(event)
+func fetchNotices(w http.ResponseWriter, r *http.Request) {
+	ctx := appengine.NewContext(r)
+	fetchNotice(ctx)
+	notices := Notices{}
+	if err := getFromFirebase(ctx, "notices", &notices); err == nil && len(notices) > 0 {
+		notifyNotices(ctx, notices)
 	}
+}
+
+func fetchServerStatus(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func notifyTopic(w http.ResponseWriter, r *http.Request) {
+	notifyDaily(mux.Vars(r)["topic"])
 }
