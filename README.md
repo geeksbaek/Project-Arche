@@ -21,7 +21,7 @@ GET https://project-arche.appspot.com/api/charactors/{charactor_uuid}/history
 
 #### Notices
 ```
-GET     https://project-arche.appspot.com/api/notices
+GET https://project-arche.appspot.com/api/notices
 
 ```
 

@@ -52,7 +52,8 @@ func genFirebaseClient(ctx context.Context) *http.Client {
 	if err != nil {
 		log.Fatal(err)
 	}
-	conf, err := google.JWTConfigFromJSON(jsonKey, "https://www.googleapis.com/auth/userinfo.email",
+	conf, err := google.JWTConfigFromJSON(jsonKey,
+		"https://www.googleapis.com/auth/userinfo.email",
 		"https://www.googleapis.com/auth/firebase.database")
 	if err != nil {
 		log.Fatal(err)
