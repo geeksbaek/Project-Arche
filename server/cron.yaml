@@ -1,56 +1,66 @@
 cron:
 
+# Notices
+- url: /tasks/notices
+  schedule: every 5 mins
+  timezone: KR
+
+# Server Status
+- url: /tasks/serverStatus
+  schedule: every 1 mins
+  timezone: KR
+
 # 눈먼 자들의 꽃
-- url: /tasks/Flowers_of_the_Blind
+- url: /tasks/notify/Flowers_of_the_Blind
   schedule: every day 08:45
   timezone: KR
-- url: /tasks/Flowers_of_the_Blind
+- url: /tasks/notify/Flowers_of_the_Blind
   schedule: every day 20:45
   timezone: KR
 
 # 밀밭을 흔드는 전투
-- url: /tasks/A_battle_that_shakes_wheat_fields
+- url: /tasks/notify/A_battle_that_shakes_wheat_fields
   schedule: every day 10:45
   timezone: KR
-- url: /tasks/A_battle_that_shakes_wheat_fields
+- url: /tasks/notify/A_battle_that_shakes_wheat_fields
   schedule: every day 22:45
   timezone: KR
 
 # 자유도 금화 교역상
-- url: /tasks/Freedom_Island_gold_trade
+- url: /tasks/notify/Freedom_Island_gold_trade
   schedule: every day 15:45
   timezone: KR
-- url: /tasks/Freedom_Island_gold_trade
+- url: /tasks/notify/Freedom_Island_gold_trade
   schedule: every day 20:45
   timezone: KR
 
 # 붉은 이슬 전투
-- url: /tasks/Red_Dew_Battle
+- url: /tasks/notify/Red_Dew_Battle
   schedule: every day 01:45
   timezone: KR
-- url: /tasks/Red_Dew_Battle
+- url: /tasks/notify/Red_Dew_Battle
   schedule: every day 13:45
   timezone: KR
-- url: /tasks/Red_Dew_Battle
+- url: /tasks/notify/Red_Dew_Battle
   schedule: every day 19:45
   timezone: KR
 
 # 심연의 습격
-- url: /tasks/Attack_of_abyss
+- url: /tasks/notify/Attack_of_abyss
   schedule: every tue,thu,sat 21:15
   timezone: KR
 
 # 풍랑의 전조
-- url: /tasks/A_precursor_of_storm
+- url: /tasks/notify/A_precursor_of_storm
   schedule: every day 21:45
   timezone: KR
 
 # 신기루 섬 낚시대회
-- url: /tasks/Mirage_Island_fishing_tournament
+- url: /tasks/notify/Mirage_Island_fishing_tournament
   schedule: every sat 18:45
   timezone: KR
 
 # 공성전
-- url: /tasks/Siege
+- url: /tasks/notify/Siege
   schedule: every sun 20:15
   timezone: KR

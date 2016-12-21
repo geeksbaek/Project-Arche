@@ -2,12 +2,17 @@ package main
 
 import (
 	"encoding/json"
-	"sync"
-
+	"errors"
 	"strings"
+	"sync"
 
 	"github.com/PuerkitoBio/goquery"
 	"golang.org/x/net/context"
+	"gopkg.in/zabawaba99/firego.v1"
+)
+
+const (
+	noticesDatastoreKey = "Notices"
 )
 
 // Notice 타입은 공지사항입니다.
@@ -21,6 +26,19 @@ type Notice struct {
 
 // Notices 타입은 공지사항의 Slice입니다.
 type Notices []Notice
+
+func (old Notices) diff(new Notices) (diff Notices) {
+L:
+	for _, newNotice := range new {
+		for _, oldNotice := range old {
+			if newNotice.URL == oldNotice.URL {
+				continue L
+			}
+		}
+		diff = append(diff, newNotice)
+	}
+	return
+}
 
 // NoticeCategory 타입은 공지사항의 카테고리입니다.
 type NoticeCategory struct {
@@ -38,6 +56,8 @@ const (
 	eventNoticeRowQuery  = `ul.lst_event li a`
 )
 
+const urlPrefix = "https://archeage.xlgames.com"
+
 var allNoticesCategory = []NoticeCategory{
 	{"공지사항", "https://archeage.xlgames.com/mboards/notice", mboardNoticeParser},
 	{"업데이트", "https://archeage.xlgames.com/mboards/patchnote", mboardNoticeParser},
@@ -46,7 +66,19 @@ var allNoticesCategory = []NoticeCategory{
 	{"아미고", "https://archeage.xlgames.com/mboards/amigo", mboardNoticeParser},
 }
 
-func fetchAllNotice(ctx context.Context) string {
+func fetchNoticeFromCache(ctx context.Context) (string, error) {
+	notices := Notices{}
+	if err := getFromFirebase(ctx, "notices", &notices); err != nil {
+		return "", err
+	}
+	marshaled, err := json.MarshalIndent(notices, "", "\t")
+	if err != nil {
+		return "", err
+	}
+	return string(marshaled), nil
+}
+
+func fetchNotice(ctx context.Context) (string, error) {
 	notices := Notices{}
 	temp := make([][]Notice, len(allNoticesCategory))
 
@@ -64,11 +96,17 @@ func fetchAllNotice(ctx context.Context) string {
 		notices = append(notices, t...)
 	}
 
+	if len(notices) == 0 {
+		return "", errors.New("Empty Notices")
+	}
+
+	setToFirebase(ctx, "notices", notices)
+
 	marshaled, err := json.MarshalIndent(notices, "", "\t")
 	if err != nil {
-		return err.Error()
+		return "", err
 	}
-	return string(marshaled)
+	return string(marshaled), nil
 }
 
 func (n NoticeCategory) fetch(ctx context.Context, parser NoticeParser) Notices {
@@ -77,6 +115,20 @@ func (n NoticeCategory) fetch(ctx context.Context, parser NoticeParser) Notices 
 		return nil
 	}
 	return parser(doc, n.Name)
+}
+
+// put to datastore
+func setToFirebase(ctx context.Context, path string, v interface{}) error {
+	client := genFirebaseClient(ctx)
+	f := firego.New(firebasedatabaseURL+path, client)
+	return f.Set(v)
+}
+
+// get from datastore
+func getFromFirebase(ctx context.Context, path string, v interface{}) error {
+	client := genFirebaseClient(ctx)
+	f := firego.New(firebasedatabaseURL+path, client)
+	return f.Value(v)
 }
 
 func mboardNoticeParser(doc *goquery.Document, categoryName string) (notices Notices) {
@@ -91,6 +143,7 @@ func mboardNoticeParser(doc *goquery.Document, categoryName string) (notices Not
 		}
 		notice.Description = strings.TrimSpace(row.Find("a.pjax .txt, a.pjax span.thumb-txt").Text())
 		notice.URL, _ = row.Find("a.pjax").Attr("href")
+		notice.URL = urlPrefix + strings.Split(notice.URL, "?")[0]
 		notice.Date = strings.TrimSpace(row.Find("td.time").Text())
 
 		notices = append(notices, notice)
@@ -106,6 +159,7 @@ func eventNoticeParser(doc *goquery.Document, categoryName string) (notices Noti
 		notice.Title = strings.TrimSpace(row.Find("dl dt").Text())
 		notice.Description = strings.TrimSpace(row.Find("dl dd:not(.img)").Text())
 		notice.URL, _ = row.Attr("href")
+		notice.URL = urlPrefix + strings.Split(notice.URL, "?")[0]
 
 		notices = append(notices, notice)
 	})
