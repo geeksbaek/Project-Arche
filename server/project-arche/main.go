@@ -18,27 +18,23 @@ func init() {
 	r.HandleFunc("/", index)
 
 	// Auction REST API
-	r.HandleFunc("/api/auctions/{server_group}/{item_name}", apiHandler(auctions)).Methods("GET")
-	r.HandleFunc("/api/auctions/{server_group}/{item_name}/{item_grade}", apiHandler(auctions)).Methods("GET")
+	r.HandleFunc("/api/auctions/{server_group}/{item_name}", apiHandler(auctionsHandler)).Methods("GET")
+	r.HandleFunc("/api/auctions/{server_group}/{item_name}/{item_grade}", apiHandler(auctionsHandler)).Methods("GET")
 
 	// Expedition REST API
-	r.HandleFunc("/api/expeditions/{server_name}/{expedition_number}", apiHandler(expeditions)).Methods("GET")
+	r.HandleFunc("/api/expeditions/{server_name}/{expedition_number}", apiHandler(expeditionsHandler)).Methods("GET")
 
 	// Charactor REST API
-	r.HandleFunc("/api/charactors/{charactor_uuid}", apiHandler(charactors)).Methods("GET")
-	r.HandleFunc("/api/charactors/{charactor_uuid}/history", apiHandler(charactorsHistory)).Methods("GET")
+	r.HandleFunc("/api/charactors/{charactor_uuid}", apiHandler(charactorsHandler)).Methods("GET")
+	r.HandleFunc("/api/charactors/{charactor_uuid}/history", apiHandler(charactorsHistoryHandler)).Methods("GET")
 
 	// notice REST API
-	r.HandleFunc("/api/notices", apiHandler(notices)).Methods("GET")
-
-	// notification API
-	r.HandleFunc("/api/subscribe/{topic}/{token}", apiHandler(subscribe)).Methods("PUT")
-	r.HandleFunc("/api/unsubscribe/{topic}/{token}", apiHandler(unsubscribe)).Methods("DELETE")
+	r.HandleFunc("/api/notices", apiHandler(noticesHandler)).Methods("GET")
 
 	// cron job
-	r.HandleFunc("/tasks/fetch/notices", fetchNotices)
-	r.HandleFunc("/tasks/fetch/serverStatus", fetchServerStatus)
-	r.HandleFunc("/tasks/notify/{topic}", notifyTopic)
+	r.HandleFunc("/tasks/fetch/notices", fetchNoticesHandler)
+	r.HandleFunc("/tasks/fetch/serverStatus", fetchServerStatusHandler)
+	r.HandleFunc("/tasks/notify/{topic}", notifyTopicHandler)
 
 	http.Handle("/", r)
 }
@@ -55,7 +51,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "It's Project-Arche REST Service")
 }
 
-func auctions(w http.ResponseWriter, r *http.Request) {
+func auctionsHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 	auctionSearchParam := func(vars map[string]string) (ap AuctionSearchParam) {
 		ap.ItemName = vars["item_name"]
@@ -66,23 +62,23 @@ func auctions(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, auctionSearch(ctx, auctionSearchParam))
 }
 
-func expeditions(w http.ResponseWriter, r *http.Request) {
+func expeditionsHandler(w http.ResponseWriter, r *http.Request) {
 	// ctx := appengine.NewContext(r)
 
 }
 
-func charactors(w http.ResponseWriter, r *http.Request) {
+func charactorsHandler(w http.ResponseWriter, r *http.Request) {
 	// ctx := appengine.NewContext(r)
 
 }
 
-func charactorsHistory(w http.ResponseWriter, r *http.Request) {
+func charactorsHistoryHandler(w http.ResponseWriter, r *http.Request) {
 	// ctx := appengine.NewContext(r)
 }
 
-func notices(w http.ResponseWriter, r *http.Request) {
+func noticesHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
-	v, err := fetchNoticeFromCache(ctx)
+	v, err := fetchNoticesFromCache(ctx)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintln(w, err)
@@ -91,33 +87,19 @@ func notices(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, v)
 }
 
-func subscribe(w http.ResponseWriter, r *http.Request) {
-	// if err := subscribe("notices", mux.Vars(r)["token"]); err != nil {
-	// 	w.WriteHeader(http.StatusInternalServerError)
-	// 	fmt.Fprintln(w, err)
-	// }
-}
-
-func unsubscribe(w http.ResponseWriter, r *http.Request) {
-	// if err := unsubscribe("notices", mux.Vars(r)["token"]); err != nil {
-	// 	w.WriteHeader(http.StatusInternalServerError)
-	// 	fmt.Fprintln(w, err)
-	// }
-}
-
-func fetchNotices(w http.ResponseWriter, r *http.Request) {
+func fetchNoticesHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
-	fetchNotice(ctx)
+	fetchNotices(ctx)
 	notices := Notices{}
 	if err := getFromFirebase(ctx, "notices", &notices); err == nil && len(notices) > 0 {
 		notifyNotices(ctx, notices)
 	}
 }
 
-func fetchServerStatus(w http.ResponseWriter, r *http.Request) {
+func fetchServerStatusHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func notifyTopic(w http.ResponseWriter, r *http.Request) {
+func notifyTopicHandler(w http.ResponseWriter, r *http.Request) {
 	notifyDaily(mux.Vars(r)["topic"])
 }

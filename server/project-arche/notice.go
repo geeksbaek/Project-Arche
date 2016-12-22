@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"log"
 	"strings"
 	"sync"
 
@@ -66,7 +67,7 @@ var allNoticesCategory = []NoticeCategory{
 	{"아미고", "https://archeage.xlgames.com/mboards/amigo", mboardNoticeParser},
 }
 
-func fetchNoticeFromCache(ctx context.Context) (string, error) {
+func fetchNoticesFromCache(ctx context.Context) (string, error) {
 	notices := Notices{}
 	if err := getFromFirebase(ctx, "notices", &notices); err != nil {
 		return "", err
@@ -78,7 +79,7 @@ func fetchNoticeFromCache(ctx context.Context) (string, error) {
 	return string(marshaled), nil
 }
 
-func fetchNotice(ctx context.Context) (string, error) {
+func fetchNotices(ctx context.Context) (string, error) {
 	notices := Notices{}
 	temp := make([][]Notice, len(allNoticesCategory))
 
@@ -87,17 +88,17 @@ func fetchNotice(ctx context.Context) (string, error) {
 	for i, noticeCategory := range allNoticesCategory {
 		go func(i int, noticeCategory NoticeCategory) {
 			defer wg.Done()
-			temp[i] = noticeCategory.fetch(ctx, noticeCategory.Parser)
+			v, err := noticeCategory.fetch(ctx, noticeCategory.Parser)
+			if err != nil {
+				log.Fatal(err)
+			}
+			temp[i] = v
 		}(i, noticeCategory)
 	}
 	wg.Wait()
 
 	for _, t := range temp {
 		notices = append(notices, t...)
-	}
-
-	if len(notices) == 0 {
-		return "", errors.New("Empty Notices")
 	}
 
 	setToFirebase(ctx, "notices", notices)
@@ -109,12 +110,15 @@ func fetchNotice(ctx context.Context) (string, error) {
 	return string(marshaled), nil
 }
 
-func (n NoticeCategory) fetch(ctx context.Context, parser NoticeParser) Notices {
+func (n NoticeCategory) fetch(ctx context.Context, parser NoticeParser) (notices Notices, err error) {
 	doc, err := get(ctx, n.URL)
 	if err != nil {
-		return nil
+		return nil, err
 	}
-	return parser(doc, n.Name)
+	if notices = parser(doc, n.Name); len(notices) == 0 {
+		return nil, errors.New("Empty Notices")
+	}
+	return
 }
 
 // put to datastore

@@ -22,11 +22,4 @@ GET https://project-arche.appspot.com/api/charactors/{charactor_uuid}/history
 #### Notices
 ```
 GET https://project-arche.appspot.com/api/notices
-
-```
-
-#### Daily Event Notification
-```
-PUT     https://project-arche.appspot.com/api/subscribe/{topic}/{token}
-DELETE  https://project-arche.appspot.com/api/unsubscribe/{topic}/{token}
 ```
