@@ -21,8 +21,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="pa-icons.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+
+<link rel="import" href="pa-notifications.html">
 
 <dom-module id="pa-app">
   <template>
@@ -43,11 +48,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #fff;
         background-color: #3f51b5;
         --app-header-background-front-layer: {
-          background-image: url(//archeage.xlgames.com/util/image/view?type=multimedia&image=20160120_094326405.jpg);
+          background-image: url(/images/header-tall.jpg);
           background-position: left center;
         };
         --app-header-background-rear-layer: {
-          background-image: url(//archeage.xlgames.com/util/image/view?type=multimedia&image=20150819_093129306.jpg);
+          background-image: url(/images/header-short.jpg);
           background-position: left center;
         };
       }
@@ -86,25 +91,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      .drawer-list {
+      .left-drawer-list {
         margin: 0 20px;
       }
 
-      .drawer-list a {
+      .left-drawer-list a {
         display: block;
-
         padding: 0 16px;
-
         text-decoration: none;
-
         color: var(--app-secondary-color);
-
         line-height: 40px;
       }
 
-      .drawer-list a.iron-selected {
+      .left-drawer-list a.iron-selected {
         color: black;
-
         font-weight: bold;
       }
 
@@ -120,27 +120,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
+    <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
+
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
-      <app-drawer align="start" swipe-open>
+      <app-drawer swipe-open>
         <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">서버 현황</a>
-          <a name="view2" href="/view2">인구 통계</a>
-          <a name="view3" href="/view3">제작 비용 계산기</a>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="left-drawer-list" role="navigation">
+          <a name="stats" href="/stats">숫자로 보는 아키에이지</a>
+          <a name="cost" href="/cost">제작비용 계산기</a>
+          <a name="schedule" href="/schedule">아키라이프 시간표</a>
         </iron-selector>
       </app-drawer>
 
-      <app-drawer id="endDrawer" align="end" swipe-open></app-drawer>
+      <app-drawer id="notifications-drawer" align="right" opened="{{rightDrawerOpen}}" disable-swipe>
+        <pa-notifications toggle="{{rightDrawerOpen}}"></pa-notifications>
+      </app-drawer>
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
-        <app-header condenses reveals effects="waterfall resize-title blend-background parallax-background">
+        <app-header condenses fixed effects="waterfall resize-title blend-background parallax-background">
           <app-toolbar>
             <paper-icon-button icon="icons:menu" drawer-toggle></paper-icon-button>
             <h4 condensed-title>Project Arche 2.0</h4>
-            <paper-icon-button icon="social:notifications-none"></paper-icon-button>
+            <paper-icon-button icon="social:notifications-none" active="{{rightDrawerOpen}}" toggles></paper-icon-button>
           </app-toolbar>          
           <app-toolbar class="tall">
             <h1 main-title>Project Arche 2.0</h1>
@@ -152,9 +156,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <pa-view1 name="view1"></pa-view1>
-          <pa-view2 name="view2"></pa-view2>
-          <pa-view3 name="view3"></pa-view3>
+          <pa-stats name="stats"></pa-stats>
+          <pa-cost name="cost"></pa-cost>
+          <pa-schedule name="schedule"></pa-schedule>
           <pa-view404 name="view404"></pa-view404>
         </iron-pages>
       </app-header-layout>
@@ -170,6 +174,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged'
+        },
+        _shouldShowTabs: {
+          computed: '_computeShouldShowTabs(page, smallScreen)'
+        },
+        _shouldRenderTabs: {
+          computed: '_computeShouldRenderTabs(_shouldShowTabs, loadComplete)'
+        },
+        _shouldRenderDrawer: {
+          computed: '_computeShouldRenderDrawer(smallScreen, loadComplete)'
         }
       },
 
@@ -178,7 +191,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'stats';
       },
 
       _pageChanged: function(page) {
@@ -189,6 +202,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showPage404: function() {
         this.page = 'view404';
+      },
+
+      _computeShouldShowTabs: function(page, smallScreen) {
+        return (page === 'home' || page === 'list' || page === 'detail') && !smallScreen;
+      },
+      _computeShouldRenderTabs: function(_shouldShowTabs, loadComplete) {
+        return _shouldShowTabs && loadComplete;
+      },
+      _computeShouldRenderDrawer: function(smallScreen, loadComplete) {
+        return smallScreen && loadComplete;
       }
     });
   </script>
