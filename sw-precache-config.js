@@ -11,7 +11,12 @@ module.exports = {
   staticFileGlobs: [
     '/index.html',
     '/manifest.json',
-    '/bower_components/webcomponentsjs/webcomponents-lite.min.js'
+    '/bower_components/webcomponentsjs/webcomponents-lite.min.js',
+    '/**/*.{js,html,css,png,jpg,gif,svg,ttf}'
   ],
+  runtimeCaching: [{
+    urlPattern: /fonts\.googleapis\.com\//,
+    handler: 'cacheFirst'
+  }],
   navigateFallback: '/index.html'
 };

@@ -2,10 +2,10 @@
   "entrypoint": "index.html",
   "shell": "src/pa-app.html",
   "fragments": [
-    "src/pa-view1.html",
-    "src/pa-view2.html",
-    "src/pa-view3.html",
-    "src/pa-view404.html"
+    "src/pa-home.html",
+    "src/pa-stats.html",
+    "src/pa-cost.html",
+    "src/pa-schedule.html"
   ],
   "sourceGlobs": [
    "src/**/*",
