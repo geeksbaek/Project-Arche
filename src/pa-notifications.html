@@ -12,16 +12,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="pa-notifications">
-  <template>
-    <style include="iron-flex iron-flex-alignment"></style>
-    <style include="shared-styles">
+    <template>
+        <style include="iron-flex iron-flex-alignment"></style>
+        <style include="shared-styles">
     :host {
         user-select: none;
+        cursor: default;
     }
 
     .right-drawer-toolbar {
@@ -74,120 +76,93 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--layout-horizontal);
         @apply(--layout-justified);
     }
+
+    .right-drawer-list paper-tooltip {
+        --paper-tooltip: {
+            font-size: 13px;
+        }
+    }
     </style>
 
-    <app-toolbar class="right-drawer-toolbar" role="toolbar">
-        <h4>Notifications</h4>
-        <paper-icon-button icon="arrow-forward" active="{{toggle}}" toggles></paper-icon-button>
-    </app-toolbar>
+<app-toolbar class="right-drawer-toolbar" role="toolbar">
+    <h4>Notifications</h4>
+    <paper-icon-button icon="arrow-forward" active="{{toggle}}" toggles></paper-icon-button>
+</app-toolbar>
 
-    <div class="right-drawer-list">
-        <section>
-            <div class="layout horizontal">
-                <h4>공지사항 알림</h4>
-                <paper-toggle-button noink></paper-toggle-button>
-            </div>
-            <p>
-                아키에이지 공식 홈페이지에 새로운 공지사항이 등록되면 알려줍니다.
-                (공지사항, 업데이트, 이벤트, 아키인사이드, 아미고)
-            </p>
-        </section>
-        <section>
-            <h4>고정된 일정 알림</h4>
-            <p>
-                현실 시간에 고정된 아키에이지 일정을 <strong>15분</strong> 전에 알려줍니다.
-            </p>
-            <ul>
+<div class="right-drawer-list">
+    <section>
+        <div class="layout horizontal">
+            <h4>공지사항 알림</h4>
+            <paper-toggle-button noink></paper-toggle-button>
+        </div>
+        <p>
+            아키에이지 공식 홈페이지에 새로운 공지사항이 등록되면 알려줍니다. (공지사항, 업데이트, 이벤트, 아키인사이드, 아미고)
+        </p>
+    </section>
+    <section>
+        <div class="layout horizontal">
+            <h4>서버 상태 알림</h4>
+            <paper-toggle-button noink></paper-toggle-button>
+        </div>
+        <p>서버 상태가 변동되면 알려줍니다.</p>
+    </section>
+    <section>
+        <h4>주요 일정 알림</h4>
+        <p>
+            <strong>게임 시간</strong>에 고정된 아키에이지의 주요 일정을 <strong>30분 전</strong>에 알려줍니다.
+        </p>
+        <ul>
+            <template is="dom-repeat" items="{{notificationsList}}" filter="isTimebaseGame">
                 <li>
-                    <h5>눈먼 자들의 꽃</h5>
+                    <h5>{{item.name}}</h5>
+                    <paper-toggle-button noink disabled></paper-toggle-button>
+                </li>
+            </template>
+        </ul>
+    </section>
+    <section>
+        <p>
+            <strong>현실 시간</strong>에 고정된 아키에이지의 주요 일정을 <strong>30분 전</strong>에 알려줍니다.
+        </p>
+        <ul>
+            <template is="dom-repeat" items="{{notificationsList}}" filter="isTimebaseReal">
+                <li>
+                    <h5>{{item.name}}</h5>
                     <paper-toggle-button noink></paper-toggle-button>
                 </li>
-                <li>
-                    <h5>밀밭을 흔드는 전투</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>자유도 금화 교역상</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>붉은 이슬 전투</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>심연의 습격</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>풍랑의 전조</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>신기루 섬 낚시대회</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>공성전</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h4>동적 일정 알림</h4>
-            <p>
-                게임 시간에 고정된 아키에이지 일정을 <strong>15분</strong> 전에 알려줍니다.
-                서버 점검이 끝난 시간에 따라 일정이 달라지므로, 알림이 불규칙적일 수 있습니다.
-            </p>
-            <ul>
-                <li>
-                    <h5>전장의 안개</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>징조의 틈</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>망각의 균열 / 기계의 소란</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>징조의 틈(원대륙)</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>태고의 힘</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>샤크라</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-                <li>
-                    <h5>글렌, 레이나</h5>
-                    <paper-toggle-button noink></paper-toggle-button>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <div class="layout horizontal">
-                <h4>서버 상태 알림</h4>
-                <paper-toggle-button noink></paper-toggle-button>
-            </div>
-            <p>서버 상태가 변동되면 알려줍니다.</p>        
-        </section>
-    </div>
-  </template>
+            </template>
+        </ul>
+    </section>
+</div>
+</template>
 
-  <script>
+<script>
     Polymer({
-      is: 'pa-notifications',
-      properties: {
-          toggle: {
-              type: Boolean,
-              notify: true
-          }
-      }
+        is: 'pa-notifications',
+        properties: {
+            toggle: {
+                type: Boolean,
+                notify: true
+            },
+            notificationsList: {
+                type: Array
+            }
+        },
+        ready: function () {
+            let url = '/data/notifications-list.json';
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', function (e) {
+                this.set('notificationsList', JSON.parse(e.target.responseText));
+            }.bind(this));
+            xhr.open('GET', url);
+            xhr.send();
+        },
+        isTimebaseGame: function (v) {
+            return v.timebase == "game";
+        },
+        isTimebaseReal: function (v) {
+            return v.timebase == "real";
+        }
     });
-  </script>
+</script>
 </dom-module>
