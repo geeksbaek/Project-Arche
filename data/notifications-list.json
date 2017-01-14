@@ -1,6 +1,7 @@
 [
     {
         "name": "전장의 안개",
+        "topic": "",
         "time": "매일 00:00",
         "timebase": "game",
         "place": "",
@@ -8,6 +9,7 @@
     },
     {
         "name": "징조의 틈",
+        "topic": "",
         "time": "매일 12:00",
         "timebase": "game",
         "place": "",
@@ -15,6 +17,7 @@
     },
     {
         "name": "징조의 틈 (원대륙)",
+        "topic": "",
         "time": "매일 18:00",
         "timebase": "game",
         "place": "",
@@ -22,20 +25,15 @@
     },
     {
         "name": "눈먼 자들의 꽃",
+        "topic": "Flowers_of_the_Blind",
         "time": "매일 09:00, 21:00",
         "timebase": "real",
         "place": "",
         "link": ""
     },
     {
-        "name": "자유도 금화 교역상",
-        "time": "매일 16:00, 21:00",
-        "timebase": "real",
-        "place": "",
-        "link": ""
-    },
-    {
         "name": "붉은 이슬 전투",
+        "topic": "Red_Dew_Battle",
         "time": "매일 02:00, 14:00, 20:00",
         "timebase": "real",
         "place": "",
@@ -43,6 +41,7 @@
     },
     {
         "name": "심연의 습격",
+        "topic": "Attack_of_abyss",
         "time": "매주 화, 목, 토 21:30",
         "timebase": "real",
         "place": "",
@@ -50,6 +49,7 @@
     },
     {
         "name": "풍랑의 전조",
+        "topic": "A_precursor_of_storm",
         "time": "매일 22:00",
         "timebase": "real",
         "place": "",
@@ -57,6 +57,7 @@
     },
     {
         "name": "신기루 섬 낚시대회",
+        "topic": "Mirage_Island_fishing_tournament",
         "time": "매주 토요일 19:00",
         "timebase": "real",
         "place": "",
@@ -64,6 +65,7 @@
     },
     {
         "name": "공성전",
+        "topic": "Siege",
         "time": "매주 일요일 20:30",
         "timebase": "real",
         "place": "",
@@ -71,6 +73,7 @@
     },
     {
         "name": "샤크라",
+        "topic": "",
         "time": "매일 06:00",
         "timebase": "game",
         "place": "",
@@ -78,6 +81,7 @@
     },
     {
         "name": "글렌, 레이나",
+        "topic": "",
         "time": "매일 06:00",
         "timebase": "game",
         "place": "",
@@ -85,28 +89,32 @@
     },
     {
         "name": "크라켄",
-        "time": "매주 화, 목, 토 22:35",
+        "topic": "Kraken",
+        "time": "매주 화, 목, 토 21:35",
         "timebase": "real",
         "place": "",
         "link": ""
     },
     {
         "name": "붉은 용",
-        "time": "매주 화, 목, 토 22:40",
+        "topic": "Red_Dragon",
+        "time": "매주 화, 목, 토 21:40",
         "timebase": "real",
         "place": "",
         "link": ""
     },
     {
         "name": "레비아탄",
-        "time": "매주 화, 목, 토 22:30",
+        "topic": "Leviathan",
+        "time": "매주 화, 목, 토 21:30",
         "timebase": "real",
         "place": "",
         "link": ""
     },
     {
         "name": "델피나드 유령선",
-        "time": "매일 22:45",
+        "topic": "Delphinad_Ghost_Ship",
+        "time": "매일 21:45",
         "timebase": "real",
         "place": "",
         "link": ""
